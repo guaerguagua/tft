@@ -25,8 +25,8 @@ public class DetailTableActData extends AbstractTableData {
 
 	public DetailTableActData() {
 		//
-		setDefaultParameters(new Parameter[] { new Parameter("trans_cd") });
-		setDefaultParameters(new Parameter[] { new Parameter("day") });
+//		setDefaultParameters(new Parameter[] { new Parameter("trans_cd"),new Parameter("day") });
+
 
 		columnNames = new String[]{"settle_dt", "buss_no","acct_no","trans_cd","trans_at"};
 		columnNum=columnNames.length;
@@ -60,30 +60,30 @@ public class DetailTableActData extends AbstractTableData {
 			return;
 		}
 
-		String trans_cd = parameters[0].getValue().toString();
+		String transCd = parameters[0].getValue().toString();
 		String dateStr=parameters[1].getValue().toString();
+		FRContext.getLogger().info("trans_cd: " + transCd+"dateStr:"+dateStr+"\n");
 
 		//get db conn  and talbe Name
 		boolean isHis=false;
-		String tableName=new String();
+		String tableNo=new String();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String today=sdf.format(new Date());
         Connection conn ;
 		if(today.equals(dateStr)){
 		    String currLogNo=MgmUtil.getCurrNo();
-			tableName="tbl_fcl_ck_acct_dtl"+currLogNo;
+			tableNo=currLogNo;
             isHis=false;
             conn= DbUtil.getActConnection();
 		}else {
             isHis=true;
-            tableName="tbl_fcl_ck_acct_dtl"+
-                    String.format("%d_%03d",
+			tableNo= String.format("%d_%03d",
                             MgmUtil.getHisLogNo(dateStr),MgmUtil.getDayOfYear(dateStr));
             conn=DbUtil.getHisConnection();
         }
 
 		// create sql
-		String sql = getSql(trans_cd,tableName);
+		String sql = getSql(transCd,tableNo);
 		FRContext.getLogger().info("Query SQL of ParamTableDataDemo: \n" + sql+"\n");
 
 		valueList = new ArrayList();
@@ -118,18 +118,18 @@ public class DetailTableActData extends AbstractTableData {
 	}
 
 
-	public String getSql(String trans_cd,String tableName){
+	public String getSql(String transCd,String tableNo){
 
 		String condition=new String();
 		String sql =new String();
 		boolean isHis=false;
 
-		if(trans_cd.equals("")){
+		if(transCd.equals("")){
 			condition="";
 		}else {
-			condition="and trans_cd="+trans_cd;
+			condition="and trans_cd="+transCd;
 		}
-		sql = "select settle_dt, buss_no,acct_no,trans_cd,trans_at from"+ tableName + "where 1=1 "+condition +";";
+		sql = "select settle_dt, buss_no,acct_no,trans_cd,trans_at from tbl_fcl_ck_acct_dtl"+ tableNo + " where 1=1 "+condition +";";
 
 		return  sql;
 	}
