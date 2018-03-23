@@ -12,6 +12,7 @@ import java.util.Date;
 
 public class MgmUtil {
 
+    //ri qie biao
     public static String getCurrNo(){
         String sql = "select curr_log_no from tbl_mgm_settle_dt;";
 
@@ -32,6 +33,24 @@ public class MgmUtil {
             e.printStackTrace();
         }
         return null;
+    }
+
+    //his year hao
+    public static int getHisLogNo(String dateStr){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		String dateStr="2018-03-28";
+        Date date=new Date();
+        try {
+            date = sdf.parse(dateStr);
+            Calendar calendar=Calendar.getInstance();
+            calendar.setTime(date);
+
+            return (calendar.get(Calendar.YEAR))%3+1;
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        return 0;
+
     }
 
     public static int getDayOfYear(String dateStr){
