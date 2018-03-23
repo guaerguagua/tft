@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class MgmUtil {
 
-    public String getCurrNo(){
+    public static String getCurrNo(){
         String sql = "select curr_log_no from tbl_mgm_settle_dt;";
 
         Connection conn = DbUtil.getMgmConnection();
@@ -21,7 +21,7 @@ public class MgmUtil {
             ResultSet rs = stmt.executeQuery(sql);
             rs.next();
             String currLogNo=rs.getObject(1).toString();
-            // 释放数据库资源
+            //release resouce
             rs.close();
             stmt.close();
             conn.close();
@@ -34,7 +34,7 @@ public class MgmUtil {
         return null;
     }
 
-    public int getDayOfYear(String dateStr){
+    public static int getDayOfYear(String dateStr){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 //		String dateStr="2018-03-28";
         Date date=new Date();
