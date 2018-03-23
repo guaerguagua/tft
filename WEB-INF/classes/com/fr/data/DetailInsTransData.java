@@ -25,7 +25,7 @@ public class DetailInsTransData extends AbstractTableData {
 //		setDefaultParameters(new Parameter[] { new Parameter("trans_cd"),new Parameter("day") });
 
 
-		columnNames = new String[]{"settle_dt","buss_no","acct_no","trans_cd","trans_at","ins_mchnt_cd","acct_name" };
+		columnNames = new String[]{"ins_mchnt_cd","acct_name", "trans_cd","buss_no","trans_at"  };
 		columnNum=columnNames.length;
 	}
 
