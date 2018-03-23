@@ -81,7 +81,7 @@ public class DetailActOutData extends AbstractTableData {
 
 		// create sql
 		String sql = getSql(transCd,tableNamePos);
-		FRContext.getLogger().info("Query SQL of ParamTableDataDemo: \n" + sql+"\n");
+		FRContext.getLogger().info("Query SQL of DetailActOutData: \n" + sql+"\n");
 
 		valueList = new ArrayList();
 
@@ -107,7 +107,7 @@ public class DetailActOutData extends AbstractTableData {
 			conn.close();
 
 			FRContext.getLogger().info(
-					"Query SQL of DetailTableActData: \n" + valueList.size()
+					"Query SQL of DetailActOutData: \n" + valueList.size()
 							+ " rows selected");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -137,7 +137,7 @@ public class DetailActOutData extends AbstractTableData {
 				"a.trans_at,c.ins_mchnt_cd,c.acct_name  " +
 				"from  tbl_fcl_ck_acct_dtl%s a  left join tbl_fcl_ins_acct_dtl%s b" +
 				" on a.buss_no=b.buss_no left join %s c on b.acct_no = c.acct_no " +
-				"where 1=1 %s",tableNamePos,tableNamePos,balanceTable,condition);
+				"where 1=1 %s;",tableNamePos,tableNamePos,balanceTable,condition);
 		return  sql;
 	}
 
