@@ -60,7 +60,7 @@ public class DetailInsTransData extends AbstractTableData {
 		String transCd = parameters[0].getValue().toString();
 		String dateStr=parameters[1].getValue().toString();
 		String insMchntCd=parameters[2].getValue().toString();
-		FRContext.getLogger().info("trans_cd: " + transCd+"dateStr:"+dateStr+"insMchntCd"+insMchntCd+"\n");
+		FRContext.getLogger().info("\ntrans_cd: " + transCd+"\ndateStr:"+dateStr+"\ninsMchntCd"+insMchntCd+"\n");
 
 		//get db conn  and talbe Name
 		boolean isHis=false;
