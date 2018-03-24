@@ -68,4 +68,48 @@ public class MgmUtil {
         }
         return 0;
     }
+
+    public static String getTableNamePostfix(String tableNamePrefix,String yestodayStr,String currLogNo){
+
+        String yesLogNo;
+
+        if(currLogNo.equals("1")){
+            yesLogNo="2";
+        }else {
+            yesLogNo="1";
+        }
+        String tableName=tableNamePrefix+yesLogNo;
+
+        String sql= "select count(*) from "+tableName+";";
+
+        Connection conn = DbUtil.getActConnection();
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            rs.next();
+            String countNumStr=rs.getObject(1).toString();
+            //release resouce
+            rs.close();
+            stmt.close();
+            conn.close();
+            FRContext.getLogger().info(
+                    "count(*) from" +tableName+ " is "+countNumStr );
+            if(countNumStr.equals("0")){
+                return String.format("%d_%03d",getHisLogNo(yestodayStr),getDayOfYear(yestodayStr));
+            }else {
+                return yesLogNo;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static Date getYestoday(){
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 1);
+        return calendar.getTime();
+    }
 }
