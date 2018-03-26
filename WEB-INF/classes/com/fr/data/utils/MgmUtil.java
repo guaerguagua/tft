@@ -139,4 +139,15 @@ public class MgmUtil {
     }
 
 
+
+    public String getDayOfYearString(String dateStr){
+        int day = getDayOfYear(dateStr);
+        String  dayStr= String.valueOf(day);
+        StringBuffer sb = new StringBuffer();
+        for(int i=0;i<3-dayStr.length();i++){
+            sb.append("0");
+        }
+        String res = sb.toString()+dayStr;
+        return res;
+    }
 }
