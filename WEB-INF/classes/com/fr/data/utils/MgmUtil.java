@@ -69,7 +69,7 @@ public class MgmUtil {
         return 0;
     }
 
-    public static String getTableNamePostfix(String tableNamePrefix,String yestodayStr,String currLogNo){
+    public static String getYestodayTablePostfix(String tableNamePrefix,String yestodayStr,String currLogNo){
 
         String yesLogNo;
 
@@ -105,6 +105,31 @@ public class MgmUtil {
         }
         return null;
     }
+
+    public static String getPostfix(String dateStr,String tablePrefix){
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String today=sdf.format(new Date());
+        String yestoday=sdf.format(MgmUtil.getYestoday());
+        String tablePostfix=null;
+        try{
+            if(today.equals(dateStr)){
+                String currLogNo=MgmUtil.getCurrNo();
+                tablePostfix=currLogNo;
+            }else if(yestoday.equals(dateStr)){
+                tablePostfix=MgmUtil.getYestodayTablePostfix(tablePrefix,yestoday,MgmUtil.getCurrNo());
+            } else {
+                tablePostfix= String.format("%d_%03d",
+                        MgmUtil.getHisLogNo(dateStr),MgmUtil.getDayOfYear(dateStr));
+            }
+
+            return  tablePostfix;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
     public static Date getYestoday(){
 
         Calendar calendar = Calendar.getInstance();
@@ -112,4 +137,6 @@ public class MgmUtil {
         calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 1);
         return calendar.getTime();
     }
+
+
 }

@@ -23,13 +23,15 @@ public class DetailActLoadData extends AbstractTableData {
 
 	private String transCdTotal=null;
 
+	private String checkList=null;
+
 	public DetailActLoadData() {
-		//
-//		setDefaultParameters(new Parameter[] { new Parameter("trans_cd"),new Parameter("day") });
 
 		tablePrefix="tbl_fcl_ck_acct_dtl";
-		columnNames = new String[]{"settle_dt", "buss_no","acct_no","trans_cd","trans_at","rec_crt_ts"};
+		checkList=" settle_dt,buss_no,acct_no,trans_cd,trans_at,rec_crt_ts ";
 		transCdTotal="1410,1411,1412";
+
+		columnNames = checkList.replaceAll(" ","").split(",");
 		columnNum=columnNames.length;
 	}
 
@@ -67,31 +69,17 @@ public class DetailActLoadData extends AbstractTableData {
 		FRContext.getLogger().info("\ntrans_cd: " + transCd+"\ndateStr:"+dateStr+"\nacctNo"+acctNo+"\n");
 
 		//get db conn  and talbe Name
-		boolean isHis=false;
-		String tableNo=new String();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String today=sdf.format(new Date());
-		String yestoday=sdf.format(MgmUtil.getYestoday());
 
-		if(today.equals(dateStr)){
-		    String currLogNo=MgmUtil.getCurrNo();
-			tableNo=currLogNo;
-            isHis=false;
-		}else if(yestoday.equals(dateStr)){
-			tableNo=MgmUtil.getTableNamePostfix(tablePrefix,yestoday,MgmUtil.getCurrNo());
-		} else {
-            isHis=true;
-			tableNo= String.format("%d_%03d",
-                            MgmUtil.getHisLogNo(dateStr),MgmUtil.getDayOfYear(dateStr));
-        }
+		String tablePostfix=MgmUtil.getPostfix(dateStr,tablePrefix);
         Connection conn;
-		if(tableNo.length()==1){
+		if(tablePostfix.length()==1){
 			conn=DbUtil.getActConnection();
 		}else {
 			conn=DbUtil.getHisConnection();
 		}
+
 		// create sql
-		String tableName=tablePrefix+tableNo;
+		String tableName=tablePrefix+tablePostfix;
 		String sql = getSql(transCd,acctNo,tableName);
 		FRContext.getLogger().info("Query SQL of DetailActLoadData: \n" + sql+"\n");
 
@@ -142,33 +130,13 @@ public class DetailActLoadData extends AbstractTableData {
 			condition=condition+String.format(" and acct_no=%s ",acctNo);
 		}
 
-		sql = String.format("select settle_dt, buss_no,acct_no,trans_cd,trans_at ,rec_crt_ts " +
-				" from %s where trans_cd in( %s ) %s ;",tableName,transCdTotal,condition);
+		sql = String.format("select %s  from %s where trans_cd in( %s ) %s ;",
+								checkList,tableName,transCdTotal,condition);
 
 		return  sql;
 	}
 
-
-
-	// 获取数据库连接 driverName和 url 可以换成您需要的
-	public Connection getConnection() {
-		String driverName = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://88.88.15.11:3306/tfttest";
-		String username = "test";
-		String password = "test";
-		Connection con = null;
-		try {
-			Class.forName(driverName);
-			con = DriverManager.getConnection(url, username, password);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-		return con;
-	}
-
-
-	// 释放一些资源，因为可能会有重复调用，所以需释放valueList，将上次查询的结果释放掉
+	// release
 	public void release() throws Exception {
 		super.release();
 		this.valueList = null;
