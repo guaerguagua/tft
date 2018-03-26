@@ -93,7 +93,7 @@ public class MyParamTableDataDemo extends AbstractTableData {
         valueList = new ArrayList();
         Object[] objects = new Object[4];
         colNum=4;
-        String sql = "select count(*) as begin_acct_count,sum(begin_balance) as sum_begin_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(begin);
+        String sql = "select count(*) as begin_acct_count,sum(begin_balance) as sum_begin_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(begin)+";";
         //
         FRContext.getLogger().info("Query SQL of Param\n"  + sql);
 
@@ -107,8 +107,10 @@ public class MyParamTableDataDemo extends AbstractTableData {
 //            objects[1]=rs.getObject("sum_begin_balance");
 //            FRContext.getLogger().info("sum_begin_balance:"+rs.getBigDecimal("sum_begin_balance")+"\n");
             //
+            rs.next();
             objects[0]=rs.getObject(1);
             FRContext.getLogger().info("begin_acct_count:"+rs.getInt(1)+"\n");
+            rs.next();
             objects[1]=rs.getObject(2);
             FRContext.getLogger().info("sum_begin_balance:"+rs.getBigDecimal(2)+"\n");
             //
@@ -120,7 +122,7 @@ public class MyParamTableDataDemo extends AbstractTableData {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String sql2 = "select count(*) as end_acct_count,sum(current_balance) as sum_end_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(end);
+        String sql2 = "select count(*) as end_acct_count,sum(current_balance) as sum_end_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(end)+";";
         //
         FRContext.getLogger().info("Query SQL of Param\n"  + sql2);
 
@@ -129,7 +131,9 @@ public class MyParamTableDataDemo extends AbstractTableData {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql2);
             FRContext.getLogger().info("get result of sql2");
+            rs.next();
             objects[2]=rs.getObject("end_acct_count");
+            rs.next();
             objects[3]=rs.getObject("sum_end_balance");
             FRContext.getLogger().info("end_acct_count:"+rs.getInt("end_acct_count")+"\n");
             FRContext.getLogger().info("sum_end_balance:"+rs.getBigDecimal("sum_end_balance")+"\n");
