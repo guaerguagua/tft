@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class DetailActOutData extends AbstractTableData {
+public class DetailActInData extends AbstractTableData {
 
 	private String[] columnNames = null;
 
@@ -23,13 +23,13 @@ public class DetailActOutData extends AbstractTableData {
 
 	private String transCdTotal=null;
 
-	public DetailActOutData() {
+	public DetailActInData() {
 		//
 //		setDefaultParameters(new Parameter[] { new Parameter("trans_cd"),new Parameter("day") });
 
 		tablePrefix="tbl_fcl_ck_acct_dtl";
 		columnNames = new String[]{"settle_dt", "buss_no","acct_no","trans_cd","trans_at","rec_crt_ts"};
-		transCdTotal="1403,1407,1409";
+		transCdTotal="1401,1402,1408";
 		columnNum=columnNames.length;
 	}
 
@@ -74,17 +74,17 @@ public class DetailActOutData extends AbstractTableData {
 		String yestoday=sdf.format(MgmUtil.getYestoday());
 
 		if(today.equals(dateStr)){
-			String currLogNo=MgmUtil.getCurrNo();
+		    String currLogNo=MgmUtil.getCurrNo();
 			tableNo=currLogNo;
-			isHis=false;
+            isHis=false;
 		}else if(yestoday.equals(dateStr)){
 			tableNo=MgmUtil.getTableNamePostfix(tablePrefix,yestoday,MgmUtil.getCurrNo());
 		} else {
-			isHis=true;
+            isHis=true;
 			tableNo= String.format("%d_%03d",
-					MgmUtil.getHisLogNo(dateStr),MgmUtil.getDayOfYear(dateStr));
-		}
-		Connection conn;
+                            MgmUtil.getHisLogNo(dateStr),MgmUtil.getDayOfYear(dateStr));
+        }
+        Connection conn;
 		if(tableNo.length()==1){
 			conn=DbUtil.getActConnection();
 		}else {
@@ -93,7 +93,7 @@ public class DetailActOutData extends AbstractTableData {
 		// create sql
 		String tableName=tablePrefix+tableNo;
 		String sql = getSql(transCd,acctNo,tableName);
-		FRContext.getLogger().info("Query SQL of DetailActOutData: \n" + sql+"\n");
+		FRContext.getLogger().info("Query SQL of DetailActInData: \n" + sql+"\n");
 
 		valueList = new ArrayList();
 
@@ -119,7 +119,7 @@ public class DetailActOutData extends AbstractTableData {
 			conn.close();
 
 			FRContext.getLogger().info(
-					"Query SQL of DetailActOutData: \n" + valueList.size()
+					"Query SQL of DetailActInData: \n" + valueList.size()
 							+ " rows selected");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -142,7 +142,7 @@ public class DetailActOutData extends AbstractTableData {
 			condition=condition+String.format(" and acct_no=%s ",acctNo);
 		}
 
-		sql = String.format("select settle_dt,buss_no,acct_no,trans_cd,trans_at,ins_mchnt_cd ,rec_crt_ts " +
+		sql = String.format("select settle_dt, buss_no,acct_no,trans_cd,trans_at ,rec_crt_ts " +
 				" from %s where trans_cd in( %s ) %s ;",tableName,transCdTotal,condition);
 
 		return  sql;

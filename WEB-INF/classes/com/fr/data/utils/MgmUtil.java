@@ -93,7 +93,7 @@ public class MgmUtil {
             stmt.close();
             conn.close();
             FRContext.getLogger().info(
-                    "count(*) from" +tableName+ " is "+countNumStr );
+                    "count(*) from " + tableName+ " is "+countNumStr );
             if(countNumStr.equals("0")){
                 return String.format("%d_%03d",getHisLogNo(yestodayStr),getDayOfYear(yestodayStr));
             }else {

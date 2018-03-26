@@ -1,18 +1,15 @@
 package com.fr.data;
 
 import com.fr.base.FRContext;
-import com.fr.base.Parameter;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
 
 import java.sql.*;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
-public class DetailTableActData extends AbstractTableData {
+public class DetailActLoadData extends AbstractTableData {
 
 	private String[] columnNames = null;
 
@@ -22,13 +19,17 @@ public class DetailTableActData extends AbstractTableData {
 
 	private ArrayList valueList = null;
 
+	private String tablePrefix=null;
 
-	public DetailTableActData() {
+	private String transCdTotal=null;
+
+	public DetailActLoadData() {
 		//
 //		setDefaultParameters(new Parameter[] { new Parameter("trans_cd"),new Parameter("day") });
 
-
-		columnNames = new String[]{"settle_dt", "buss_no","acct_no","trans_cd","trans_at"};
+		tablePrefix="tbl_fcl_ck_acct_dtl";
+		columnNames = new String[]{"settle_dt", "buss_no","acct_no","trans_cd","trans_at","rec_crt_ts"};
+		transCdTotal="1410,1411,1412";
 		columnNum=columnNames.length;
 	}
 
@@ -62,29 +63,37 @@ public class DetailTableActData extends AbstractTableData {
 
 		String transCd = parameters[0].getValue().toString();
 		String dateStr=parameters[1].getValue().toString();
-		FRContext.getLogger().info("trans_cd: " + transCd+"dateStr:"+dateStr+"\n");
+		String acctNo=parameters[2].getValue().toString();
+		FRContext.getLogger().info("\ntrans_cd: " + transCd+"\ndateStr:"+dateStr+"\nacctNo"+acctNo+"\n");
 
 		//get db conn  and talbe Name
 		boolean isHis=false;
 		String tableNo=new String();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String today=sdf.format(new Date());
-        Connection conn ;
+		String yestoday=sdf.format(MgmUtil.getYestoday());
+
 		if(today.equals(dateStr)){
 		    String currLogNo=MgmUtil.getCurrNo();
 			tableNo=currLogNo;
             isHis=false;
-            conn= DbUtil.getActConnection();
-		}else {
+		}else if(yestoday.equals(dateStr)){
+			tableNo=MgmUtil.getTableNamePostfix(tablePrefix,yestoday,MgmUtil.getCurrNo());
+		} else {
             isHis=true;
 			tableNo= String.format("%d_%03d",
                             MgmUtil.getHisLogNo(dateStr),MgmUtil.getDayOfYear(dateStr));
-            conn=DbUtil.getHisConnection();
         }
-
+        Connection conn;
+		if(tableNo.length()==1){
+			conn=DbUtil.getActConnection();
+		}else {
+			conn=DbUtil.getHisConnection();
+		}
 		// create sql
-		String sql = getSql(transCd,tableNo);
-		FRContext.getLogger().info("Query SQL of ParamTableDataDemo: \n" + sql+"\n");
+		String tableName=tablePrefix+tableNo;
+		String sql = getSql(transCd,acctNo,tableName);
+		FRContext.getLogger().info("Query SQL of DetailActLoadData: \n" + sql+"\n");
 
 		valueList = new ArrayList();
 
@@ -110,7 +119,7 @@ public class DetailTableActData extends AbstractTableData {
 			conn.close();
 
 			FRContext.getLogger().info(
-					"Query SQL of DetailTableActData: \n" + valueList.size()
+					"Query SQL of DetailActLoadData: \n" + valueList.size()
 							+ " rows selected");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,7 +127,7 @@ public class DetailTableActData extends AbstractTableData {
 	}
 
 
-	public String getSql(String transCd,String tableNo){
+	public String getSql(String transCd,String acctNo,String tableName){
 
 		String condition=new String();
 		String sql =new String();
@@ -127,9 +136,14 @@ public class DetailTableActData extends AbstractTableData {
 		if(transCd.equals("")){
 			condition="";
 		}else {
-			condition="and trans_cd="+transCd;
+			condition=String.format(" and trans_cd in (%s) ",transCd);
 		}
-		sql = "select settle_dt, buss_no,acct_no,trans_cd,trans_at from tbl_fcl_ck_acct_dtl"+ tableNo + " where 1=1 "+condition +";";
+		if (!acctNo.equals("")){
+			condition=condition+String.format(" and acct_no=%s ",acctNo);
+		}
+
+		sql = String.format("select settle_dt, buss_no,acct_no,trans_cd,trans_at ,rec_crt_ts " +
+				" from %s where trans_cd in( %s ) %s ;",tableName,transCdTotal,condition);
 
 		return  sql;
 	}
