@@ -19,13 +19,19 @@ public class DetailInsTransData extends AbstractTableData {
 
 	private ArrayList valueList = null;
 
+	private String tablePrefix=null;
+
+	private String checkList=null;
 
 	public DetailInsTransData() {
 		//
 //		setDefaultParameters(new Parameter[] { new Parameter("trans_cd"),new Parameter("day") });
 
+		tablePrefix="tbl_fcl_ins_acct_dtl";
+		checkList=" settle_dt,buss_no,acct_no,trans_cd,trans_at,ins_mchnt_cd ,rec_crt_ts ";
 
-		columnNames = new String[]{"ins_mchnt_cd","acct_name", "trans_cd","buss_no","trans_at"  };
+
+		columnNames = checkList.replaceAll(" ","").split(",");
 		columnNum=columnNames.length;
 	}
 
@@ -56,31 +62,24 @@ public class DetailInsTransData extends AbstractTableData {
 		if (valueList != null) {
 			return;
 		}
-
+		// get parame
 		String transCd = parameters[0].getValue().toString();
 		String dateStr=parameters[1].getValue().toString();
 		String insMchntCd=parameters[2].getValue().toString();
-		FRContext.getLogger().info("\ntrans_cd: " + transCd+"\ndateStr:"+dateStr+"\ninsMchntCd"+insMchntCd+"\n");
+		FRContext.getLogger().info("\ntrans_cd: " + transCd+"\ndateStr:"+dateStr+"\ninsNo"+insMchntCd+"\n");
 
 		//get db conn  and talbe Name
-		boolean isHis=false;
-		String tableNamePostfix;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String today=sdf.format(new Date());
-        Connection conn ;
-		if(today.equals(dateStr)){
-			tableNamePostfix=MgmUtil.getCurrNo();
-            isHis=false;
-            conn= DbUtil.getActConnection();
-		}else {
-            isHis=true;
-			tableNamePostfix= String.format("%d_%03d",
-                            MgmUtil.getHisLogNo(dateStr),MgmUtil.getDayOfYear(dateStr));
-            conn=DbUtil.getHisConnection();
-        }
+		String tablePostfix=MgmUtil.getPostfix(dateStr,tablePrefix);
 
+		Connection conn;
+		if(tablePostfix.length()==1){
+			conn=DbUtil.getActConnection();
+		}else {
+			conn=DbUtil.getHisConnection();
+		}
 		// create sql
-		String sql = getSql(transCd,tableNamePostfix,insMchntCd,isHis);
+		String tableName=tablePrefix+tablePostfix;
+		String sql = getSql(transCd,insMchntCd,tableName);
 		FRContext.getLogger().info("Query SQL of DetailInsTransData: \n" + sql+"\n");
 
 		valueList = new ArrayList();
@@ -115,51 +114,27 @@ public class DetailInsTransData extends AbstractTableData {
 	}
 
 
-	public String getSql(String transCd,String tableNamePostfix,String insMchntCd,boolean isHis){
+	public String getSql(String transCd,String insMchntCd,String tableName){
 
-		String condition;
+		String condition=null;
+		String sql =null;
 
 		if(transCd.equals("")){
 			condition="";
 		}else {
-			condition=String.format(" and trans_cd=%s ",transCd);
+			condition=String.format(" and trans_cd in (%s) ",transCd);
 		}
-		if(!insMchntCd.equals("")){
-			condition=condition+String.format(" and ins_mchnt_cd=%s ",insMchntCd);
+		if (!insMchntCd.equals("")){
+			condition=condition+String.format(" and acct_no=%s ",insMchntCd);
 		}
-		String balanceTable;
-		if(isHis){
-			balanceTable=String.format("tbl_fcl_ins_acct_balance_hist%s",tableNamePostfix);
-		}else {
-			balanceTable="tbl_fcl_ins_acct_balance";
-		}
-		return String.format("select b.ins_mchnt_cd,b.acct_name, a.trans_cd,a.buss_no,a.trans_at " +
-				" from tbl_fcl_ins_acct_dtl%s a left join %s b" +
-				" on a.acct_no=b.acct_no where 1=1 %s ;",tableNamePostfix,balanceTable,condition);
 
+		sql = String.format("select %s  from %s where 1=1  %s ;",
+				checkList,tableName,condition);
+
+		return  sql;
 	}
 
-
-
-	// 获取数据库连接 driverName和 url 可以换成您需要的
-	public Connection getConnection() {
-		String driverName = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://88.88.15.11:3306/tfttest";
-		String username = "test";
-		String password = "test";
-		Connection con = null;
-		try {
-			Class.forName(driverName);
-			con = DriverManager.getConnection(url, username, password);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-		return con;
-	}
-
-
-	// 释放一些资源，因为可能会有重复调用，所以需释放valueList，将上次查询的结果释放掉
+	// release
 	public void release() throws Exception {
 		super.release();
 		this.valueList = null;
