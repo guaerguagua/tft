@@ -110,17 +110,17 @@ public class MgmUtil {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String today=sdf.format(new Date());
-        String yestoday=sdf.format(MgmUtil.getYestoday());
+        String yestoday=sdf.format(getYestoday());
         String tablePostfix=null;
         try{
             if(today.equals(dateStr)){
-                String currLogNo=MgmUtil.getCurrNo();
+                String currLogNo=getCurrNo();
                 tablePostfix=currLogNo;
             }else if(yestoday.equals(dateStr)){
-                tablePostfix=MgmUtil.getYestodayTablePostfix(tablePrefix,yestoday,MgmUtil.getCurrNo());
+                tablePostfix=getYestodayTablePostfix(tablePrefix,yestoday,getCurrNo());
             } else {
                 tablePostfix= String.format("%d_%03d",
-                        MgmUtil.getHisLogNo(dateStr),MgmUtil.getDayOfYear(dateStr));
+                        getHisLogNo(dateStr),getDayOfYear(dateStr));
             }
 
             return  tablePostfix;
@@ -140,7 +140,7 @@ public class MgmUtil {
 
 
 
-    public String getDayOfYearString(String dateStr){
+    public static String getDayOfYearString(String dateStr){
         int day = getDayOfYear(dateStr);
         String  dayStr= String.valueOf(day);
         StringBuffer sb = new StringBuffer();
