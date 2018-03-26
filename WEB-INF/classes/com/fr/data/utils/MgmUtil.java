@@ -21,7 +21,7 @@ public class MgmUtil {
             ResultSet rs = stmt.executeQuery(sql);
             rs.next();
             String currLogNo=rs.getObject(1).toString();
-            // 释放数据库资源
+            //
             rs.close();
             stmt.close();
             conn.close();
@@ -48,5 +48,16 @@ public class MgmUtil {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public String getDayOfYearString(String dateStr){
+        int day = getDayOfYear(dateStr);
+        String  dayStr= String.valueOf(day);
+        StringBuffer sb = new StringBuffer();
+        for(int i=0;i<3-dayStr.length();i++){
+            sb.append("0");
+        }
+        String res = sb.toString()+dayStr;
+        return res;
     }
 }

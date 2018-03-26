@@ -2,46 +2,49 @@ package com.fr.data;
 
 import com.fr.base.FRContext;
 import com.fr.data.utils.DbUtil;
+import com.fr.data.utils.MgmUtil;
 import com.fr.file.DatasourceManager;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- * 带参数的程序数据集Demo
+ *
  *
  * @author fanruan
  */
 public class MyParamTableDataDemo extends AbstractTableData {
     /**
-     * 列名数组，保存程序数据集所有列名
+     *
      */
     private String[] columnNames;
     /**
-     * 定义程序数据集的列数量
+     *
      */
-    private int columnNum = 10;
+    private int columnNum = 4;
     /**
-     * 保存查询表的实际列数量
+     *
      */
     private int colNum = 0;
     /**
-     * 保存查询得到列值
+     *
      */
     private ArrayList valueList = null;
 
     /**
-     * 构造函数，定义表结构，该表有10个数据列，列名为column#0，column#1，。。。。。。column#9
+     *
      */
     public MyParamTableDataDemo() {
         columnNames = new String[columnNum];
-        for (int i = 0; i < columnNum; i++) {
-            columnNames[i] = "column#" + String.valueOf(i);
-        }
+        columnNames[0]="begin_acct_count";
+        columnNames[1]="sum_begin_balance";
+        columnNames[2]="end_acct_count";
+        columnNames[3]="sum_end_balance";
     }
 
     /**
-     * 实现其他四个方法
+     *
      *
      * @return columnNum
      */
@@ -69,62 +72,84 @@ public class MyParamTableDataDemo extends AbstractTableData {
         }
         return ((Object[]) valueList.get(rowIndex))[columnIndex];
     }
-
+    private String getCurrentDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(new  java.util.Date());
+    }
     /**
-     * 准备数据
+     *
      */
     private void init() {
-        // 确保只被执行一次
+        //
         if (valueList != null) {
             return;
         }
-        // 保存得到的数据库表名
+        //
         String begin = parameters[0].getValue().toString();
         String end   = parameters[1].getValue().toString();
         FRContext.getLogger().info("begin:"+begin);
         FRContext.getLogger().info("end:"+end);
-
-
-        // 构造SQL语句,并打印出来
-        String sql = "select * from s_resource";
-        FRContext.getLogger().info("Query SQL of Param" +
-                "TableDataDemo: \n" + sql);
-        // 保存得到的结果集
+        MgmUtil mgmutil = new MgmUtil();
         valueList = new ArrayList();
-        // 下面开始建立数据库连接，按照刚才的SQL语句进行查询
-        //com.fr.data.impl.Connection conn = DatasourceManager.getInstance().getConnection("FRDemo");
+        Object[] objects = new Object[4];
+        colNum=4;
+        String sql = "select count(*) as begin_acct_count,sum(begin_balance) as sum_begin_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(begin);
+        //
+        FRContext.getLogger().info("Query SQL of Param\n"  + sql);
 
         try {
-            //Connection con = conn.createConnection();
-            Connection con = DbUtil.getTestConnection();
+            Connection con = DbUtil.getHisConnection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            // 获得记录的详细信息，然后获得总列数
-            ResultSetMetaData rsmd = rs.getMetaData();
-            colNum = rsmd.getColumnCount();
-            // 用对象保存数据
-            Object[] objArray = null;
-            while (rs.next()) {
-                objArray = new Object[colNum];
-                for (int i = 0; i < colNum; i++) {
-                    objArray[i] = rs.getObject(i + 1);
-                }
-                // 在valueList中加入这一行数据
-                valueList.add(objArray);
-            }
-            // 释放数据库资源
+            FRContext.getLogger().info("get result of sql");
+//            objects[0]=rs.getObject("begin_acct_count");
+//            FRContext.getLogger().info("begin_acct_count:"+rs.getInt("begin_acct_count")+"\n");
+//            objects[1]=rs.getObject("sum_begin_balance");
+//            FRContext.getLogger().info("sum_begin_balance:"+rs.getBigDecimal("sum_begin_balance")+"\n");
+            //
+            objects[0]=rs.getObject(1);
+            FRContext.getLogger().info("begin_acct_count:"+rs.getInt(1)+"\n");
+            objects[1]=rs.getObject(2);
+            FRContext.getLogger().info("sum_begin_balance:"+rs.getBigDecimal(2)+"\n");
+            //
             rs.close();
             stmt.close();
             con.close();
-            // 打印一共取到的数据行数量
+            //
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+        String sql2 = "select count(*) as end_acct_count,sum(current_balance) as sum_end_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(end);
+        //
+        FRContext.getLogger().info("Query SQL of Param\n"  + sql2);
+
+        try {
+            Connection con = DbUtil.getHisConnection();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql2);
+            FRContext.getLogger().info("get result of sql2");
+            objects[2]=rs.getObject("end_acct_count");
+            objects[3]=rs.getObject("sum_end_balance");
+            FRContext.getLogger().info("end_acct_count:"+rs.getInt("end_acct_count")+"\n");
+            FRContext.getLogger().info("sum_end_balance:"+rs.getBigDecimal("sum_end_balance")+"\n");
+            //
+
+            //
+            rs.close();
+            stmt.close();
+            con.close();
+            //
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        valueList.add(objects);
     }
 
     /**
-     * 释放一些资源，因为可能会有重复调用，所以需释放valueList，将上次查询的结果释放掉
+     *
      *
      * @throws Exception e
      */
