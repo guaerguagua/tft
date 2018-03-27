@@ -3,9 +3,10 @@ package com.fr.data;
 import com.fr.base.FRContext;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
-import com.fr.file.DatasourceManager;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author fanruan
  */
-public class MyParamTableDataDemo extends AbstractTableData {
+public class StatisticsUserAct extends AbstractTableData {
     /**
      *
      */
@@ -35,7 +36,7 @@ public class MyParamTableDataDemo extends AbstractTableData {
     /**
      *
      */
-    public MyParamTableDataDemo() {
+    public StatisticsUserAct() {
         columnNames = new String[columnNum];
         columnNames[0]="begin_acct_count";
         columnNames[1]="sum_begin_balance";
