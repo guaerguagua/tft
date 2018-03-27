@@ -106,6 +106,20 @@ public class MgmUtil {
         return null;
     }
 
+    public static String transCdAddQout(String transCds){
+        String [] list_transCds=transCds.split(",");
+        if(list_transCds.length>0){
+            String res=list_transCds[0];
+
+            for(int i=1;i<list_transCds.length;i++){
+                res=String.format("%s,%s",res,list_transCds[i]);
+            }
+            return res;
+        }
+        return transCds;
+    }
+
+
     public static String getPostfix(String dateStr,String tablePrefix){
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
