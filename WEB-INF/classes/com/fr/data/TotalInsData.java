@@ -4,12 +4,13 @@ import com.fr.base.FRContext;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
 
-import java.sql.*;
-import java.text.SimpleDateFormat;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
-public class DetailActLoadData extends AbstractTableData {
+public class TotalInsData extends AbstractTableData {
 
 	private String[] columnNames = null;
 
@@ -21,15 +22,12 @@ public class DetailActLoadData extends AbstractTableData {
 
 	private String tablePrefix=null;
 
-	private String transCdTotal=null;
-
 	private String checkList=null;
 
-	public DetailActLoadData() {
+	public TotalInsData() {
 
-		tablePrefix="tbl_fcl_ck_acct_dtl";
-		checkList=" settle_dt,buss_no,acct_no,trans_cd,trans_at,rec_crt_ts ";
-		transCdTotal="1410,1411,1412";
+		tablePrefix="tbl_fcl_ins_acct_balance_hist";
+		checkList=" ins_mchnt_cd,settle_dt,begin_balance,debit_at,credit_at , current_balance ";
 
 		columnNames = checkList.replaceAll(" ","").split(",");
 		columnNum=columnNames.length;
@@ -63,27 +61,24 @@ public class DetailActLoadData extends AbstractTableData {
 			return;
 		}
 
-		String transCd = parameters[0].getValue().toString();
+		String insMchntCd = parameters[0].getValue().toString();
 		String dateStr=parameters[1].getValue().toString();
-		String acctNo=parameters[2].getValue().toString();
-		String bussNo=parameters[3].getValue().toString();
-		FRContext.getLogger().info("\ntrans_cd: " + transCd+
-				"\ndateStr:"+dateStr+"\nacctNo"+acctNo+"\nbussNo"+bussNo+"\n");
+		FRContext.getLogger().info("\ndateStr:"+dateStr+"\ninsMchntCd:"+insMchntCd+"\n");
 
 		//get db conn  and talbe Name
-
-		String tablePostfix=MgmUtil.getPostfix(dateStr,tablePrefix);
-        Connection conn;
-		if(tablePostfix.length()==1){
-			conn=DbUtil.getActConnection();
-		}else {
-			conn=DbUtil.getHisConnection();
-		}
-
+//
+//		String tablePostfix=MgmUtil.getPostfix(dateStr,tablePrefix);
+//        Connection conn;
+//		if(tablePostfix.length()==1){
+//			conn=DbUtil.getActConnection();
+//		}else {
+//			conn=DbUtil.getHisConnection();
+//		}
+		Connection conn=DbUtil.getActConnection();
 		// create sql
-		String tableName=tablePrefix+tablePostfix;
-		String sql = getSql(transCd,acctNo,bussNo,tableName);
-		FRContext.getLogger().info("Query SQL of DetailActLoadData: \n" + sql+"\n");
+		String tableName=tablePrefix;
+		String sql = getSql(insMchntCd,dateStr,tableName);
+		FRContext.getLogger().info("Query SQL of TotalInsData: \n" + sql+"\n");
 
 		valueList = new ArrayList();
 
@@ -109,7 +104,7 @@ public class DetailActLoadData extends AbstractTableData {
 			conn.close();
 
 			FRContext.getLogger().info(
-					"Query SQL of DetailActLoadData: \n" + valueList.size()
+					"Query SQL of TotalInsData: \n" + valueList.size()
 							+ " rows selected");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -117,27 +112,21 @@ public class DetailActLoadData extends AbstractTableData {
 	}
 
 
-	public String getSql(String transCd,String acctNo,String bussNo,String tableName){
+	public String getSql(String insMchntCd,String dateStr,String tableName){
 
 		String condition=new String();
 		String sql =new String();
+		String settleDt=dateStr.replace("-","");
 		boolean isHis=false;
 
-		if(transCd.equals("")){
+		if(insMchntCd.equals("")){
 			condition="";
 		}else {
-			condition=String.format(" and trans_cd in (%s) ",transCd);
-		}
-		if(!acctNo.equals("")){
-			condition=condition+String.format(" and acct_no=%s ",acctNo);
-		}else if(!bussNo.equals("")){
-			condition=condition+String.format(" and buss_no=%s ",bussNo);
-		}else {
-			condition=condition+String.format(" limit 20 ");
+			condition=condition+String.format(" and ins_mchnt_cd=%s ",insMchntCd);
 		}
 
-		sql = String.format("select %s  from %s where trans_cd in( %s ) %s ;",
-								checkList,tableName,transCdTotal,condition);
+		sql = String.format("select %s from %s where settle_dt=%s %s ;",
+								checkList,tableName,settleDt,condition);
 
 		return  sql;
 	}

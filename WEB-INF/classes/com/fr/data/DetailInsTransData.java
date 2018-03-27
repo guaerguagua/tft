@@ -28,7 +28,7 @@ public class DetailInsTransData extends AbstractTableData {
 //		setDefaultParameters(new Parameter[] { new Parameter("trans_cd"),new Parameter("day") });
 
 		tablePrefix="tbl_fcl_ins_acct_dtl";
-		checkList=" settle_dt,buss_no,acct_no,trans_cd,trans_at,ins_mchnt_cd ,rec_crt_ts ";
+		checkList=" settle_dt,buss_no,acct_no,trans_cd,trans_at,rec_crt_ts ";
 
 
 		columnNames = checkList.replaceAll(" ","").split(",");
@@ -65,8 +65,10 @@ public class DetailInsTransData extends AbstractTableData {
 		// get parame
 		String transCd = parameters[0].getValue().toString();
 		String dateStr=parameters[1].getValue().toString();
-		String insMchntCd=parameters[2].getValue().toString();
-		FRContext.getLogger().info("\ntrans_cd: " + transCd+"\ndateStr:"+dateStr+"\ninsNo"+insMchntCd+"\n");
+		String acctNo=parameters[2].getValue().toString();
+		String bussNo=parameters[3].getValue().toString();
+		FRContext.getLogger().info("\ntrans_cd: " + transCd+
+				"\ndateStr:"+dateStr+"\nacctNo"+acctNo+"\nbussNo"+bussNo+"\n");
 
 		//get db conn  and talbe Name
 		String tablePostfix=MgmUtil.getPostfix(dateStr,tablePrefix);
@@ -79,7 +81,7 @@ public class DetailInsTransData extends AbstractTableData {
 		}
 		// create sql
 		String tableName=tablePrefix+tablePostfix;
-		String sql = getSql(transCd,insMchntCd,tableName);
+		String sql = getSql(transCd,acctNo,bussNo,tableName);
 		FRContext.getLogger().info("Query SQL of DetailInsTransData: \n" + sql+"\n");
 
 		valueList = new ArrayList();
@@ -114,7 +116,7 @@ public class DetailInsTransData extends AbstractTableData {
 	}
 
 
-	public String getSql(String transCd,String insMchntCd,String tableName){
+	public String getSql(String transCd,String acctNo,String bussNo,String tableName){
 
 		String condition=null;
 		String sql =null;
@@ -124,8 +126,13 @@ public class DetailInsTransData extends AbstractTableData {
 		}else {
 			condition=String.format(" and trans_cd in (%s) ",transCd);
 		}
-		if (!insMchntCd.equals("")){
-			condition=condition+String.format(" and acct_no=%s ",insMchntCd);
+
+		if(!acctNo.equals("")){
+			condition=condition+String.format(" and acct_no=%s ",acctNo);
+		}else if(!bussNo.equals("")){
+			condition=condition+String.format(" and buss_no=%s ",bussNo);
+		}else {
+			condition=condition+String.format(" limit 20 ");
 		}
 
 		sql = String.format("select %s  from %s where 1=1  %s ;",
