@@ -3,9 +3,10 @@ package com.fr.data;
 import com.fr.base.FRContext;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
-import com.fr.file.DatasourceManager;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author fanruan
  */
-public class MyParamTableDataDemo extends AbstractTableData {
+public class StatisticsUserAct extends AbstractTableData {
     /**
      *
      */
@@ -35,7 +36,7 @@ public class MyParamTableDataDemo extends AbstractTableData {
     /**
      *
      */
-    public MyParamTableDataDemo() {
+    public StatisticsUserAct() {
         columnNames = new String[columnNum];
         columnNames[0]="begin_acct_count";
         columnNames[1]="sum_begin_balance";
@@ -93,7 +94,7 @@ public class MyParamTableDataDemo extends AbstractTableData {
         valueList = new ArrayList();
         Object[] objects = new Object[4];
         colNum=4;
-        String sql = "select count(*) as begin_acct_count,sum(begin_balance) as sum_begin_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(begin)+";";
+        String sql = "select count(*) as begin_acct_count,cast(sum(begin_balance)/100 as decimal(20,2)) as sum_begin_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(begin)+";";
         //
         FRContext.getLogger().info("Query SQL of Param\n"  + sql);
 
@@ -122,7 +123,7 @@ public class MyParamTableDataDemo extends AbstractTableData {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String sql2 = "select count(*) as end_acct_count,sum(current_balance) as sum_end_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(end)+";";
+        String sql2 = "select count(*) as end_acct_count,cast(sum(current_balance)/100 as decimal(20,2)) as sum_end_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(end)+";";
         //
         FRContext.getLogger().info("Query SQL of Param\n"  + sql2);
 
