@@ -4,12 +4,13 @@ import com.fr.base.FRContext;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
 
-import java.sql.*;
-import java.text.SimpleDateFormat;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
-public class DetailActOutData extends AbstractTableData {
+public class DetailBalance extends AbstractTableData {
 
 	private String[] columnNames = null;
 
@@ -25,13 +26,12 @@ public class DetailActOutData extends AbstractTableData {
 
 	private String checkList=null;
 
-	public DetailActOutData() {
+	public DetailBalance() {
 		//
 //		setDefaultParameters(new Parameter[] { new Parameter("trans_cd"),new Parameter("day") });
 
-		tablePrefix="tbl_fcl_ck_acct_dtl";
-		checkList=" settle_dt,buss_no,acct_no,trans_cd,trans_at,ins_mchnt_cd ,rec_crt_ts ";
-		transCdTotal="1403,1407,1409";
+		tablePrefix="tbl_fcl_ck_acct_balance";
+		checkList=" user_id,acct_no,current_balance/100 ";
 
 		columnNames = checkList.replaceAll(" ","").split(",");
 		columnNum=columnNames.length;
@@ -64,27 +64,20 @@ public class DetailActOutData extends AbstractTableData {
 		if (valueList != null) {
 			return;
 		}
-		// get parame
-		String transCd = parameters[0].getValue().toString();
-		String dateStr=parameters[1].getValue().toString();
-		String acctNo=parameters[2].getValue().toString();
-		String bussNo=parameters[3].getValue().toString();
-		FRContext.getLogger().info("\ntrans_cd: " + transCd+
-				"\ndateStr:"+dateStr+"\nacctNo"+acctNo+"\nbussNo"+bussNo+"\n");
+
+		String userId =parameters[0].getValue().toString();
+		String acctNo=parameters[1].getValue().toString();
+
+		FRContext.getLogger().info("\nuserId: " + userId+
+					"\nacctNo:"+acctNo+"\n");
 
 		//get db conn  and talbe Name
-		String tablePostfix=MgmUtil.getPostfix(dateStr,tablePrefix);
 
-		Connection conn;
-		if(tablePostfix.length()==1){
-			conn=DbUtil.getActConnection();
-		}else {
-			conn=DbUtil.getHisConnection();
-		}
+        Connection conn=DbUtil.getActConnection();
 		// create sql
-		String tableName=tablePrefix+tablePostfix;
-		String sql = getSql(transCd,acctNo,bussNo,tableName);
-		FRContext.getLogger().info("Query SQL of DetailActOutData: \n" + sql+"\n");
+		String tableName=tablePrefix;
+		String sql = getSql(userId,acctNo,tableName);
+		FRContext.getLogger().info("Query SQL of DetailBalance: \n" + sql+"\n");
 
 		valueList = new ArrayList();
 
@@ -110,7 +103,7 @@ public class DetailActOutData extends AbstractTableData {
 			conn.close();
 
 			FRContext.getLogger().info(
-					"Query SQL of DetailActOutData: \n" + valueList.size()
+					"Query SQL of DetailBalance: \n" + valueList.size()
 							+ " rows selected");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,24 +111,19 @@ public class DetailActOutData extends AbstractTableData {
 	}
 
 
-	public String getSql(String transCd,String acctNo,String bussNo,String tableName){
+	public String getSql(String userId,String acctNo,String tableName){
 
 		String condition="";
 
-		if(!acctNo.equals("")){
+		if(!userId.equals("")){
+			condition=condition+String.format(" and user_id='%s' ",userId);
+		}else if(!acctNo.equals("")){
 			condition=condition+String.format(" and acct_no='%s' ",acctNo);
-		}else if(!bussNo.equals("")){
-			condition=condition+String.format(" and buss_no='%s' ",bussNo);
 		}
 
-		if(transCd.equals("")){
-			condition=condition+String.format(" and trans_cd in (%s) ",MgmUtil.addQuot(transCdTotal));;
-		}else {
-			condition=condition+String.format(" and trans_cd in (%s) ",MgmUtil.addQuot(transCd));
-		}
+		String sql = String.format("select %s from %s where 1=1 %s limit 100000;",
+							checkList,tableName,condition);
 
-		String sql = String.format("select %s from %s where 1=1 %s ;",
-						checkList,tableName,condition);
 		return  sql;
 	}
 

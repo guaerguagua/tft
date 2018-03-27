@@ -30,7 +30,7 @@ public class DetailActInData extends AbstractTableData {
 //		setDefaultParameters(new Parameter[] { new Parameter("trans_cd"),new Parameter("day") });
 
 		tablePrefix="tbl_fcl_ck_acct_dtl";
-		checkList="settle_dt, buss_no,acct_no,trans_cd,trans_at ,rec_crt_ts";
+		checkList="settle_dt, buss_no,acct_no,trans_cd,trans_at ,rec_crt_ts,1";
 		transCdTotal="1401,1402,1408";
 
 		columnNames = checkList.replaceAll(" ","").split(",");
@@ -65,7 +65,7 @@ public class DetailActInData extends AbstractTableData {
 			return;
 		}
 
-		String transCd = parameters[0].getValue().toString();
+		String transCd =parameters[0].getValue().toString();
 		String dateStr=parameters[1].getValue().toString();
 		String acctNo=parameters[2].getValue().toString();
 		String bussNo=parameters[3].getValue().toString();
@@ -120,26 +120,22 @@ public class DetailActInData extends AbstractTableData {
 
 	public String getSql(String transCd,String acctNo,String bussNo,String tableName){
 
-		String condition=new String();
-		String sql =new String();
-		boolean isHis=false;
-
-		if(transCd.equals("")){
-			condition="";
-		}else {
-			condition=String.format(" and trans_cd in (%s) ",transCd);
-		}
+		String condition="";
 
 		if(!acctNo.equals("")){
-			condition=condition+String.format(" and acct_no=%s ",acctNo);
+			condition=condition+String.format(" and acct_no='%s' ",acctNo);
 		}else if(!bussNo.equals("")){
-			condition=condition+String.format(" and buss_no=%s ",bussNo);
-		}else {
-			condition=condition+String.format(" limit 20 ");
+			condition=condition+String.format(" and buss_no='%s' ",bussNo);
 		}
 
-		sql = String.format("select %s from %s where trans_cd in( %s ) %s ;",
-							checkList,tableName,transCdTotal,condition);
+		if(transCd.equals("")){
+			condition=condition+String.format(" and trans_cd in (%s) ",MgmUtil.addQuot(transCdTotal));;
+		}else {
+			condition=condition+String.format(" and trans_cd in (%s) ",MgmUtil.addQuot(transCd));
+		}
+
+		String sql = String.format("select %s from %s where 1=1 %s ;",
+							checkList,tableName,condition);
 
 		return  sql;
 	}

@@ -122,10 +122,10 @@ public class TotalInsData extends AbstractTableData {
 		if(insMchntCd.equals("")){
 			condition="";
 		}else {
-			condition=condition+String.format(" and ins_mchnt_cd=%s ",insMchntCd);
+			condition=condition+String.format(" and ins_mchnt_cd='%s' ",insMchntCd);
 		}
 
-		sql = String.format("select %s from %s where settle_dt=%s %s ;",
+		sql = String.format("select %s from %s where settle_dt='%s' %s limit 10000;",
 								checkList,tableName,settleDt,condition);
 
 		return  sql;
