@@ -119,9 +119,9 @@ public class TotalActData extends AbstractTableData {
 		boolean isHis=false;
 
 		if(acctNo.equals("")){
-			condition="";
+			condition= " limit 100000";
 		}else {
-			condition=condition+String.format(" and acct_no=%s ",acctNo);
+			condition=condition+String.format(" and acct_no='%s' ",acctNo);
 		}
 
 		sql = String.format("select %s from %s where 1=1 %s ;",
