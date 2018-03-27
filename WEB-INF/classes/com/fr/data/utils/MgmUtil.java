@@ -106,7 +106,7 @@ public class MgmUtil {
         return null;
     }
 
-    public static String transCdAddQout(String transCds){
+    public static String addQuot(String transCds){
         String [] list_transCds=transCds.split(",");
         if(list_transCds.length>0){
             String res=list_transCds[0];
