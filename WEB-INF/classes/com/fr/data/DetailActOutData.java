@@ -68,7 +68,9 @@ public class DetailActOutData extends AbstractTableData {
 		String transCd = parameters[0].getValue().toString();
 		String dateStr=parameters[1].getValue().toString();
 		String acctNo=parameters[2].getValue().toString();
-		FRContext.getLogger().info("\ntrans_cd: " + transCd+"\ndateStr:"+dateStr+"\nacctNo"+acctNo+"\n");
+		String bussNo=parameters[3].getValue().toString();
+		FRContext.getLogger().info("\ntrans_cd: " + transCd+
+				"\ndateStr:"+dateStr+"\nacctNo"+acctNo+"\nbussNo"+bussNo+"\n");
 
 		//get db conn  and talbe Name
 		String tablePostfix=MgmUtil.getPostfix(dateStr,tablePrefix);
@@ -81,7 +83,7 @@ public class DetailActOutData extends AbstractTableData {
 		}
 		// create sql
 		String tableName=tablePrefix+tablePostfix;
-		String sql = getSql(transCd,acctNo,tableName);
+		String sql = getSql(transCd,acctNo,bussNo,tableName);
 		FRContext.getLogger().info("Query SQL of DetailActOutData: \n" + sql+"\n");
 
 		valueList = new ArrayList();
@@ -116,7 +118,7 @@ public class DetailActOutData extends AbstractTableData {
 	}
 
 
-	public String getSql(String transCd,String acctNo,String tableName){
+	public String getSql(String transCd,String acctNo,String bussNo,String tableName){
 
 		String condition=null;
 		String sql =null;
@@ -126,8 +128,12 @@ public class DetailActOutData extends AbstractTableData {
 		}else {
 			condition=String.format(" and trans_cd in (%s) ",transCd);
 		}
-		if (!acctNo.equals("")){
+		if(!acctNo.equals("")){
 			condition=condition+String.format(" and acct_no=%s ",acctNo);
+		}else if(!bussNo.equals("")){
+			condition=condition+String.format(" and buss_no=%s ",bussNo);
+		}else {
+			condition=condition+String.format(" limit 20 ");
 		}
 
 		sql = String.format("select %s  from %s where trans_cd in( %s ) %s ;",
