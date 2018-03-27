@@ -94,11 +94,11 @@ public class StatisticsTradeExpend extends AbstractTableData {
         String suffix = MgmUtil.getPostfix(settleDt,tablePrefix);
         String tableName = tablePrefix+suffix;
         FRContext.getLogger().info("suffix:"+suffix);
-        String sql = String.format("select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),sum(trans_at),count(distinct(acct_no)) from %s group by trans_cd,ins_mchnt_cd;",tableName);
+        String sql = null;
         if(transCd.equals("")) {
-            sql = String.format("select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,sum(trans_at),count(distinct(acct_no)) from %s where trans_cd in %s group by trans_cd;", tableName, transCdExpend);
+            sql = String.format("select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd in %s group by trans_cd;", tableName, transCdExpend);
         }else{
-            sql = String.format("select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,sum(trans_at),count(distinct(acct_no)) from %s where trans_cd='%s' group by trans_cd;", tableName, transCd);
+            sql = String.format("select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='%s' group by trans_cd;", tableName, transCd);
         }
         //
         FRContext.getLogger().info("Query SQL of Param\n"  + sql);

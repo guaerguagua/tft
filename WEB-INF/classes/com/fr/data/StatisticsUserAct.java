@@ -94,7 +94,7 @@ public class StatisticsUserAct extends AbstractTableData {
         valueList = new ArrayList();
         Object[] objects = new Object[4];
         colNum=4;
-        String sql = "select count(*) as begin_acct_count,sum(begin_balance) as sum_begin_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(begin)+";";
+        String sql = "select count(*) as begin_acct_count,cast(sum(begin_balance)/100 as decimal(20,2)) as sum_begin_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(begin)+";";
         //
         FRContext.getLogger().info("Query SQL of Param\n"  + sql);
 
@@ -123,7 +123,7 @@ public class StatisticsUserAct extends AbstractTableData {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String sql2 = "select count(*) as end_acct_count,sum(current_balance) as sum_end_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(end)+";";
+        String sql2 = "select count(*) as end_acct_count,cast(sum(current_balance)/100 as decimal(20,2)) as sum_end_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(end)+";";
         //
         FRContext.getLogger().info("Query SQL of Param\n"  + sql2);
 

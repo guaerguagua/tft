@@ -95,9 +95,9 @@ public class StatisticsTradeIncomeLoad extends AbstractTableData {
         FRContext.getLogger().info("suffix:"+suffix);
         String sql;
         if(transCd.equals("")) {
-            sql = String.format("select trans_cd ,'unionpay' as trade_chanel, '' as merchant_no,count(*),sum(trans_at),count(distinct(acct_no)) from %s where trans_cd in %s group by trans_cd;", tableName, transCdIncome);
+            sql = String.format("select trans_cd ,'unionpay' as trade_chanel, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd in %s group by trans_cd;", tableName, transCdIncome);
         }else{
-            sql = String.format("select trans_cd ,'unionpay' as trade_chanel, '' as merchant_no,count(*),sum(trans_at),count(distinct(acct_no)) from %s where trans_cd='%s' group by trans_cd;", tableName, transCd);
+            sql = String.format("select trans_cd ,'unionpay' as trade_chanel, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='%s' group by trans_cd;", tableName, transCd);
         }
         FRContext.getLogger().info("Query SQL of Param\n"  + sql);
 
