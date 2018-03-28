@@ -187,7 +187,9 @@
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
-<TextAttr/>
+<allowBlank>
+<![CDATA[false]]></allowBlank>
+<TextAttr allowBlank="false"/>
 <widgetValue>
 <O>
 <![CDATA[]]></O>
@@ -217,10 +219,12 @@
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
-<DateAttr/>
+<DateAttr enddatefm="=today()-1"/>
 <widgetValue>
-<O t="Date">
-<![CDATA[1521993600000]]></O>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=today()-1]]></Attributes>
+</O>
 </widgetValue>
 </InnerWidget>
 <BoundsAttr x="130" y="25" width="152" height="21"/>
@@ -264,10 +268,10 @@
 <FRFont name="SimSun" style="0" size="72"/>
 <Background name="ColorBackground" color="-6697729"/>
 <Border>
-<Top style="1" color="-16777216"/>
-<Bottom style="1" color="-16777216"/>
-<Left style="1" color="-16777216"/>
-<Right style="1" color="-16777216"/>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
 </Border>
 </Style>
 <Style horizontal_alignment="0" imageLayout="1">
