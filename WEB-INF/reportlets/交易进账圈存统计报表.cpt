@@ -249,7 +249,7 @@
 <widgetValue>
 <O t="Formula" class="Formula">
 <Attributes>
-<![CDATA[=today()-1]]></Attributes>
+<![CDATA[=today()]]></Attributes>
 </O>
 </widgetValue>
 </InnerWidget>

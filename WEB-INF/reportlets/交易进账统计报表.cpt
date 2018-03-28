@@ -245,11 +245,11 @@
 <![CDATA[false]]></allowBlank>
 <DirectEdit>
 <![CDATA[false]]></DirectEdit>
-<DateAttr enddatefm="=today()-1"/>
+<DateAttr enddatefm="=today()"/>
 <widgetValue>
 <O t="Formula" class="Formula">
 <Attributes>
-<![CDATA[=today()-1]]></Attributes>
+<![CDATA[=today()]]></Attributes>
 </O>
 </widgetValue>
 </InnerWidget>

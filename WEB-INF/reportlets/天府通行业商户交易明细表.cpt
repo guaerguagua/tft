@@ -240,32 +240,17 @@
 <Background name="ColorBackground" color="-1118482"/>
 <LCAttr vgap="0" hgap="0" compInterval="0"/>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
-<InnerWidget class="com.fr.form.ui.FreeButton">
-<Listener event="click">
-<JavaScript class="com.fr.js.JavaScriptImpl">
-<Parameters/>
-<Content>
-<![CDATA[
-var lengthAcctNo=this.options.form.getWidgetByName("acct_no").getValue().length
-var lengthBussNo=this.options.form.getWidgetByName("buss_no").getValue().length
-
-var length=lengthAcctNo+lengthBussNo
-if(length==0){
-        alert(" 用户账号 与 交易流水号 不能同时为空!!!")
-}else
-{
-		_g().parameterCommit(); 
-}]]></Content>
-</JavaScript>
-</Listener>
-<WidgetName name="search"/>
+<InnerWidget class="com.fr.form.parameter.FormSubmitButton">
+<WidgetName name="Search_c"/>
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
 <Text>
 <![CDATA[查询]]></Text>
+<Hotkeys>
+<![CDATA[enter]]></Hotkeys>
 </InnerWidget>
-<BoundsAttr x="830" y="25" width="80" height="21"/>
+<BoundsAttr x="834" y="25" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.TextEditor">
@@ -273,7 +258,9 @@ if(length==0){
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
-<TextAttr/>
+<allowBlank>
+<![CDATA[false]]></allowBlank>
+<TextAttr allowBlank="false"/>
 <widgetValue>
 <O>
 <![CDATA[]]></O>
@@ -343,7 +330,7 @@ if(length==0){
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
-<DateAttr/>
+<DateAttr enddatefm="=today()"/>
 <widgetValue>
 <O t="Formula" class="Formula">
 <Attributes>
@@ -418,7 +405,6 @@ if(length==0){
 <Widget widgetName="day"/>
 <Widget widgetName="acct_no"/>
 <Widget widgetName="buss_no"/>
-<Widget widgetName="search"/>
 </MobileWidgetList>
 <Display display="true"/>
 <DelayDisplayContent delay="true"/>
@@ -440,20 +426,20 @@ if(length==0){
 <FRFont name="SimSun" style="0" size="72"/>
 <Background name="ColorBackground" color="-6697729"/>
 <Border>
-<Top style="1" color="-16777216"/>
-<Bottom style="1" color="-16777216"/>
-<Left style="1" color="-16777216"/>
-<Right style="1" color="-16777216"/>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
 </Border>
 </Style>
 <Style horizontal_alignment="0" imageLayout="1">
 <FRFont name="SimSun" style="0" size="72"/>
 <Background name="NullBackground"/>
 <Border>
-<Top style="1" color="-16777216"/>
-<Bottom style="1" color="-16777216"/>
-<Left style="1" color="-16777216"/>
-<Right style="1" color="-16777216"/>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
 </Border>
 </Style>
 </StyleList>
