@@ -96,6 +96,13 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="unionpay" value="银联"/>
+</CustomDictAttr>
+</Dictionary>
+</Present>
 <Expand dir="0"/>
 </C>
 <C c="2" r="1" s="1">
