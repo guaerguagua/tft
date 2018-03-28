@@ -88,16 +88,19 @@ public class StatisticsTradeIncomeLoad extends AbstractTableData {
         String transCd = parameters[1].getValue().toString();
         FRContext.getLogger().info("settleDt:"+settleDt);
         valueList = new ArrayList();
-        String transCdIncome="('1410','1411','1412')";
         String tablePrefix = "tbl_fcl_ck_acct_dtl";
         String suffix = MgmUtil.getPostfix(settleDt,tablePrefix);
         String tableName = tablePrefix+suffix;
         FRContext.getLogger().info("suffix:"+suffix);
         String sql;
         if(transCd.equals("")) {
-            sql = String.format("select trans_cd ,'unionpay' as trade_chanel, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd in %s group by trans_cd;", tableName, transCdIncome);
+            sql = String.format("select trans_cd ,'unionpay' as trade_chanel, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='1410'\n" +
+                    "union all\n" +
+                    "select trans_cd ,'unionpay' as trade_chanel, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='1411'\n" +
+                    "union all\n" +
+                    "select trans_cd ,'unionpay' as trade_chanel, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='1412';", tableName, tableName,tableName);
         }else{
-            sql = String.format("select trans_cd ,'unionpay' as trade_chanel, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='%s' group by trans_cd;", tableName, transCd);
+            sql = String.format("select trans_cd ,'unionpay' as trade_chanel, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='%s';", tableName, transCd);
         }
         FRContext.getLogger().info("Query SQL of Param\n"  + sql);
 

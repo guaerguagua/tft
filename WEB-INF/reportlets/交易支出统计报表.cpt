@@ -77,6 +77,15 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="1403" value="账户乘车消费"/>
+<Dict key="1407" value="账户乘车消费退货"/>
+<Dict key="1409" value="账户手工消费调账"/>
+</CustomDictAttr>
+</Dictionary>
+</Present>
 <Expand dir="0"/>
 </C>
 <C c="1" r="1" s="1">

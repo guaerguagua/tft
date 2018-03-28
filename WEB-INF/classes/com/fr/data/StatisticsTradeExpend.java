@@ -89,16 +89,19 @@ public class StatisticsTradeExpend extends AbstractTableData {
         String transCd = parameters[1].getValue().toString();
         FRContext.getLogger().info("settleDt:"+settleDt);
         valueList = new ArrayList();
-        String transCdExpend="('1403','1407','1409')";
         String tablePrefix = "tbl_fcl_ck_acct_dtl";
         String suffix = MgmUtil.getPostfix(settleDt,tablePrefix);
         String tableName = tablePrefix+suffix;
         FRContext.getLogger().info("suffix:"+suffix);
         String sql = null;
         if(transCd.equals("")) {
-            sql = String.format("select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd in %s group by trans_cd;", tableName, transCdExpend);
+            sql = String.format("select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd = '1403'\n" +
+                    "union ALL\n" +
+                    "select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd = '1407'\n" +
+                    "union ALL\n" +
+                    "select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd = '1409';", tableName, tableName,tableName);
         }else{
-            sql = String.format("select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='%s' group by trans_cd;", tableName, transCd);
+            sql = String.format("select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='%s';", tableName, transCd);
         }
         //
         FRContext.getLogger().info("Query SQL of Param\n"  + sql);
