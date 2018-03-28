@@ -4,10 +4,11 @@ import com.fr.base.FRContext;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
 
-import java.sql.*;
-import java.text.SimpleDateFormat;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class DetailActInData extends AbstractTableData {
 
