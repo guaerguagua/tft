@@ -41,26 +41,31 @@
 <O>
 <![CDATA[行业商户名]]></O>
 <PrivilegeControl/>
+<Expand/>
 </C>
 <C c="2" r="0" s="0">
 <O>
 <![CDATA[期初余额]]></O>
 <PrivilegeControl/>
+<Expand/>
 </C>
 <C c="3" r="0" s="0">
 <O>
 <![CDATA[当日借记金额总和]]></O>
 <PrivilegeControl/>
+<Expand/>
 </C>
 <C c="4" r="0" s="0">
 <O>
 <![CDATA[当日贷记金额总和]]></O>
 <PrivilegeControl/>
+<Expand/>
 </C>
 <C c="5" r="0" s="0">
 <O>
 <![CDATA[期末余额]]></O>
 <PrivilegeControl/>
+<Expand/>
 </C>
 <C c="0" r="1" s="1">
 <O t="DSColumn">
@@ -90,9 +95,9 @@
 </Present>
 <Expand dir="0"/>
 </C>
-<C c="2" r="1" s="1">
+<C c="2" r="1" s="2">
 <O t="DSColumn">
-<Attributes dsName="程序1" columnName="begin_balance"/>
+<Attributes dsName="程序1" columnName="begin_balance/100"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
@@ -100,28 +105,31 @@
 <PrivilegeControl/>
 <Expand dir="0"/>
 </C>
-<C c="3" r="1" s="1">
+<C c="3" r="1" s="2">
 <O t="DSColumn">
-<Attributes dsName="程序1" columnName="debit_at"/>
+<Attributes dsName="程序1" columnName="debit_at/100"/>
 <Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
 </O>
 <PrivilegeControl/>
 <Expand dir="0"/>
 </C>
-<C c="4" r="1" s="1">
+<C c="4" r="1" s="2">
 <O t="DSColumn">
-<Attributes dsName="程序1" columnName="credit_at"/>
+<Attributes dsName="程序1" columnName="credit_at/100"/>
 <Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
 </O>
 <PrivilegeControl/>
 <Expand dir="0"/>
 </C>
-<C c="5" r="1" s="1">
+<C c="5" r="1" s="2">
 <O t="DSColumn">
-<Attributes dsName="程序1" columnName="current_balance"/>
+<Attributes dsName="程序1" columnName="current_balance/100"/>
 <Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
 </O>
 <PrivilegeControl/>
@@ -285,6 +293,18 @@
 </Border>
 </Style>
 <Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-1"/>
+<Border>
+<Top style="1" color="-16777216"/>
+<Bottom style="1" color="-16777216"/>
+<Left style="1" color="-16777216"/>
+<Right style="1" color="-16777216"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<Format class="com.fr.base.CoreDecimalFormat">
+<![CDATA[#0.00]]></Format>
 <FRFont name="SimSun" style="0" size="72"/>
 <Background name="ColorBackground" color="-1"/>
 <Border>

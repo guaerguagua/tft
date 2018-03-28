@@ -133,10 +133,11 @@
 </Present>
 <Expand dir="0"/>
 </C>
-<C c="4" r="1" s="1">
+<C c="4" r="1" s="2">
 <O t="DSColumn">
-<Attributes dsName="DetailINAcct" columnName="trans_at"/>
+<Attributes dsName="DetailINAcct" columnName="trans_at/100"/>
 <Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
 </O>
 <PrivilegeControl/>
@@ -439,6 +440,18 @@ if(length==0){
 </Border>
 </Style>
 <Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<Format class="com.fr.base.CoreDecimalFormat">
+<![CDATA[#0.00]]></Format>
 <FRFont name="SimSun" style="0" size="72"/>
 <Background name="NullBackground"/>
 <Border>
