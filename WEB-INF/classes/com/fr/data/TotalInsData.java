@@ -27,7 +27,7 @@ public class TotalInsData extends AbstractTableData {
 	public TotalInsData() {
 
 		tablePrefix="tbl_fcl_ins_acct_balance_hist";
-		checkList=" ins_mchnt_cd,settle_dt,begin_balance,debit_at,credit_at , current_balance ";
+		checkList=" ins_mchnt_cd,settle_dt,begin_balance/100,debit_at,credit_at , current_balance/100 ";
 
 		columnNames = checkList.replaceAll(" ","").split(",");
 		columnNum=columnNames.length;

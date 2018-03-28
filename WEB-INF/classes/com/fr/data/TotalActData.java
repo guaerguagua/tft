@@ -27,7 +27,7 @@ public class TotalActData extends AbstractTableData {
 	public TotalActData() {
 
 		tablePrefix="tbl_fcl_ck_acct_balance_hist";
-		checkList=" acct_no,settle_dt,begin_balance,debit_at,credit_at , current_balance ";
+		checkList=" acct_no,settle_dt,begin_balance/100,debit_at,credit_at , current_balance/100 ";
 
 		columnNames = checkList.replaceAll(" ","").split(",");
 		columnNum=columnNames.length;

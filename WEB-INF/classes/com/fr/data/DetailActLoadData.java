@@ -28,7 +28,7 @@ public class DetailActLoadData extends AbstractTableData {
 	public DetailActLoadData() {
 
 		tablePrefix="tbl_fcl_ck_acct_dtl";
-		checkList=" settle_dt,buss_no,acct_no,trans_cd,trans_at,rec_crt_ts,1 ";
+		checkList=" settle_dt,buss_no,acct_no,trans_cd,trans_at/100,rec_crt_ts,1 ";
 		transCdTotal="1410,1411,1412";
 
 		columnNames = checkList.replaceAll(" ","").split(",");

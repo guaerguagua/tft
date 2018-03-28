@@ -28,7 +28,7 @@ public class DetailInsTransData extends AbstractTableData {
 //		setDefaultParameters(new Parameter[] { new Parameter("trans_cd"),new Parameter("day") });
 
 		tablePrefix="tbl_fcl_ins_acct_dtl";
-		checkList=" settle_dt,buss_no,acct_no,trans_cd,trans_at,rec_crt_ts ";
+		checkList=" settle_dt,buss_no,acct_no,trans_cd,trans_at/100,rec_crt_ts ";
 
 
 		columnNames = checkList.replaceAll(" ","").split(",");
