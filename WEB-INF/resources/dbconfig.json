@@ -1,0 +1,22 @@
+{
+  "ACTDB":"tftactdb",
+  "ACTDBIP":"10.40.2.26",
+  "ACTDBPORT":"60002",
+  "ACTDBUSER":"act_ap",
+  "ACTDBPASS":"OStem@00",
+  "HISDB":"tfthisdb",
+  "HISDBIP":"10.40.2.26",
+  "HISDBPORT":"60003",
+  "HISDBUSER":"his_ap",
+  "HISDBPASS":"OStem@00",
+  "TEST":"tfttest",
+  "TESTIP":"10.40.2.26",
+  "TESTPORT":"60001",
+  "TESTUSER":"test",
+  "TESTPASS":"test",
+  "MGMDB":"tftmgmdb",
+  "MGMDBIP":"10.40.2.26",
+  "MGMDBPORT":"60001",
+  "MGMDBUSER":"mgm_ap",
+  "MGMDBPASS":"OStem@00"
+}
