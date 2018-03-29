@@ -29,7 +29,7 @@
 </TableDataMap>
 <Report class="com.fr.report.worksheet.WorkSheet" name="sheet1">
 <ReportPageAttr>
-<HR F="0" T="0"/>
+<HR/>
 <FR/>
 <HC/>
 <FC/>
@@ -40,55 +40,65 @@
 <RowHeight defaultValue="723900">
 <![CDATA[723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[4686300,2743200,4191000,4191000,2743200,2743200,4991100,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<![CDATA[4686300,2743200,4191000,4191000,2743200,3556000,4991100,2743200,2743200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
-<C c="0" r="0">
-<PrivilegeControl/>
-<Expand/>
-</C>
-<C c="0" r="1" s="0">
+<C c="0" r="0" s="0">
 <O>
 <![CDATA[机构号]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="1" r="1" s="0">
+<C c="1" r="0" s="0">
 <O>
 <![CDATA[机构名]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
-<C c="2" r="1" s="0">
+<C c="2" r="0" s="0">
 <O>
 <![CDATA[交易日期]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
-<C c="3" r="1" s="0">
+<C c="3" r="0" s="0">
 <O>
 <![CDATA[交易流水号]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
-<C c="4" r="1" s="0">
+<C c="4" r="0" s="0">
 <O>
 <![CDATA[交易类型]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
-<C c="5" r="1" s="0">
+<C c="5" r="0" s="0">
 <O>
-<![CDATA[交易金额]]></O>
+<![CDATA[交易金额（元）]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
-<C c="6" r="1" s="0">
+<C c="6" r="0" s="0">
 <O>
 <![CDATA[交易时间]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
-<C c="0" r="2" s="1">
+<C c="0" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="DetailIns" columnName="acct_no"/>
 <Complex/>
@@ -98,6 +108,8 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Present class="com.fr.base.present.DictPresent">
 <Dictionary class="com.fr.data.impl.CustomDictionary">
 <CustomDictAttr>
@@ -108,7 +120,7 @@
 </Present>
 <Expand dir="0"/>
 </C>
-<C c="1" r="2" s="1">
+<C c="1" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="DetailIns" columnName="acct_no"/>
 <Complex/>
@@ -118,6 +130,8 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Present class="com.fr.base.present.DictPresent">
 <Dictionary class="com.fr.data.impl.CustomDictionary">
 <CustomDictAttr>
@@ -128,7 +142,7 @@
 </Present>
 <Expand dir="0"/>
 </C>
-<C c="2" r="2" s="1">
+<C c="2" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="DetailIns" columnName="settle_dt"/>
 <Complex/>
@@ -136,9 +150,11 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="3" r="2" s="1">
+<C c="3" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="DetailIns" columnName="buss_no"/>
 <Complex/>
@@ -146,9 +162,11 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="4" r="2" s="1">
+<C c="4" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="DetailIns" columnName="trans_cd"/>
 <Complex/>
@@ -156,6 +174,8 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Present class="com.fr.base.present.DictPresent">
 <Dictionary class="com.fr.data.impl.CustomDictionary">
 <CustomDictAttr>
@@ -173,7 +193,7 @@
 </Present>
 <Expand dir="0"/>
 </C>
-<C c="5" r="2" s="2">
+<C c="5" r="1" s="2">
 <O t="DSColumn">
 <Attributes dsName="DetailIns" columnName="trans_at/100"/>
 <Complex/>
@@ -181,9 +201,11 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="6" r="2" s="1">
+<C c="6" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="DetailIns" columnName="rec_crt_ts"/>
 <Complex/>
@@ -191,6 +213,8 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
 </CellElementList>
@@ -250,7 +274,7 @@
 <Hotkeys>
 <![CDATA[enter]]></Hotkeys>
 </InnerWidget>
-<BoundsAttr x="834" y="25" width="80" height="21"/>
+<BoundsAttr x="512" y="43" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.TextEditor">
@@ -258,6 +282,8 @@
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
+<EMSG>
+<![CDATA[交易流水号不能为空]]></EMSG>
 <allowBlank>
 <![CDATA[false]]></allowBlank>
 <TextAttr allowBlank="false"/>
@@ -266,7 +292,7 @@
 <![CDATA[]]></O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="699" y="25" width="108" height="21"/>
+<BoundsAttr x="316" y="43" width="175" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -282,7 +308,7 @@
 <FRFont name="SimSun" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="627" y="25" width="65" height="21"/>
+<BoundsAttr x="244" y="43" width="65" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.ComboCheckBox">
@@ -306,7 +332,7 @@
 </widgetValue>
 <RAAttr/>
 </InnerWidget>
-<BoundsAttr x="496" y="25" width="114" height="21"/>
+<BoundsAttr x="102" y="43" width="125" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -322,7 +348,7 @@
 <FRFont name="SimSun" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="410" y="25" width="80" height="21"/>
+<BoundsAttr x="16" y="43" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.DateEditor">
@@ -330,7 +356,7 @@
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
-<DateAttr enddatefm="=today()"/>
+<DateAttr start="03/27/2018" enddatefm="=today()"/>
 <widgetValue>
 <O t="Formula" class="Formula">
 <Attributes>
@@ -338,7 +364,7 @@
 </O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="289" y="25" width="107" height="21"/>
+<BoundsAttr x="316" y="12" width="125" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -354,7 +380,7 @@
 <FRFont name="SimSun" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="232" y="25" width="50" height="21"/>
+<BoundsAttr x="244" y="12" width="50" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.ComboCheckBox">
@@ -381,7 +407,7 @@
 </widgetValue>
 <RAAttr/>
 </InnerWidget>
-<BoundsAttr x="112" y="25" width="105" height="21"/>
+<BoundsAttr x="102" y="12" width="125" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -397,7 +423,7 @@
 <FRFont name="SimSun" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="41" y="25" width="59" height="21"/>
+<BoundsAttr x="13" y="12" width="59" height="21"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
@@ -418,7 +444,7 @@
 <NameTag name="buss_no" tag="交易流水号"/>
 </WidgetNameTagMap>
 </Layout>
-<DesignAttr width="960" height="71"/>
+<DesignAttr width="960" height="72"/>
 </ParameterUI>
 </ReportParameterAttr>
 <StyleList>

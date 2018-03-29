@@ -29,30 +29,38 @@
 <RowHeight defaultValue="723900">
 <![CDATA[723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<![CDATA[2743200,3556000,2743200,3556000,2743200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
 <![CDATA[期初账户数]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
 <C c="1" r="0" s="0">
 <O>
-<![CDATA[期初余额]]></O>
+<![CDATA[期初余额（元）]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
 <C c="2" r="0" s="0">
 <O>
 <![CDATA[期末账户数]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
 <C c="3" r="0" s="0">
 <O>
-<![CDATA[期末余额]]></O>
+<![CDATA[期末余额（元）]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
 <C c="0" r="1" s="1">
@@ -63,6 +71,8 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
 <C c="1" r="1" s="1">
@@ -73,6 +83,8 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
 <C c="2" r="1" s="1">
@@ -83,6 +95,8 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
 <C c="3" r="1" s="1">
@@ -93,6 +107,8 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
 </CellElementList>
@@ -150,7 +166,7 @@
 <Hotkeys>
 <![CDATA[enter]]></Hotkeys>
 </InnerWidget>
-<BoundsAttr x="435" y="25" width="80" height="21"/>
+<BoundsAttr x="473" y="14" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.DateEditor">
@@ -158,13 +174,13 @@
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
-<DateAttr/>
+<DateAttr start="03/27/2018" enddatefm="=today()-1"/>
 <widgetValue>
 <O t="Date">
 <![CDATA[1514736000000]]></O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="130" y="25" width="91" height="21"/>
+<BoundsAttr x="93" y="14" width="125" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -180,7 +196,7 @@
 <FRFont name="SimSun" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="50" y="25" width="80" height="21"/>
+<BoundsAttr x="13" y="14" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.DateEditor">
@@ -188,13 +204,13 @@
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
-<DateAttr enddatefm="=today()-1"/>
+<DateAttr start="03/27/2018" enddatefm="=today()-1"/>
 <widgetValue>
 <O t="Date">
 <![CDATA[1514822400000]]></O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="335" y="25" width="93" height="21"/>
+<BoundsAttr x="320" y="14" width="125" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -210,7 +226,7 @@
 <FRFont name="SimSun" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="255" y="25" width="80" height="21"/>
+<BoundsAttr x="240" y="14" width="80" height="21"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
@@ -227,7 +243,7 @@
 <NameTag name="begin" tag="开始日期:"/>
 </WidgetNameTagMap>
 </Layout>
-<DesignAttr width="960" height="80"/>
+<DesignAttr width="960" height="40"/>
 </ParameterUI>
 </ReportParameterAttr>
 <StyleList>

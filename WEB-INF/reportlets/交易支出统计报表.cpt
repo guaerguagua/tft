@@ -29,47 +29,67 @@
 <RowHeight defaultValue="723900">
 <![CDATA[1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[4800600,4229100,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<![CDATA[4800600,5295900,3162300,2743200,4114800,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
 <![CDATA[交易类型]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
 <C c="1" r="0" s="0">
 <O>
 <![CDATA[行业商户号]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
 <C c="2" r="0" s="0">
 <O>
 <![CDATA[行业商户名]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
 <C c="3" r="0" s="0">
 <O>
 <![CDATA[总交易笔数]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
 <C c="4" r="0" s="0">
 <O>
-<![CDATA[总交易金额]]></O>
+<![CDATA[总交易金额（元）]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
 <C c="5" r="0" s="0">
 <O>
 <![CDATA[总用户数]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
 <C c="0" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="交易支出统计表" columnName="tradeType"/>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNAME>
+<![CDATA[tradeType]]></CNAME>
+<Compare op="6">
+<O>
+<![CDATA[14]]></O>
+</Compare>
+</Condition>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper">
 <Attr divideMode="1"/>
@@ -77,6 +97,8 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Present class="com.fr.base.present.DictPresent">
 <Dictionary class="com.fr.data.impl.CustomDictionary">
 <CustomDictAttr>
@@ -86,7 +108,7 @@
 </CustomDictAttr>
 </Dictionary>
 </Present>
-<Expand dir="0"/>
+<Expand dir="0" leftParentDefault="false"/>
 </C>
 <C c="1" r="1" s="1">
 <O t="DSColumn">
@@ -96,6 +118,8 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
 <C c="2" r="1" s="1">
@@ -106,16 +130,21 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
 <C c="3" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="交易支出统计表" columnName="sum_trade_count"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
 <C c="4" r="1" s="1">
@@ -126,22 +155,65 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
 <C c="5" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="交易支出统计表" columnName="sum_user_count"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
+</C>
+<C c="0" r="2">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="2">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="2" r="2">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="3" r="2">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="4" r="2">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="5" r="2">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 </CellElementList>
 <ReportAttrSet>
 <ReportSettings headerHeight="0" footerHeight="0">
-<PaperSetting/>
+<PaperSetting orientation="1">
+<Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
+</PaperSetting>
 </ReportSettings>
 <Header reportPageType="0">
 <Background name="NullBackground"/>
@@ -204,7 +276,7 @@
 <![CDATA[]]></O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="129" y="26" width="136" height="21"/>
+<BoundsAttr x="94" y="14" width="125" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -220,7 +292,7 @@
 <FRFont name="SimSun" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="49" y="26" width="80" height="21"/>
+<BoundsAttr x="14" y="14" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.parameter.FormSubmitButton">
@@ -233,7 +305,7 @@
 <Hotkeys>
 <![CDATA[enter]]></Hotkeys>
 </InnerWidget>
-<BoundsAttr x="537" y="26" width="80" height="21"/>
+<BoundsAttr x="494" y="14" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.DateEditor">
@@ -245,7 +317,7 @@
 <![CDATA[false]]></allowBlank>
 <DirectEdit>
 <![CDATA[false]]></DirectEdit>
-<DateAttr enddatefm="=today()"/>
+<DateAttr start="03/27/2018" enddatefm="=today()"/>
 <widgetValue>
 <O t="Formula" class="Formula">
 <Attributes>
@@ -253,7 +325,7 @@
 </O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="412" y="26" width="94" height="21"/>
+<BoundsAttr x="336" y="14" width="125" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -269,7 +341,7 @@
 <FRFont name="SimSun" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="332" y="26" width="80" height="21"/>
+<BoundsAttr x="256" y="14" width="80" height="21"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
@@ -286,7 +358,7 @@
 <NameTag name="transCd" tag="交易类型"/>
 </WidgetNameTagMap>
 </Layout>
-<DesignAttr width="960" height="80"/>
+<DesignAttr width="960" height="40"/>
 </ParameterUI>
 </ReportParameterAttr>
 <StyleList>

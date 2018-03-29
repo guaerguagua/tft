@@ -35,18 +35,24 @@
 <O>
 <![CDATA[用户号]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
 <C c="1" r="0" s="0">
 <O>
 <![CDATA[账户号]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
 <C c="2" r="0" s="0">
 <O>
 <![CDATA[当前余额（元）]]></O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand/>
 </C>
 <C c="0" r="1" s="1">
@@ -56,6 +62,8 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
 <C c="1" r="1" s="1">
@@ -66,6 +74,8 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
 </C>
 <C c="2" r="1" s="2">
@@ -76,7 +86,24 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 <Expand dir="0"/>
+</C>
+<C c="0" r="2">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+</C>
+<C c="1" r="2">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+</C>
+<C c="2" r="2">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
 </C>
 <C c="0" r="10">
 <PrivilegeControl/>
@@ -148,7 +175,7 @@ if(length==0){
 <Text>
 <![CDATA[查询]]></Text>
 </InnerWidget>
-<BoundsAttr x="512" y="25" width="80" height="21"/>
+<BoundsAttr x="579" y="11" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.TextEditor">
@@ -160,11 +187,11 @@ if(length==0){
 <![CDATA[账户信息出错]]></regMsg>
 <TextAttr/>
 <Reg class="com.fr.form.ui.reg.LengthReg">
-<LenReg min="19" max="19"/>
+<LenReg min="15" max="25"/>
 </Reg>
 <widgetValue/>
 </InnerWidget>
-<BoundsAttr x="339" y="25" width="144" height="21"/>
+<BoundsAttr x="376" y="11" width="175" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -180,7 +207,7 @@ if(length==0){
 <FRFont name="SimSun" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="259" y="25" width="80" height="21"/>
+<BoundsAttr x="296" y="11" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.TextEditor">
@@ -190,14 +217,14 @@ if(length==0){
 </WidgetAttr>
 <TextAttr/>
 <Reg class="com.fr.form.ui.reg.LengthReg">
-<LenReg min="16" max="16"/>
+<LenReg min="15" max="20"/>
 </Reg>
 <widgetValue>
 <O>
 <![CDATA[]]></O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="130" y="25" width="122" height="21"/>
+<BoundsAttr x="96" y="11" width="175" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -213,7 +240,7 @@ if(length==0){
 <FRFont name="SimSun" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="50" y="25" width="80" height="21"/>
+<BoundsAttr x="16" y="11" width="80" height="21"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
@@ -231,7 +258,7 @@ if(length==0){
 <NameTag name="acct_no" tag="账户号:"/>
 </WidgetNameTagMap>
 </Layout>
-<DesignAttr width="960" height="76"/>
+<DesignAttr width="960" height="37"/>
 </ParameterUI>
 </ReportParameterAttr>
 <StyleList>
