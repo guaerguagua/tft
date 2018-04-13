@@ -174,10 +174,10 @@
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
-<DateAttr start="03/27/2018" enddatefm="=today()-1"/>
+<DateAttr start="03/28/2018" enddatefm="=today()-1"/>
 <widgetValue>
 <O t="Date">
-<![CDATA[1514736000000]]></O>
+<![CDATA[1522166400000]]></O>
 </widgetValue>
 </InnerWidget>
 <BoundsAttr x="93" y="14" width="125" height="21"/>
@@ -206,8 +206,10 @@
 </WidgetAttr>
 <DateAttr start="03/27/2018" enddatefm="=today()-1"/>
 <widgetValue>
-<O t="Date">
-<![CDATA[1514822400000]]></O>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=today()-1]]></Attributes>
+</O>
 </widgetValue>
 </InnerWidget>
 <BoundsAttr x="320" y="14" width="125" height="21"/>
