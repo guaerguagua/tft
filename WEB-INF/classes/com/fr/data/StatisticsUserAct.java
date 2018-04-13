@@ -90,11 +90,15 @@ public class StatisticsUserAct extends AbstractTableData {
         String end   = parameters[1].getValue().toString();
         FRContext.getLogger().info("begin:"+begin);
         FRContext.getLogger().info("end:"+end);
-        MgmUtil mgmutil = new MgmUtil();
+        String tablePrefix = "tbl_fcl_ck_acct_balance_hist";
+        String beginTableName = tablePrefix+String.format("%d_%03d",
+                MgmUtil.getHisLogNo(begin),MgmUtil.getDayOfYear(begin));
+        String endTableName = tablePrefix+String.format("%d_%03d",
+                MgmUtil.getHisLogNo(end),MgmUtil.getDayOfYear(end));
         valueList = new ArrayList();
         Object[] objects = new Object[4];
         colNum=4;
-        String sql = "select count(*) as begin_acct_count,cast(sum(begin_balance)/100 as decimal(20,2)) as sum_begin_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(begin)+";";
+        String sql = String.format("select count(*) as begin_acct_count,cast(sum(begin_balance)/100 as decimal(20,2)) as sum_begin_balance from %s;",beginTableName);
         //
         FRContext.getLogger().info("Query SQL of Param\n"  + sql);
 
@@ -123,7 +127,7 @@ public class StatisticsUserAct extends AbstractTableData {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String sql2 = "select count(*) as end_acct_count,cast(sum(current_balance)/100 as decimal(20,2)) as sum_end_balance from tbl_fcl_ck_acct_balance_hist"+ mgmutil.getCurrNo()+"_"+mgmutil.getDayOfYearString(end)+";";
+        String sql2 = String.format("select count(*) as end_acct_count,cast(sum(current_balance)/100 as decimal(20,2)) as sum_end_balance from %s;",endTableName);
         //
         FRContext.getLogger().info("Query SQL of Param\n"  + sql2);
 
