@@ -117,7 +117,8 @@ public class DetailBalance extends AbstractTableData {
 
 		if(!userId.equals("")){
 			condition=condition+String.format(" and user_id='%s' ",userId);
-		}else if(!acctNo.equals("")){
+		}
+		if(!acctNo.equals("")){
 			condition=condition+String.format(" and acct_no='%s' ",acctNo);
 		}
 
