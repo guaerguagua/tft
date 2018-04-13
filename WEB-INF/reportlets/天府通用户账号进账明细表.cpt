@@ -28,6 +28,11 @@
 <O>
 <![CDATA[]]></O>
 </Parameter>
+<Parameter>
+<Attributes name="phone_no"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
 </Parameters>
 <ClassTableDataAttr className="com.fr.data.DetailActInData"/>
 </TableData>
@@ -1319,6 +1324,36 @@
 <Background name="ColorBackground" color="-1118482"/>
 <LCAttr vgap="0" hgap="0" compInterval="0"/>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.TextEditor">
+<WidgetName name="phone_no"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<TextAttr/>
+<widgetValue>
+<O>
+<![CDATA[]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="646" y="41" width="154" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="Labelphone_no"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<widgetValue>
+<O>
+<![CDATA[手机号]]></O>
+</widgetValue>
+<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+<border style="0" color="-723724"/>
+</InnerWidget>
+<BoundsAttr x="568" y="41" width="67" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.DateEditor">
 <WidgetName name="startday"/>
 <WidgetAttr description="">
@@ -1391,10 +1426,10 @@
 <![CDATA[
 var lengthAcctNo=this.options.form.getWidgetByName("acct_no").getValue().length
 var lengthBussNo=this.options.form.getWidgetByName("buss_no").getValue().length
-
-var length=lengthAcctNo+lengthBussNo
+var lengthPhone=this.options.form.getWidgetByName("phone_no").getValue().length
+var length=lengthAcctNo+lengthBussNo+lengthPhone
 if(length==0){
-        alert(" 用户账号 与 交易流水号 不能同时为空!!!")
+        alert(" 用户账号 与 交易流水号 手机号 不能同时为空!!!")
 }else
 {
 		_g().parameterCommit(); 
@@ -1408,7 +1443,7 @@ if(length==0){
 <Text>
 <![CDATA[查询]]></Text>
 </InnerWidget>
-<BoundsAttr x="575" y="41" width="80" height="21"/>
+<BoundsAttr x="720" y="11" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.TextEditor">
@@ -1518,24 +1553,26 @@ if(length==0){
 <Widget widgetName="trans_cd"/>
 <Widget widgetName="startday"/>
 <Widget widgetName="endday"/>
+<Widget widgetName="search"/>
 <Widget widgetName="acct_no"/>
 <Widget widgetName="buss_no"/>
-<Widget widgetName="search"/>
+<Widget widgetName="phone_no"/>
 </MobileWidgetList>
 <Display display="true"/>
 <DelayDisplayContent delay="true"/>
 <Position position="0"/>
-<Design_Width design_width="960"/>
+<Design_Width design_width="820"/>
 <NameTagModified/>
 <WidgetNameTagMap>
 <NameTag name="trans_cd" tag="交易类型"/>
+<NameTag name="phone_no" tag="手机号"/>
 <NameTag name="startday" tag="日期"/>
 <NameTag name="endday" tag="~"/>
 <NameTag name="acct_no" tag="账户号"/>
 <NameTag name="buss_no" tag="交易流水号"/>
 </WidgetNameTagMap>
 </Layout>
-<DesignAttr width="960" height="70"/>
+<DesignAttr width="820" height="70"/>
 </ParameterUI>
 </ReportParameterAttr>
 <StyleList>

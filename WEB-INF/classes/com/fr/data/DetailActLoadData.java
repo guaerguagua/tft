@@ -31,7 +31,7 @@ public class DetailActLoadData extends AbstractTableData {
 //		setDefaultParameters(new Parameter[] { new Parameter("trans_cd"),new Parameter("day") });
 
 		tablePrefix="tbl_fcl_ck_acct_dtl";
-		checkList="settle_dt, buss_no,acct_no,trans_cd,trans_at/100 ,rec_crt_ts,1";
+		checkList="settle_dt, buss_no,acct_no,trans_cd,trans_at/100 ,rec_crt_ts,1,current_balance/100,current_balance/100-trans_at/100";
 		transCdTotal="1410,1411,1412";
 
 		columnNames = checkList.replaceAll(" ","").split(",");
@@ -71,10 +71,13 @@ public class DetailActLoadData extends AbstractTableData {
 		String endDateStr=parameters[2].getValue().toString();
 		String acctNo=parameters[3].getValue().toString();
 		String bussNo=parameters[4].getValue().toString();
-		FRContext.getLogger().info(String.format("\n transCd=[%s],startDateStr=[%s],endDateStr=[%s],acctNo=[%s],bussNo=[%s]",
-				transCd,startDateStr,endDateStr,acctNo,bussNo));
+		String phoneNo=parameters[5].getValue().toString();
+		FRContext.getLogger().info(String.format("\n transCd=[%s],startDateStr=[%s],endDateStr=[%s],acctNo=[%s],bussNo=[%s],phoneNo=[%s]",
+				transCd,startDateStr,endDateStr,acctNo,bussNo,phoneNo));
 
-
+		if(acctNo.equals("")&&!phoneNo.equals("")){
+			acctNo=MgmUtil.fromPhoneNoGetAcctNo(phoneNo);
+		}
 		//get db conn  and talbe Name
 		valueList = new ArrayList();
 		String dateStr=startDateStr;
@@ -134,10 +137,16 @@ public class DetailActLoadData extends AbstractTableData {
 		String condition="";
 
 		if(!acctNo.equals("")){
-			condition=condition+String.format(" and acct_no='%s' ",acctNo);
+			condition=condition+String.format(" and acct_no in (%s) ",MgmUtil.addQuot(acctNo));
 		}
 		if(!bussNo.equals("")){
 			condition=condition+String.format(" and buss_no='%s' ",bussNo);
+		}
+		String patton=new String();
+		if(condition.equals("")){
+			patton="select %s from %s where 1=1 %s limit 10;";
+		}else {
+			patton="select %s from %s where 1=1 %s ;";
 		}
 
 		if(transCd.equals("")){
@@ -146,8 +155,7 @@ public class DetailActLoadData extends AbstractTableData {
 			condition=condition+String.format(" and trans_cd in (%s) ",MgmUtil.addQuot(transCd));
 		}
 
-		String sql = String.format("select %s from %s where 1=1 %s ;",
-				checkList,tableName,condition);
+		String sql = String.format(patton, checkList,tableName,condition);
 
 		return  sql;
 	}

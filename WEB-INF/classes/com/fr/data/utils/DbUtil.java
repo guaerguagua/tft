@@ -30,6 +30,13 @@ public class DbUtil {
     private static final String MGMDBUSER ="test";
     private static final String MGMDBPASS ="test";
 
+
+    private static final String USERDB ="tfttest";
+    private static final String USERDBIP ="88.88.15.11";
+    private static final String USERDBPORT ="3306";
+    private static final String USERDBUSER ="test";
+    private static final String USERDBPASS ="test";
+
     private static Connection getConnection(String dbname,String username,String password,String ip,String port){
         String driverName = "com.mysql.jdbc.Driver";
         String url = String.format(URLFORMAT,ip,port,dbname);
@@ -57,5 +64,9 @@ public class DbUtil {
 
     public static Connection getMgmConnection() {
         return getConnection(MGMDB,MGMDBUSER,MGMDBPASS,MGMDBIP,MGMDBPORT);
+    }
+
+    public static Connection getUserConnection() {
+        return getConnection(USERDB,USERDBUSER,USERDBPASS,USERDBIP,USERDBPORT);
     }
 }

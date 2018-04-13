@@ -156,6 +156,62 @@ public class MgmUtil {
 
     }
 
+    public static String fromPhoneNoGetUserId(String phoneNo){
+
+        String sql= String.format("select user_id from user_base where mobile_phone='%s' ;",phoneNo);
+
+        Connection conn = DbUtil.getUserConnection();
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            rs.next();
+            String userId=rs.getObject(1).toString();
+            //release resouce
+            rs.close();
+            stmt.close();
+            conn.close();
+            FRContext.getLogger().info(sql);
+            return userId;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+
+    }
+
+    //return :12121212,152000021
+    public static String fromUserIdGetAcctNos(String userId){
+
+        String sql= String.format("select acct_no from tbl_fcl_ck_acct_balance where user_id='%s' ;",userId);
+
+        Connection conn = DbUtil.getActConnection();
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            String acct=new String();
+            while (rs.next()) {
+                acct=String.format("%s,%s",acct,rs.getObject(1).toString());
+            }
+
+            //release resouce
+            rs.close();
+            stmt.close();
+            conn.close();
+            FRContext.getLogger().info(sql);
+            return acct.substring(1,acct.length());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+
+    }
+
+    public static String fromPhoneNoGetAcctNo(String phone){
+
+        String userId=fromPhoneNoGetUserId(phone);
+        return fromUserIdGetAcctNos(userId);
+    }
+
     public static String getPostfix(String dateStr,String tablePrefix){
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

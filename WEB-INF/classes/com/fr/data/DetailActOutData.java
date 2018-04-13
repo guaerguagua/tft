@@ -4,11 +4,10 @@ import com.fr.base.FRContext;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.Statement;
+import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DetailActOutData extends AbstractTableData {
 
@@ -31,7 +30,7 @@ public class DetailActOutData extends AbstractTableData {
 //		setDefaultParameters(new Parameter[] { new Parameter("trans_cd"),new Parameter("day") });
 
 		tablePrefix="tbl_fcl_ck_acct_dtl";
-		checkList="settle_dt, buss_no,acct_no,trans_cd,trans_at/100 ,rec_crt_ts,1";
+		checkList=" settle_dt,buss_no,acct_no,trans_cd,trans_at/100,ins_mchnt_cd ,rec_crt_ts,current_balance/100,current_balance/100-trans_at/100";
 		transCdTotal="1403,1407,1409";
 
 		columnNames = checkList.replaceAll(" ","").split(",");
@@ -71,10 +70,13 @@ public class DetailActOutData extends AbstractTableData {
 		String endDateStr=parameters[2].getValue().toString();
 		String acctNo=parameters[3].getValue().toString();
 		String bussNo=parameters[4].getValue().toString();
-		FRContext.getLogger().info(String.format("\n transCd=[%s],startDateStr=[%s],endDateStr=[%s],acctNo=[%s],bussNo=[%s]",
-				transCd,startDateStr,endDateStr,acctNo,bussNo));
+		String phoneNo=parameters[5].getValue().toString();
+		FRContext.getLogger().info(String.format("\n transCd=[%s],startDateStr=[%s],endDateStr=[%s],acctNo=[%s],bussNo=[%s],phoneNo=[%s]",
+				transCd,startDateStr,endDateStr,acctNo,bussNo,phoneNo));
 
-
+		if(acctNo.equals("")&&!phoneNo.equals("")){
+			acctNo=MgmUtil.fromPhoneNoGetAcctNo(phoneNo);
+		}
 		//get db conn  and talbe Name
 		valueList = new ArrayList();
 		String dateStr=startDateStr;
@@ -94,7 +96,7 @@ public class DetailActOutData extends AbstractTableData {
 			// create sql
 			String tableName=tablePrefix+tablePostfix;
 			String sql = getSql(transCd,acctNo,bussNo,tableName);
-			FRContext.getLogger().info("Query SQL of "+dateStr+" DetailActOutData: \n" + sql+"\n");
+			FRContext.getLogger().info("Query SQL of "+dateStr+" DetailActInData: \n" + sql+"\n");
 
 			try {
 				Statement stmt = conn.createStatement();
@@ -123,10 +125,11 @@ public class DetailActOutData extends AbstractTableData {
 			dateStr=MgmUtil.getDateStrDiff(dateStr,1);
 		}
 		FRContext.getLogger().info(
-				"Query SQL of DetailActOutData: \n" + valueList.size()
+				"Query SQL of DetailActInData: \n" + valueList.size()
 						+ " rows selected");
 
 	}
+
 
 
 	public String getSql(String transCd,String acctNo,String bussNo,String tableName){
@@ -140,15 +143,21 @@ public class DetailActOutData extends AbstractTableData {
 			condition=condition+String.format(" and buss_no='%s' ",bussNo);
 		}
 
+		String patton=new String();
+		if(condition.equals("")){
+			patton="select %s from %s where 1=1 %s limit 10;";
+		}else {
+			patton="select %s from %s where 1=1 %s ;";
+		}
+
+
 		if(transCd.equals("")){
 			condition=condition+String.format(" and trans_cd in (%s) ",MgmUtil.addQuot(transCdTotal));;
 		}else {
 			condition=condition+String.format(" and trans_cd in (%s) ",MgmUtil.addQuot(transCd));
 		}
 
-		String sql = String.format("select %s from %s where 1=1 %s ;",
-				checkList,tableName,condition);
-
+		String sql = String.format(patton,checkList,tableName,condition);
 		return  sql;
 	}
 
