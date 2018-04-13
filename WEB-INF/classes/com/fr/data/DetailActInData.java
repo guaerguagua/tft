@@ -67,55 +67,65 @@ public class DetailActInData extends AbstractTableData {
 		}
 
 		String transCd =parameters[0].getValue().toString();
-		String dateStr=parameters[1].getValue().toString();
-		String acctNo=parameters[2].getValue().toString();
-		String bussNo=parameters[3].getValue().toString();
-		FRContext.getLogger().info("\ntrans_cd: " + transCd+
-					"\ndateStr:"+dateStr+"\nacctNo"+acctNo+"\nbussNo"+bussNo+"\n");
+		String startDateStr=parameters[1].getValue().toString();
+		String endDateStr=parameters[2].getValue().toString();
+		String acctNo=parameters[3].getValue().toString();
+		String bussNo=parameters[4].getValue().toString();
+		FRContext.getLogger().info(String.format("\n transCd=[%s],startDateStr=[%s],endDateStr=[%s],acctNo=[%s],bussNo=[%s]",
+												transCd,startDateStr,endDateStr,acctNo,bussNo));
+
 
 		//get db conn  and talbe Name
-		String tablePostfix=MgmUtil.getPostfix(dateStr,tablePrefix);
-        Connection conn;
-		if(tablePostfix.length()==1){
-			conn=DbUtil.getActConnection();
-		}else {
-			conn=DbUtil.getHisConnection();
-		}
-
-		// create sql
-		String tableName=tablePrefix+tablePostfix;
-		String sql = getSql(transCd,acctNo,bussNo,tableName);
-		FRContext.getLogger().info("Query SQL of DetailActInData: \n" + sql+"\n");
-
 		valueList = new ArrayList();
+		String dateStr=startDateStr;
 
-		try {
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			// get total col Num
-			ResultSetMetaData rsmd = rs.getMetaData();
-			colNum = rsmd.getColumnCount();
-			// save Object
-			Object[] objArray = null;
-			while (rs.next()) {
-				objArray = new Object[colNum];
-				for (int i = 0; i < colNum; i++) {
-					objArray[i] = rs.getObject(i + 1);
-				}
-				//add line
-				valueList.add(objArray);
+		while(!MgmUtil.date1after2(dateStr,endDateStr)){
+
+			Connection conn;
+
+			String tablePostfix=MgmUtil.getPostfix(dateStr,tablePrefix);
+
+			if(tablePostfix.length()==1){
+				conn=DbUtil.getActConnection();
+			}else {
+				conn=DbUtil.getHisConnection();
 			}
 
-			rs.close();
-			stmt.close();
-			conn.close();
+			// create sql
+			String tableName=tablePrefix+tablePostfix;
+			String sql = getSql(transCd,acctNo,bussNo,tableName);
+			FRContext.getLogger().info("Query SQL of "+dateStr+" DetailActInData: \n" + sql+"\n");
 
-			FRContext.getLogger().info(
+			try {
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(sql);
+				// get total col Num
+				ResultSetMetaData rsmd = rs.getMetaData();
+				colNum = rsmd.getColumnCount();
+				// save Object
+				Object[] objArray = null;
+				while (rs.next()) {
+					objArray = new Object[colNum];
+					for (int i = 0; i < colNum; i++) {
+						objArray[i] = rs.getObject(i + 1);
+					}
+					//add line
+					valueList.add(objArray);
+				}
+
+				rs.close();
+				stmt.close();
+				conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			dateStr=MgmUtil.getDateStrDiff(dateStr,1);
+		}
+		FRContext.getLogger().info(
 					"Query SQL of DetailActInData: \n" + valueList.size()
 							+ " rows selected");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
 	}
 
 
@@ -125,7 +135,8 @@ public class DetailActInData extends AbstractTableData {
 
 		if(!acctNo.equals("")){
 			condition=condition+String.format(" and acct_no='%s' ",acctNo);
-		}else if(!bussNo.equals("")){
+		}
+		if(!bussNo.equals("")){
 			condition=condition+String.format(" and buss_no='%s' ",bussNo);
 		}
 

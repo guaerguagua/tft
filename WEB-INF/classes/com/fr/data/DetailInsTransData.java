@@ -121,10 +121,12 @@ public class DetailInsTransData extends AbstractTableData {
 		String condition="";
 
 		if(!acctNo.equals("")){
-			condition=condition+String.format(" and acct_no='%s' ",acctNo);
-		}else if(!bussNo.equals("")){
+			condition=condition+String.format(" and acct_no in (%s) ",MgmUtil.addQuot(acctNo));
+		}
+		if(!bussNo.equals("")){
 			condition=condition+String.format(" and buss_no='%s' ",bussNo);
-		} else if(!transCd.equals("")){
+		}
+		if(!transCd.equals("")){
 			condition=condition+String.format(" and trans_cd in (%s) ",MgmUtil.addQuot(transCd));
 		}
 

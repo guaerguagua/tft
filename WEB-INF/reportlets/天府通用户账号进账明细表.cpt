@@ -9,9 +9,14 @@
 <![CDATA[]]></O>
 </Parameter>
 <Parameter>
-<Attributes name="day"/>
+<Attributes name="startday"/>
 <O t="Date">
-<![CDATA[1521734400000]]></O>
+<![CDATA[1523548800000]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="endday"/>
+<O t="Date">
+<![CDATA[1523548800000]]></O>
 </Parameter>
 <Parameter>
 <Attributes name="acct_no"/>
@@ -449,6 +454,7 @@
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="9">
 <PrivilegeControl/>
@@ -1313,6 +1319,70 @@
 <Background name="ColorBackground" color="-1118482"/>
 <LCAttr vgap="0" hgap="0" compInterval="0"/>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.DateEditor">
+<WidgetName name="startday"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<DateAttr startdatefm="=IF(&apos;2018-03-27&apos;&gt;today()-30,&apos;2018-03-27&apos;,today()-30)" enddatefm="=today()"/>
+<widgetValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=today()-7]]></Attributes>
+</O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="360" y="11" width="123" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="Labelstartday"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<widgetValue>
+<O>
+<![CDATA[日期]]></O>
+</widgetValue>
+<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+<border style="0" color="-723724"/>
+</InnerWidget>
+<BoundsAttr x="275" y="11" width="80" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.DateEditor">
+<WidgetName name="endday"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<DateAttr start="03/27/2018" enddatefm="=today()"/>
+<widgetValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=today()]]></Attributes>
+</O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="513" y="11" width="158" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="Labelendday"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<widgetValue>
+<O>
+<![CDATA[~]]></O>
+</widgetValue>
+<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+<border style="0" color="-723724"/>
+</InnerWidget>
+<BoundsAttr x="491" y="11" width="15" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.FreeButton">
 <Listener event="click">
 <JavaScript class="com.fr.js.JavaScriptImpl">
@@ -1435,7 +1505,7 @@ if(length==0){
 </WidgetAttr>
 <widgetValue>
 <O>
-<![CDATA[用户号]]></O>
+<![CDATA[账户号]]></O>
 </widgetValue>
 <LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
 <FRFont name="SimSun" style="0" size="72"/>
@@ -1443,46 +1513,11 @@ if(length==0){
 </InnerWidget>
 <BoundsAttr x="12" y="41" width="63" height="21"/>
 </Widget>
-<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
-<InnerWidget class="com.fr.form.ui.DateEditor">
-<WidgetName name="day"/>
-<WidgetAttr description="">
-<PrivilegeControl/>
-</WidgetAttr>
-<allowBlank>
-<![CDATA[false]]></allowBlank>
-<DirectEdit>
-<![CDATA[false]]></DirectEdit>
-<DateAttr start="03/27/2018" enddatefm="=today()"/>
-<widgetValue>
-<O t="Formula" class="Formula">
-<Attributes>
-<![CDATA[=today()]]></Attributes>
-</O>
-</widgetValue>
-</InnerWidget>
-<BoundsAttr x="362" y="11" width="125" height="21"/>
-</Widget>
-<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
-<InnerWidget class="com.fr.form.ui.Label">
-<WidgetName name="Labelday"/>
-<WidgetAttr description="">
-<PrivilegeControl/>
-</WidgetAttr>
-<widgetValue>
-<O>
-<![CDATA[日期]]></O>
-</widgetValue>
-<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
-<FRFont name="SimSun" style="0" size="72"/>
-<border style="0" color="-723724"/>
-</InnerWidget>
-<BoundsAttr x="275" y="11" width="61" height="21"/>
-</Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
 <Widget widgetName="trans_cd"/>
-<Widget widgetName="day"/>
+<Widget widgetName="startday"/>
+<Widget widgetName="endday"/>
 <Widget widgetName="acct_no"/>
 <Widget widgetName="buss_no"/>
 <Widget widgetName="search"/>
@@ -1494,8 +1529,9 @@ if(length==0){
 <NameTagModified/>
 <WidgetNameTagMap>
 <NameTag name="trans_cd" tag="交易类型"/>
-<NameTag name="acct_no" tag="用户号"/>
-<NameTag name="day" tag="日期"/>
+<NameTag name="startday" tag="日期"/>
+<NameTag name="endday" tag="~"/>
+<NameTag name="acct_no" tag="账户号"/>
 <NameTag name="buss_no" tag="交易流水号"/>
 </WidgetNameTagMap>
 </Layout>

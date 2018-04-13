@@ -119,7 +119,7 @@ public class TotalActData extends AbstractTableData {
 		boolean isHis=false;
 
 		if(acctNo.equals("")){
-			condition= " limit 100000";
+			condition= " limit 10000";
 		}else {
 			condition=condition+String.format(" and acct_no='%s' ",acctNo);
 		}

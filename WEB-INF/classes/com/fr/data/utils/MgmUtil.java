@@ -69,6 +69,26 @@ public class MgmUtil {
         return 0;
     }
 
+    /*
+    return 1 :date1>date2
+    return 0 :date1<=date2
+
+     */
+    public static boolean date1after2(String dateStr1,String dateStr2){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date1 = sdf.parse(dateStr1);
+            Date date2 = sdf.parse(dateStr2);
+            if(date1.after(date2)){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        return true;
+    }
     public static String getYestodayTablePostfix(String tableNamePrefix,String yestodayStr,String currLogNo){
 
         String yesLogNo;
@@ -109,16 +129,32 @@ public class MgmUtil {
     public static String addQuot(String transCds){
         String [] list_transCds=transCds.split(",");
         if(list_transCds.length>0){
-            String res=list_transCds[0];
+            String res=String.format("'%s'",list_transCds[0]);
 
             for(int i=1;i<list_transCds.length;i++){
-                res=String.format("%s,%s",res,list_transCds[i]);
+                res=String.format("%s,'%s'",res,list_transCds[i]);
             }
             return res;
         }
         return transCds;
     }
 
+    public static String getDateStrDiff(String dateStr ,int diff) {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date=new Date();
+        try{
+            date=sdf.parse(dateStr);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) + diff);
+        return sdf.format(calendar.getTime());
+
+    }
 
     public static String getPostfix(String dateStr,String tablePrefix){
 
