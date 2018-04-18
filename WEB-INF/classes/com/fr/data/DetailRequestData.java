@@ -148,13 +148,12 @@ public class DetailRequestData extends AbstractTableData {
 			}
 		}
 
-
 		if(!bussNo.equals("")){
 			condition=condition+String.format(" and req_no='%s' ",bussNo);
 		}
 		String patton=new String();
 		if(condition.equals("")&&sqlAcct.equals("")){
-			patton="select %s from %s where 1=1 %s %s limit 10;";
+			patton="select %s from %s where 1=1 %s %s limit 0;";
 		}else {
 			patton="select %s from %s where 1=1 %s %s ;";
 		}
