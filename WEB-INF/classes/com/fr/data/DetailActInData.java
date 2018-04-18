@@ -145,7 +145,7 @@ public class DetailActInData extends AbstractTableData {
 
 		String patton=new String();
 		if(condition.equals("")){
-			patton="select %s from %s where 1=1 %s limit 10;";
+			patton="select %s from %s where 1=1 %s limit 0;";
 		}else {
 			patton="select %s from %s where 1=1 %s ;";
 		}
