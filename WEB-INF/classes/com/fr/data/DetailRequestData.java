@@ -1,6 +1,7 @@
 package com.fr.data;
 
 import com.fr.base.FRContext;
+import com.fr.data.utils.Check;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
 
@@ -65,7 +66,6 @@ public class DetailRequestData extends AbstractTableData {
 		if (valueList != null) {
 			return;
 		}
-		valueList = new ArrayList();
 		String transCd =parameters[0].getValue().toString();
 		String startDateStr=parameters[1].getValue().toString();
 		String endDateStr=parameters[2].getValue().toString();
@@ -75,7 +75,13 @@ public class DetailRequestData extends AbstractTableData {
 		FRContext.getLogger().info(String.format("\n transCd=[%s],startDateStr=[%s],endDateStr=[%s],acctNo=[%s],bussNo=[%s],phoneNo=[%s]",
 				transCd,startDateStr,endDateStr,acctNo,bussNo,phoneNo));
 
-
+		valueList = new ArrayList();
+		Check check=new Check();
+		check.checkValue(Check.BUSSNO,bussNo).checkValue(Check.ACCTNO,acctNo).checkValue(Check.PHONENO,phoneNo).checkValue(Check.TRANSCD,transCd);
+		if(!check.getRes()){
+			FRContext.getLogger().info(String.format(" param wrong!!!!!!!!"));
+			return;
+		}
 
 		if(acctNo.equals("")&&!phoneNo.equals("")){
 			acctNo=MgmUtil.fromPhoneNoGetAcctNo(phoneNo);

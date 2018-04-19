@@ -1,6 +1,7 @@
 package com.fr.data;
 
 import com.fr.base.FRContext;
+import com.fr.data.utils.Check;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
 
@@ -65,6 +66,13 @@ public class TotalInsData extends AbstractTableData {
 		String dateStr=parameters[1].getValue().toString();
 		FRContext.getLogger().info("\ndateStr:"+dateStr+"\ninsMchntCd:"+insMchntCd+"\n");
 
+		valueList = new ArrayList();
+		Check check=new Check();
+		check.checkValue(Check.INSMCHNTID,insMchntCd);
+		if(!check.getRes()){
+			FRContext.getLogger().info(String.format(" param wrong!!!!!!!!"));
+			return;
+		}
 		//get db conn  and talbe Name
 //
 //		String tablePostfix=MgmUtil.getPostfix(dateStr,tablePrefix);
@@ -114,15 +122,13 @@ public class TotalInsData extends AbstractTableData {
 
 	public String getSql(String insMchntCd,String dateStr,String tableName){
 
-		String condition=new String();
+		String condition="";
 		String sql =new String();
 		String settleDt=dateStr.replace("-","");
 		boolean isHis=false;
 
-		if(insMchntCd.equals("")){
-			condition="";
-		}else {
-			condition=condition+String.format(" and ins_mchnt_cd='%s' ",insMchntCd);
+		if(!insMchntCd.equals("")){
+			condition=condition+String.format(" and ins_mchnt_cd in %s ",MgmUtil.addQuot(insMchntCd));
 		}
 
 		sql = String.format("select %s from %s where settle_dt='%s' %s limit 10000;",

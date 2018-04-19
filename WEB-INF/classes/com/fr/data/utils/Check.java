@@ -5,11 +5,12 @@ import java.util.regex.Pattern;
 
 public class Check {
 
-    public final static String BUSSNO   ="bussNo";
-    public final static String TRANSCD  ="transCd";
-    public final static String PHONENO  ="phoneNo";
-    public final static String ACCTNO   ="acctNo";
-    public final static String USERID   ="userId";
+    public final static int BUSSNO   =1;
+    public final static int TRANSCD  =2;
+    public final static int PHONENO  =3;
+    public final static int ACCTNO   =4;
+    public final static int USERID   =5;
+    public final static int INSMCHNTID    =6;
 
 
     private boolean res=true;
@@ -20,7 +21,7 @@ public class Check {
     public boolean getRes(){
         return this.res;
     }
-    public Check checkValue(String param,String value){
+    public Check checkValue(int param,String value){
         if(this.res){
             this.res=checkInput(param,value);
         }
@@ -37,41 +38,44 @@ public class Check {
         Matcher matcher=p.matcher(str);
         return matcher.matches();
     }
-    public static boolean checkTransCd(String transCd){
+    public static boolean checkLists(String lists,int len){
 
         boolean res=false;
-        if(transCd.equals("")){
+        if(lists.equals("")){
             return true;
         }
-        String [] list_transCds=transCd.split(",");
-        System.out.println(list_transCds.length);
-        if(list_transCds.length>0){
-            for(int i=0;i<list_transCds.length;i++){
-                res=checkNumStr(list_transCds[i],4);
+        String [] listCds=lists.split(",");
+        System.out.println(listCds.length);
+        if(listCds.length>0){
+            for(int i=0;i<listCds.length;i++){
+                res=checkNumStr(listCds[i],len);
                 if(!res) return res;
-                System.out.println(list_transCds[i]+"  "+ res);
+                System.out.println(listCds[i]+"  "+ res);
             }
 
         }
         return res;
     }
-    private boolean checkInput(String param,String value){
+    private boolean checkInput(int param,String value){
         boolean res=false;
         switch (param){
-            case "bussNo":
+            case BUSSNO:
                 res=checkNumStr(value,20);
                 break;
-            case "transCd":
-                res=checkTransCd(value);
+            case TRANSCD:
+                res=checkLists(value,4);
                 break;
-            case "acctNo":
+            case ACCTNO:
                 res=checkNumStr(value,19);
                 break;
-            case "userId":
+            case USERID:
                 res=checkNumStr(value,16);
                 break;
-            case "phoneNo":
+            case PHONENO:
                 res=checkNumStr(value,11);
+                break;
+            case INSMCHNTID:
+                res=checkLists(value,15);
                 break;
 
             default:

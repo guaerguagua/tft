@@ -1,8 +1,10 @@
 package com.fr.data;
 
 import com.fr.base.FRContext;
+import com.fr.data.utils.Check;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
+import com.fr.web.core.A.B;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -75,11 +77,19 @@ public class DetailActInData extends AbstractTableData {
 		FRContext.getLogger().info(String.format("\n transCd=[%s],startDateStr=[%s],endDateStr=[%s],acctNo=[%s],bussNo=[%s],phoneNo=[%s]",
 				transCd,startDateStr,endDateStr,acctNo,bussNo,phoneNo));
 
+		valueList = new ArrayList();
+		Check check=new Check();
+		check.checkValue(Check.BUSSNO,bussNo).checkValue(Check.ACCTNO,acctNo).checkValue(Check.PHONENO,phoneNo).checkValue(Check.TRANSCD,transCd);
+		if(!check.getRes()){
+			FRContext.getLogger().info(String.format(" param wrong!!!!!!!!"));
+			return;
+		}
+
 		if(acctNo.equals("")&&!phoneNo.equals("")){
 			acctNo=MgmUtil.fromPhoneNoGetAcctNo(phoneNo);
 		}
 		//get db conn  and talbe Name
-		valueList = new ArrayList();
+
 		String dateStr=startDateStr;
 
 		while(!MgmUtil.date1after2(dateStr,endDateStr)){

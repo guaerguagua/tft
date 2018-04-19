@@ -1,6 +1,7 @@
 package com.fr.data;
 
 import com.fr.base.FRContext;
+import com.fr.data.utils.Check;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
 
@@ -69,7 +70,13 @@ public class DetailInsTransData extends AbstractTableData {
 		String bussNo	= parameters[3].getValue().toString();
 		FRContext.getLogger().info("\ntrans_cd: " + transCd+
 				"\ndateStr:"+dateStr+"\nacctNo"+acctNo+"\nbussNo"+bussNo+"\n");
-
+		valueList = new ArrayList();
+		Check check=new Check();
+		check.checkValue(Check.BUSSNO,bussNo).checkValue(Check.ACCTNO,acctNo).checkValue(Check.TRANSCD,transCd);
+		if(!check.getRes()){
+			FRContext.getLogger().info(String.format(" param wrong!!!!!!!!"));
+			return;
+		}
 		//get db conn  and talbe Name
 		String tablePostfix=MgmUtil.getPostfix(dateStr,tablePrefix);
 
@@ -83,8 +90,6 @@ public class DetailInsTransData extends AbstractTableData {
 		String tableName=tablePrefix+tablePostfix;
 		String sql = getSql(transCd,acctNo,bussNo,tableName);
 		FRContext.getLogger().info("Query SQL of DetailInsTransData: \n" + sql+"\n");
-
-		valueList = new ArrayList();
 
 		try {
 			Statement stmt = conn.createStatement();

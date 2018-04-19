@@ -1,6 +1,7 @@
 package com.fr.data;
 
 import com.fr.base.FRContext;
+import com.fr.data.utils.Check;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
 
@@ -63,8 +64,23 @@ public class TotalActData extends AbstractTableData {
 
 		String acctNo = parameters[0].getValue().toString();
 		String dateStr=parameters[1].getValue().toString();
-		FRContext.getLogger().info("\ndateStr:"+dateStr+"\nacctNo"+acctNo+"\n");
+		String phoneNo=parameters[2].getValue().toString();
+		FRContext.getLogger().info("\ndateStr:"+dateStr+"\nacctNo"+acctNo+"\nphoneNo"+phoneNo);
 
+		valueList = new ArrayList();
+		Check check=new Check();
+		check.checkValue(Check.ACCTNO,acctNo).checkValue(Check.PHONENO,phoneNo);
+		if(!check.getRes()){
+			FRContext.getLogger().info(String.format(" param wrong!!!!!!!!"));
+			return;
+		}
+
+		if(acctNo.equals("")&&!phoneNo.equals("")){
+			acctNo=MgmUtil.fromPhoneNoGetAcctNo(phoneNo);
+		}
+		if(acctNo.equals("")){
+			return;
+		}
 		//get db conn  and talbe Name
 
 		String tablePostfix=MgmUtil.getPostfix(dateStr,tablePrefix);
@@ -79,9 +95,6 @@ public class TotalActData extends AbstractTableData {
 		String tableName=tablePrefix+tablePostfix;
 		String sql = getSql(acctNo,tableName);
 		FRContext.getLogger().info("Query SQL of TotalActData: \n" + sql+"\n");
-
-		valueList = new ArrayList();
-
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -119,7 +132,7 @@ public class TotalActData extends AbstractTableData {
 		boolean isHis=false;
 
 		if(acctNo.equals("")){
-			condition= " limit 10000";
+			condition= " limit 0";
 		}else {
 			condition=condition+String.format(" and acct_no='%s' ",acctNo);
 		}
