@@ -29,6 +29,9 @@ public class Check {
     }
 
     public static boolean checkNumStr(String str,int len){
+        if(str.length()==0){
+            return true;
+        }
         String regx = String.format("^\\d{%d}$",len);
         Pattern p = Pattern.compile(regx);
         Matcher matcher=p.matcher(str);
