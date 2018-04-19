@@ -69,7 +69,7 @@ public class TotalActData extends AbstractTableData {
 
 		valueList = new ArrayList();
 		Check check=new Check();
-		check.checkValue(Check.ACCTNO,acctNo).checkValue(Check.PHONENO,phoneNo);
+		check.checkValue(Check.ACCT_NO_ID,acctNo).checkValue(Check.PHONE_NO_ID,phoneNo);
 		if(!check.getRes()){
 			FRContext.getLogger().info(String.format(" param wrong!!!!!!!!"));
 			return;
@@ -134,7 +134,7 @@ public class TotalActData extends AbstractTableData {
 		if(acctNo.equals("")){
 			condition= " limit 0";
 		}else {
-			condition=condition+String.format(" and acct_no='%s' ",acctNo);
+			condition=condition+String.format(" and acct_no in (%s) ",MgmUtil.addQuot(acctNo));
 		}
 
 		sql = String.format("select %s from %s where 1=1 %s ;",

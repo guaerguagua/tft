@@ -68,7 +68,7 @@ public class TotalInsData extends AbstractTableData {
 
 		valueList = new ArrayList();
 		Check check=new Check();
-		check.checkValue(Check.INSMCHNTID,insMchntCd);
+		check.checkValue(Check.INS_MCHNT_ID,insMchntCd);
 		if(!check.getRes()){
 			FRContext.getLogger().info(String.format(" param wrong!!!!!!!!"));
 			return;
@@ -128,7 +128,7 @@ public class TotalInsData extends AbstractTableData {
 		boolean isHis=false;
 
 		if(!insMchntCd.equals("")){
-			condition=condition+String.format(" and ins_mchnt_cd in %s ",MgmUtil.addQuot(insMchntCd));
+			condition=condition+String.format(" and ins_mchnt_cd in (%s) ",MgmUtil.addQuot(insMchntCd));
 		}
 
 		sql = String.format("select %s from %s where settle_dt='%s' %s limit 10000;",

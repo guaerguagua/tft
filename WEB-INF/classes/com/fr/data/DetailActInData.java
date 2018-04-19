@@ -68,12 +68,12 @@ public class DetailActInData extends AbstractTableData {
 			return;
 		}
 
-		String transCd 		=parameters[0].getValue().toString();
-		String startDateStr	=parameters[1].getValue().toString();
-		String endDateStr	=parameters[2].getValue().toString();
-		String acctNo		=parameters[3].getValue().toString();
-		String bussNo		=parameters[4].getValue().toString();
-		String phoneNo		=parameters[5].getValue().toString();
+		String transCd 		=	parameters[0].getValue().toString();
+		String startDateStr	=	parameters[1].getValue().toString();
+		String endDateStr	=	parameters[2].getValue().toString();
+		String acctNo		=	parameters[3].getValue().toString();
+		String bussNo		=	parameters[4].getValue().toString();
+		String phoneNo		=	parameters[5].getValue().toString();
 		FRContext.getLogger().info(String.format("\n transCd=[%s],startDateStr=[%s],endDateStr=[%s],acctNo=[%s],bussNo=[%s],phoneNo=[%s]",
 				transCd,startDateStr,endDateStr,acctNo,bussNo,phoneNo));
 
@@ -151,7 +151,7 @@ public class DetailActInData extends AbstractTableData {
 		String condition="";
 
 		if(!acctNo.equals("")){
-			condition=condition+String.format(" and acct_no='%s' ",acctNo);
+			condition=condition+String.format(" and acct_no in (%s) ",MgmUtil.addQuot(acctNo));
 		}
 		if(!bussNo.equals("")){
 			condition=condition+String.format(" and buss_no='%s' ",bussNo);

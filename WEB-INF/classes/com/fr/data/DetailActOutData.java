@@ -148,7 +148,7 @@ public class DetailActOutData extends AbstractTableData {
 		String condition="";
 
 		if(!acctNo.equals("")){
-			condition=condition+String.format(" and acct_no='%s' ",acctNo);
+			condition=condition+String.format(" and acct_no in (%s) ",MgmUtil.addQuot(acctNo));
 		}
 		if(!bussNo.equals("")){
 			condition=condition+String.format(" and buss_no='%s' ",bussNo);
