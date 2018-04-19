@@ -35,7 +35,7 @@ public class DbUtil {
     private static final String USERDBIP ="88.88.15.11";
     private static final String USERDBPORT ="3306";
     private static final String USERDBUSER ="test";
-    private static final String USERDBPASS ="test";
+    private static final String USERDBPASS = "test";
 
     private static Connection getConnection(String dbname,String username,String password,String ip,String port){
         String driverName = "com.mysql.jdbc.Driver";
