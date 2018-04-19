@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -76,6 +78,20 @@ public class StatisticsTradeExpend extends AbstractTableData {
         return ((Object[]) valueList.get(rowIndex))[columnIndex];
     }
 
+
+
+    private boolean checkInput(String settle,String transCd){
+        if(!MgmUtil.checkNumStr(settle,8)){
+            return false;
+        }
+        if(!transCd.equals("")){
+            if(!MgmUtil.checkNumStr(transCd,4)){
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      *
      */
@@ -88,7 +104,13 @@ public class StatisticsTradeExpend extends AbstractTableData {
         String settleDt = parameters[0].getValue().toString();
         String transCd = parameters[1].getValue().toString();
         FRContext.getLogger().info("settleDt:"+settleDt);
+        FRContext.getLogger().info("transCd:"+transCd);
         valueList = new ArrayList();
+
+        if(!checkInput(settleDt,transCd)) {
+            FRContext.getLogger().info("输入不合法，没有通过检验");
+            return ;
+        }
         String tablePrefix = "tbl_fcl_ck_acct_dtl";
         String suffix = MgmUtil.getPostfix(settleDt,tablePrefix);
         String tableName = tablePrefix+suffix;

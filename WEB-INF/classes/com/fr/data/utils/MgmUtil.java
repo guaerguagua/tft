@@ -9,6 +9,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MgmUtil {
 
@@ -255,5 +257,12 @@ public class MgmUtil {
         }
         String res = sb.toString()+dayStr;
         return res;
+    }
+
+    public static boolean checkNumStr(String str,int len){
+        String regx = String.format("^\\d{%d}$",len);
+        Pattern p = Pattern.compile(regx);
+        Matcher matcher=p.matcher(str);
+        return matcher.matches();
     }
 }
