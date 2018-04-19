@@ -5,6 +5,13 @@ import java.util.regex.Pattern;
 
 public class Check {
 
+    public final static String BUSSNO   ="bussNo";
+    public final static String TRANSCD  ="transCd";
+    public final static String PHONENO  ="phoneNo";
+    public final static String ACCTNO   ="acctNo";
+    public final static String USERID   ="userId";
+
+
     private boolean res=true;
 
     private void  setRes(boolean b){

@@ -130,15 +130,16 @@ public class MgmUtil {
 
     public static String addQuot(String transCds){
         String [] list_transCds=transCds.split(",");
+        String res="";
         if(list_transCds.length>0){
-            String res=String.format("'%s'",list_transCds[0]);
+            res=String.format("'%s'",list_transCds[0]);
 
             for(int i=1;i<list_transCds.length;i++){
                 res=String.format("%s,'%s'",res,list_transCds[i]);
             }
-            return res;
+
         }
-        return transCds;
+        return res;
     }
 
     public static String getDateStrDiff(String dateStr ,int diff) {

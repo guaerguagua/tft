@@ -65,7 +65,7 @@ public class DetailRequestData extends AbstractTableData {
 		if (valueList != null) {
 			return;
 		}
-
+		valueList = new ArrayList();
 		String transCd =parameters[0].getValue().toString();
 		String startDateStr=parameters[1].getValue().toString();
 		String endDateStr=parameters[2].getValue().toString();
@@ -75,11 +75,13 @@ public class DetailRequestData extends AbstractTableData {
 		FRContext.getLogger().info(String.format("\n transCd=[%s],startDateStr=[%s],endDateStr=[%s],acctNo=[%s],bussNo=[%s],phoneNo=[%s]",
 				transCd,startDateStr,endDateStr,acctNo,bussNo,phoneNo));
 
+
+
 		if(acctNo.equals("")&&!phoneNo.equals("")){
 			acctNo=MgmUtil.fromPhoneNoGetAcctNo(phoneNo);
 		}
 		//get db conn  and talbe Name
-		valueList = new ArrayList();
+
 		String dateStr=startDateStr;
 
 		while(!MgmUtil.date1after2(dateStr,endDateStr)){
