@@ -49,7 +49,7 @@
 <RowHeight defaultValue="723900">
 <![CDATA[1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[2933700,2743200,2743200,2400300,3810000,3556000,3390900,3771900,2743200,5524500,2743200]]></ColumnWidth>
+<![CDATA[2933700,3733800,2743200,2400300,3810000,3556000,3390900,3771900,2743200,5524500,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
@@ -185,7 +185,7 @@
 </C>
 <C c="4" r="1" s="3">
 <O t="DSColumn">
-<Attributes dsName="DetailOut" columnName="current_balance/100-trans_at/100"/>
+<Attributes dsName="DetailOut" columnName="current_balance/100+trans_at/100"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
@@ -311,17 +311,20 @@
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
+<regMsg>
+<![CDATA[手机号格式错误]]></regMsg>
 <TextAttr/>
+<Reg class="com.fr.form.ui.reg.MobileReg"/>
 <widgetValue>
 <O>
 <![CDATA[]]></O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="639" y="38" width="175" height="21"/>
+<BoundsAttr x="628" y="39" width="154" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
-<WidgetName name="Labelphone_no"/>
+<WidgetName name="Labelphone_no_c"/>
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
@@ -333,7 +336,79 @@
 <FRFont name="SimSun" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="559" y="38" width="80" height="21"/>
+<BoundsAttr x="550" y="39" width="67" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.TextEditor">
+<WidgetName name="buss_no"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<regMsg>
+<![CDATA[流水号格式错误]]></regMsg>
+<TextAttr/>
+<Reg class="com.fr.form.ui.reg.CustomReg">
+<CusReg ct="^\d{18,25}$"/>
+</Reg>
+<widgetValue>
+<O>
+<![CDATA[]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="360" y="39" width="175" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="Labelbuss_no_c"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<widgetValue>
+<O>
+<![CDATA[交易流水号]]></O>
+</widgetValue>
+<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+<border style="0" color="-723724"/>
+</InnerWidget>
+<BoundsAttr x="273" y="39" width="80" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.TextEditor">
+<WidgetName name="acct_no"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<EMSG>
+<![CDATA[输入为空，或账号格式不正确]]></EMSG>
+<regMsg>
+<![CDATA[账号格式错误]]></regMsg>
+<TextAttr/>
+<Reg class="com.fr.form.ui.reg.CustomReg">
+<CusReg ct="^\d{18,25}$"/>
+</Reg>
+<widgetValue>
+<O>
+<![CDATA[]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="89" y="39" width="175" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="Labelacct_no_c"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<widgetValue>
+<O>
+<![CDATA[账户号]]></O>
+</widgetValue>
+<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+<border style="0" color="-723724"/>
+</InnerWidget>
+<BoundsAttr x="9" y="39" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.DateEditor">
@@ -428,36 +503,6 @@ if(length==0){
 <BoundsAttr x="712" y="10" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
-<InnerWidget class="com.fr.form.ui.TextEditor">
-<WidgetName name="buss_no"/>
-<WidgetAttr description="">
-<PrivilegeControl/>
-</WidgetAttr>
-<TextAttr/>
-<widgetValue>
-<O>
-<![CDATA[]]></O>
-</widgetValue>
-</InnerWidget>
-<BoundsAttr x="374" y="38" width="175" height="21"/>
-</Widget>
-<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
-<InnerWidget class="com.fr.form.ui.Label">
-<WidgetName name="Labelbuss_no"/>
-<WidgetAttr description="">
-<PrivilegeControl/>
-</WidgetAttr>
-<widgetValue>
-<O>
-<![CDATA[交易流水号]]></O>
-</widgetValue>
-<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
-<FRFont name="SimSun" style="0" size="72"/>
-<border style="0" color="-723724"/>
-</InnerWidget>
-<BoundsAttr x="281" y="38" width="80" height="21"/>
-</Widget>
-<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.ComboBox">
 <WidgetName name="trans_cd"/>
 <WidgetAttr description="">
@@ -496,36 +541,6 @@ if(length==0){
 <border style="0" color="-723724"/>
 </InnerWidget>
 <BoundsAttr x="9" y="10" width="80" height="21"/>
-</Widget>
-<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
-<InnerWidget class="com.fr.form.ui.TextEditor">
-<WidgetName name="acct_no"/>
-<WidgetAttr description="">
-<PrivilegeControl/>
-</WidgetAttr>
-<TextAttr/>
-<widgetValue>
-<O>
-<![CDATA[]]></O>
-</widgetValue>
-</InnerWidget>
-<BoundsAttr x="89" y="38" width="175" height="21"/>
-</Widget>
-<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
-<InnerWidget class="com.fr.form.ui.Label">
-<WidgetName name="Labelacct_no"/>
-<WidgetAttr description="">
-<PrivilegeControl/>
-</WidgetAttr>
-<widgetValue>
-<O>
-<![CDATA[账户号]]></O>
-</widgetValue>
-<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
-<FRFont name="SimSun" style="0" size="72"/>
-<border style="0" color="-723724"/>
-</InnerWidget>
-<BoundsAttr x="9" y="38" width="80" height="21"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>

@@ -49,7 +49,7 @@
 <RowHeight defaultValue="723900">
 <![CDATA[1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[3505200,3886200,4076700,4305300,3810000,3556000,3390900,2743200,6096000,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<![CDATA[4114800,4914900,4076700,4305300,3810000,3556000,3390900,2895600,6096000,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
@@ -123,9 +123,7 @@
 <O t="DSColumn">
 <Attributes dsName="DetailLoad" columnName="settle_dt"/>
 <Complex/>
-<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper">
-<Attr divideMode="1"/>
-</RG>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
 </O>
 <PrivilegeControl/>
@@ -178,9 +176,9 @@
 </Present>
 <Expand dir="0"/>
 </C>
-<C c="4" r="1">
+<C c="4" r="1" s="3">
 <O t="DSColumn">
-<Attributes dsName="DetailLoad" columnName="current_balance/100-trans_at/100"/>
+<Attributes dsName="DetailLoad" columnName="trans_at/100+current_balance/100"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
@@ -188,7 +186,7 @@
 <PrivilegeControl/>
 <Expand dir="0"/>
 </C>
-<C c="5" r="1" s="3">
+<C c="5" r="1" s="4">
 <O t="DSColumn">
 <Attributes dsName="DetailLoad" columnName="trans_at/100"/>
 <Complex/>
@@ -200,7 +198,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="6" r="1">
+<C c="6" r="1" s="3">
 <O t="DSColumn">
 <Attributes dsName="DetailLoad" columnName="current_balance/100"/>
 <Complex/>
@@ -293,7 +291,10 @@
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
+<regMsg>
+<![CDATA[手机号格式错误]]></regMsg>
 <TextAttr/>
+<Reg class="com.fr.form.ui.reg.MobileReg"/>
 <widgetValue>
 <O>
 <![CDATA[]]></O>
@@ -415,7 +416,12 @@ if(length==0){
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
+<regMsg>
+<![CDATA[流水号格式错误]]></regMsg>
 <TextAttr/>
+<Reg class="com.fr.form.ui.reg.CustomReg">
+<CusReg ct="^\d{18,25}$"/>
+</Reg>
 <widgetValue>
 <O>
 <![CDATA[]]></O>
@@ -447,7 +453,12 @@ if(length==0){
 </WidgetAttr>
 <EMSG>
 <![CDATA[输入为空，或账号格式不正确]]></EMSG>
+<regMsg>
+<![CDATA[账号格式错误]]></regMsg>
 <TextAttr/>
+<Reg class="com.fr.form.ui.reg.CustomReg">
+<CusReg ct="^\d{18,25}$"/>
+</Reg>
 <widgetValue>
 <O>
 <![CDATA[]]></O>
@@ -469,7 +480,7 @@ if(length==0){
 <FRFont name="SimSun" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="27" y="39" width="62" height="21"/>
+<BoundsAttr x="18" y="39" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.ComboCheckBox">
@@ -554,13 +565,23 @@ if(length==0){
 <FRFont name="SimSun" style="0" size="72"/>
 <Background name="ColorBackground" color="-6697729"/>
 <Border>
-<Top style="1" color="-16777216"/>
-<Bottom style="1" color="-16777216"/>
-<Left style="1" color="-16777216"/>
-<Right style="1" color="-16777216"/>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
 </Border>
 </Style>
 <Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
 <FRFont name="SimSun" style="0" size="72"/>
 <Background name="NullBackground"/>
 <Border>

@@ -159,7 +159,7 @@ public class MgmUtil {
     public static String fromPhoneNoGetUserId(String phoneNo){
 
         String sql= String.format("select user_id from user_base where mobile_phone='%s' ;",phoneNo);
-
+        FRContext.getLogger().info("Query SQL  of ["+phoneNo+"] : \n" + sql+"\n");
         Connection conn = DbUtil.getUserConnection();
         try {
             Statement stmt = conn.createStatement();
@@ -183,7 +183,7 @@ public class MgmUtil {
     public static String fromUserIdGetAcctNos(String userId){
 
         String sql= String.format("select acct_no from tbl_fcl_ck_acct_balance where user_id='%s' ;",userId);
-
+        FRContext.getLogger().info("Query SQL  of ["+userId+"] : \n" + sql+"\n");
         Connection conn = DbUtil.getActConnection();
         try {
             Statement stmt = conn.createStatement();

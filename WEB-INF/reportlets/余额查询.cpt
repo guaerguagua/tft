@@ -150,6 +150,27 @@
 <Background name="ColorBackground" color="-1118482"/>
 <LCAttr vgap="0" hgap="0" compInterval="0"/>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.TextEditor">
+<WidgetName name="acct_no"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<EMSG>
+<![CDATA[输入为空，或账号格式不正确]]></EMSG>
+<regMsg>
+<![CDATA[账号格式错误]]></regMsg>
+<TextAttr/>
+<Reg class="com.fr.form.ui.reg.CustomReg">
+<CusReg ct="^\d{18,25}$"/>
+</Reg>
+<widgetValue>
+<O>
+<![CDATA[]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="385" y="11" width="175" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.FreeButton">
 <Listener event="click">
 <JavaScript class="com.fr.js.JavaScriptImpl">
@@ -178,22 +199,6 @@ if(length==0){
 <BoundsAttr x="579" y="11" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
-<InnerWidget class="com.fr.form.ui.TextEditor">
-<WidgetName name="acct_no"/>
-<WidgetAttr description="">
-<PrivilegeControl/>
-</WidgetAttr>
-<regMsg>
-<![CDATA[账户信息出错]]></regMsg>
-<TextAttr/>
-<Reg class="com.fr.form.ui.reg.LengthReg">
-<LenReg min="15" max="25"/>
-</Reg>
-<widgetValue/>
-</InnerWidget>
-<BoundsAttr x="376" y="11" width="175" height="21"/>
-</Widget>
-<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
 <WidgetName name="Labelacct_no"/>
 <WidgetAttr description="">
@@ -215,9 +220,11 @@ if(length==0){
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
+<regMsg>
+<![CDATA[用户号格式错误]]></regMsg>
 <TextAttr/>
-<Reg class="com.fr.form.ui.reg.LengthReg">
-<LenReg min="15" max="20"/>
+<Reg class="com.fr.form.ui.reg.CustomReg">
+<CusReg ct="^\d{18,20}$"/>
 </Reg>
 <widgetValue>
 <O>
@@ -256,6 +263,7 @@ if(length==0){
 <WidgetNameTagMap>
 <NameTag name="user_id" tag="用户号"/>
 <NameTag name="acct_no" tag="账户号:"/>
+<NameTag name="button0" tag="账户号:"/>
 </WidgetNameTagMap>
 </Layout>
 <DesignAttr width="960" height="37"/>

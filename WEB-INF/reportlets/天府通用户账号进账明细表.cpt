@@ -47,9 +47,9 @@
 <ColumnPrivilegeControl/>
 <RowPrivilegeControl/>
 <RowHeight defaultValue="723900">
-<![CDATA[723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<![CDATA[1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[3505200,3886200,2590800,4305300,3556000,2743200,6096000,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<![CDATA[3505200,3886200,2590800,4305300,4114800,3556000,3505200,2743200,6019800,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
@@ -85,13 +85,25 @@
 </C>
 <C c="4" r="0" s="0">
 <O>
+<![CDATA[交易前余额（元）]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="5" r="0" s="0">
+<O>
 <![CDATA[交易金额（元）]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="5" r="0" s="0">
+<C c="6" r="0" s="0">
+<O>
+<![CDATA[交易余额（元）]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="7" r="0" s="0">
 <O>
 <![CDATA[支付渠道]]></O>
 <PrivilegeControl/>
@@ -99,7 +111,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="6" r="0" s="0">
+<C c="8" r="0" s="0">
 <O>
 <![CDATA[交易时间]]></O>
 <PrivilegeControl/>
@@ -165,7 +177,17 @@
 </Present>
 <Expand dir="0"/>
 </C>
-<C c="4" r="1" s="2">
+<C c="4" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="DetailINAcct" columnName="current_balance/100-trans_at/100"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="5" r="1" s="2">
 <O t="DSColumn">
 <Attributes dsName="DetailINAcct" columnName="trans_at/100"/>
 <Complex/>
@@ -177,7 +199,17 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="5" r="1" s="1">
+<C c="6" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="DetailINAcct" columnName="current_balance/100"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="7" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="DetailINAcct" columnName="1"/>
 <Complex/>
@@ -202,7 +234,7 @@
 </CellInsertPolicy>
 <Expand dir="0"/>
 </C>
-<C c="6" r="1" s="1">
+<C c="8" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="DetailINAcct" columnName="rec_crt_ts"/>
 <Complex/>
@@ -218,103 +250,123 @@
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="2">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="2">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="2">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="2">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="2">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="2">
+<C c="7" r="2">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="2">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="3">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="3">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="3">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="3">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="3">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="3">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="3">
+<C c="7" r="3">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="3">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="4">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="4">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="4">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="4">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="4">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="4">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="4">
+<C c="7" r="4">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="4">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -324,138 +376,165 @@
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="5">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="5">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="5">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="5">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="5">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="5">
+<C c="7" r="5">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="5">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="6">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="6">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="6">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="6">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="6">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="6">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="6">
+<C c="7" r="6">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="6">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="7">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="7">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="7">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="7">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="7">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="7">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="7">
+<C c="7" r="7">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="7">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="8">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="8">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="8">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="8">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="8">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="8">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="8">
+<C c="7" r="8">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="8">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -465,808 +544,969 @@
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="9">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="9">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="9">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="9">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="9">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="9">
+<C c="7" r="9">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="9">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="10">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="10">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="10">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="10">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="10">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="10">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="10">
+<C c="7" r="10">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="10">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="11">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="11">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="11">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="11">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="11">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="11">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="11">
+<C c="7" r="11">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="11">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="12">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="12">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="12">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="12">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="12">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="12">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="12">
+<C c="7" r="12">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="12">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="13">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="13">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="13">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="13">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="13">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="13">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="13">
+<C c="7" r="13">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="13">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="14">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="14">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="14">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="14">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="14">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="14">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="14">
+<C c="7" r="14">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="14">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="15">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="15">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="15">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="15">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="15">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="15">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="15">
+<C c="7" r="15">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="15">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="16">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="16">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="16">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="16">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="16">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="16">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="16">
+<C c="7" r="16">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="16">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="17">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="17">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="17">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="17">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="17">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="17">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="17">
+<C c="7" r="17">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="17">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="18">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="18">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="18">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="18">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="18">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="18">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="18">
+<C c="7" r="18">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="18">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="19">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="19">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="19">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="19">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="19">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="19">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="19">
+<C c="7" r="19">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="19">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="20">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="20">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="20">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="20">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="20">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="20">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="20">
+<C c="7" r="20">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="20">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="21">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="21">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="21">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="21">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="21">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="21">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="21">
+<C c="7" r="21">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="21">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="22">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="22">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="22">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="22">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="22">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="22">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="22">
+<C c="7" r="22">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="22">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="23">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="23">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="23">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="23">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="23">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="23">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="23">
+<C c="7" r="23">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="23">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="24">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="24">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="24">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="24">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="24">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="24">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="24">
+<C c="7" r="24">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="24">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="25">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="25">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="25">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="25">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="25">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="25">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="25">
+<C c="7" r="25">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="25">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="26">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="26">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="26">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="26">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="26">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="26">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="26">
+<C c="7" r="26">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="26">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="27">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="27">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="27">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="27">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="27">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="27">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="27">
+<C c="7" r="27">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="27">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="28">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="28">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="28">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="28">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="28">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="28">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="28">
+<C c="7" r="28">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="28">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="29">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="29">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="29">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="29">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="29">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="29">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="29">
+<C c="7" r="29">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="29">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="30">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="30">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="30">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="30">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="30">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="30">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="30">
+<C c="7" r="30">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="30">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
 </C>
 <C c="0" r="31">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="1" r="31">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="2" r="31">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
 <C c="3" r="31">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-</C>
-<C c="4" r="31">
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
+<Expand/>
 </C>
 <C c="5" r="31">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="6" r="31">
+<C c="7" r="31">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Expand/>
 </C>
-<C c="12" r="31">
+<C c="8" r="31">
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="14" r="31">
 <PrivilegeControl/>
 <CellPageAttr/>
 <CellInsertPolicy>
@@ -1329,17 +1569,20 @@
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
+<regMsg>
+<![CDATA[手机号格式错误]]></regMsg>
 <TextAttr/>
+<Reg class="com.fr.form.ui.reg.MobileReg"/>
 <widgetValue>
 <O>
 <![CDATA[]]></O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="646" y="41" width="154" height="21"/>
+<BoundsAttr x="631" y="44" width="154" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
-<WidgetName name="Labelphone_no"/>
+<WidgetName name="Labelphone_no_c"/>
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
@@ -1351,7 +1594,79 @@
 <FRFont name="SimSun" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="568" y="41" width="67" height="21"/>
+<BoundsAttr x="553" y="44" width="67" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.TextEditor">
+<WidgetName name="buss_no"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<regMsg>
+<![CDATA[流水号格式错误]]></regMsg>
+<TextAttr/>
+<Reg class="com.fr.form.ui.reg.CustomReg">
+<CusReg ct="^\d{18,25}$"/>
+</Reg>
+<widgetValue>
+<O>
+<![CDATA[]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="363" y="44" width="175" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="Labelbuss_no_c"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<widgetValue>
+<O>
+<![CDATA[交易流水号]]></O>
+</widgetValue>
+<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+<border style="0" color="-723724"/>
+</InnerWidget>
+<BoundsAttr x="276" y="44" width="80" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.TextEditor">
+<WidgetName name="acct_no"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<EMSG>
+<![CDATA[输入为空，或账号格式不正确]]></EMSG>
+<regMsg>
+<![CDATA[账号格式错误]]></regMsg>
+<TextAttr/>
+<Reg class="com.fr.form.ui.reg.CustomReg">
+<CusReg ct="^\d{18,25}$"/>
+</Reg>
+<widgetValue>
+<O>
+<![CDATA[]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="92" y="44" width="175" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="Labelacct_no_c"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<widgetValue>
+<O>
+<![CDATA[账户号]]></O>
+</widgetValue>
+<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+<border style="0" color="-723724"/>
+</InnerWidget>
+<BoundsAttr x="12" y="44" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.DateEditor">
@@ -1446,36 +1761,6 @@ if(length==0){
 <BoundsAttr x="720" y="11" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
-<InnerWidget class="com.fr.form.ui.TextEditor">
-<WidgetName name="buss_no"/>
-<WidgetAttr description="">
-<PrivilegeControl/>
-</WidgetAttr>
-<TextAttr/>
-<widgetValue>
-<O>
-<![CDATA[]]></O>
-</widgetValue>
-</InnerWidget>
-<BoundsAttr x="362" y="41" width="175" height="21"/>
-</Widget>
-<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
-<InnerWidget class="com.fr.form.ui.Label">
-<WidgetName name="Labelbuss_no"/>
-<WidgetAttr description="">
-<PrivilegeControl/>
-</WidgetAttr>
-<widgetValue>
-<O>
-<![CDATA[交易流水号]]></O>
-</widgetValue>
-<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
-<FRFont name="SimSun" style="0" size="72"/>
-<border style="0" color="-723724"/>
-</InnerWidget>
-<BoundsAttr x="275" y="41" width="80" height="21"/>
-</Widget>
-<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.ComboCheckBox">
 <WidgetName name="trans_cd"/>
 <WidgetAttr description="">
@@ -1518,43 +1803,13 @@ if(length==0){
 </InnerWidget>
 <BoundsAttr x="12" y="11" width="81" height="21"/>
 </Widget>
-<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
-<InnerWidget class="com.fr.form.ui.TextEditor">
-<WidgetName name="acct_no"/>
-<WidgetAttr description="">
-<PrivilegeControl/>
-</WidgetAttr>
-<TextAttr/>
-<widgetValue>
-<O>
-<![CDATA[]]></O>
-</widgetValue>
-</InnerWidget>
-<BoundsAttr x="93" y="41" width="175" height="21"/>
-</Widget>
-<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
-<InnerWidget class="com.fr.form.ui.Label">
-<WidgetName name="Labelacct_no"/>
-<WidgetAttr description="">
-<PrivilegeControl/>
-</WidgetAttr>
-<widgetValue>
-<O>
-<![CDATA[账户号]]></O>
-</widgetValue>
-<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
-<FRFont name="SimSun" style="0" size="72"/>
-<border style="0" color="-723724"/>
-</InnerWidget>
-<BoundsAttr x="12" y="41" width="63" height="21"/>
-</Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
 <Widget widgetName="trans_cd"/>
 <Widget widgetName="startday"/>
 <Widget widgetName="endday"/>
 <Widget widgetName="search"/>
-<Widget widgetName="acct_no"/>
+<Widget widgetName="acct_no_c"/>
 <Widget widgetName="buss_no"/>
 <Widget widgetName="phone_no"/>
 </MobileWidgetList>
@@ -1568,11 +1823,11 @@ if(length==0){
 <NameTag name="phone_no" tag="手机号"/>
 <NameTag name="startday" tag="日期"/>
 <NameTag name="endday" tag="~"/>
-<NameTag name="acct_no" tag="账户号"/>
+<NameTag name="acct_no_c" tag="账户号"/>
 <NameTag name="buss_no" tag="交易流水号"/>
 </WidgetNameTagMap>
 </Layout>
-<DesignAttr width="820" height="70"/>
+<DesignAttr width="820" height="73"/>
 </ParameterUI>
 </ReportParameterAttr>
 <StyleList>

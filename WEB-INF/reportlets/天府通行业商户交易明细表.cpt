@@ -286,7 +286,12 @@
 <![CDATA[交易流水号不能为空]]></EMSG>
 <allowBlank>
 <![CDATA[false]]></allowBlank>
+<regMsg>
+<![CDATA[流水号格式错误]]></regMsg>
 <TextAttr allowBlank="false"/>
+<Reg class="com.fr.form.ui.reg.CustomReg">
+<CusReg ct="^\d{15,25}$"/>
+</Reg>
 <widgetValue>
 <O>
 <![CDATA[]]></O>
