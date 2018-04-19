@@ -83,7 +83,9 @@
 <O t="DSColumn">
 <Attributes dsName="程序1" columnName="ins_mchnt_cd"/>
 <Complex/>
-<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper">
+<Attr divideMode="1"/>
+</RG>
 <Parameters/>
 </O>
 <PrivilegeControl/>
@@ -109,7 +111,7 @@
 </CustomDictAttr>
 </Dictionary>
 </Present>
-<Expand dir="0"/>
+<Expand/>
 </C>
 <C c="2" r="1" s="2">
 <O t="DSColumn">
@@ -121,7 +123,7 @@
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-<Expand dir="0"/>
+<Expand/>
 </C>
 <C c="3" r="1" s="2">
 <O t="DSColumn">
@@ -133,7 +135,7 @@
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-<Expand dir="0"/>
+<Expand/>
 </C>
 <C c="4" r="1" s="2">
 <O t="DSColumn">
@@ -145,7 +147,7 @@
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-<Expand dir="0"/>
+<Expand/>
 </C>
 <C c="5" r="1" s="2">
 <O t="DSColumn">
@@ -157,7 +159,7 @@
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-<Expand dir="0"/>
+<Expand/>
 </C>
 </CellElementList>
 <ReportAttrSet>
