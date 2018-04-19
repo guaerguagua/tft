@@ -1,6 +1,7 @@
 package com.fr.data;
 
 import com.fr.base.FRContext;
+import com.fr.data.utils.Check;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
 
@@ -77,6 +78,17 @@ public class StatisticsUserAct extends AbstractTableData {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(new  java.util.Date());
     }
+
+    private boolean checkInput(String begin,String end){
+        if(!MgmUtil.checkNumStr(begin,8)){
+            return false;
+        }
+        if(!MgmUtil.checkNumStr(end,8)){
+            return false;
+        }
+        return true;
+    }
+
     /**
      *
      */
@@ -90,12 +102,23 @@ public class StatisticsUserAct extends AbstractTableData {
         String end   = parameters[1].getValue().toString();
         FRContext.getLogger().info("begin:"+begin);
         FRContext.getLogger().info("end:"+end);
+        valueList = new ArrayList();
+
+        Check c = new Check();
+        c.checkValue(Check.SETTLE_DT_ID,begin)
+                .checkValue(Check.SETTLE_DT_ID,end);
+
+        if(!c.getRes()) {
+            FRContext.getLogger().info("输入不合法，没有通过检验");
+            return ;
+        }
+
         String tablePrefix = "tbl_fcl_ck_acct_balance_hist";
         String beginTableName = tablePrefix+String.format("%d_%03d",
                 MgmUtil.getHisLogNo(begin),MgmUtil.getDayOfYear(begin));
         String endTableName = tablePrefix+String.format("%d_%03d",
                 MgmUtil.getHisLogNo(end),MgmUtil.getDayOfYear(end));
-        valueList = new ArrayList();
+
         Object[] objects = new Object[4];
         colNum=4;
         String sql = String.format("select count(*) as begin_acct_count,cast(sum(begin_balance)/100 as decimal(20,2)) as sum_begin_balance from %s;",beginTableName);

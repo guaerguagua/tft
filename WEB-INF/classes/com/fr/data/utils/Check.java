@@ -12,6 +12,7 @@ public class Check {
     public final static int USER_ID_ID   =5;
     public final static int INS_MCHNT_ID   =6;
     public final static int INS_ACCT_NO_ID    =7;
+    public final static int SETTLE_DT_ID    =8;
 
     private final static int LEN_BUSS_NO =20;
     private final static int LEN_TRANS_CD =4;
@@ -20,6 +21,7 @@ public class Check {
     private final static int LEN_USER_ID =16;
     private final static int LEN_INS_MCHNT =15;
     private final static int LEN_INS_ACCT_NO =6;
+    private final static int LEN_SETTLE_DT =8;
 
 
     private boolean res=true;
@@ -65,6 +67,9 @@ public class Check {
         }
         return res;
     }
+    private boolean checkSettleDt(String settle){
+        return checkNumStr(settle.replaceAll("-",""),LEN_SETTLE_DT);
+    }
     private boolean checkInput(int param,String value){
         boolean res=false;
         switch (param){
@@ -89,7 +94,9 @@ public class Check {
             case INS_ACCT_NO_ID:
                 res=checkLists(value,LEN_INS_ACCT_NO);
                 break;
-
+            case SETTLE_DT_ID:
+                res=checkSettleDt(value);
+                break;
             default:
                 res=false;
         }
