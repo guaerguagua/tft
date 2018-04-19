@@ -66,24 +66,28 @@ public class DetailActOutData extends AbstractTableData {
 			return;
 		}
 
-		String transCd =parameters[0].getValue().toString();
-		String startDateStr=parameters[1].getValue().toString();
-		String endDateStr=parameters[2].getValue().toString();
-		String acctNo=parameters[3].getValue().toString();
-		String bussNo=parameters[4].getValue().toString();
-		String phoneNo=parameters[5].getValue().toString();
+		String transCd 		=parameters[0].getValue().toString();
+		String startDateStr	=parameters[1].getValue().toString();
+		String endDateStr	=parameters[2].getValue().toString();
+		String acctNo		=parameters[3].getValue().toString();
+		String bussNo		=parameters[4].getValue().toString();
+		String phoneNo		=parameters[5].getValue().toString();
 		FRContext.getLogger().info(String.format("\n transCd=[%s],startDateStr=[%s],endDateStr=[%s],acctNo=[%s],bussNo=[%s],phoneNo=[%s]",
 				transCd,startDateStr,endDateStr,acctNo,bussNo,phoneNo));
 
 		valueList = new ArrayList();
 		Check check=new Check();
-		check.checkValue(Check.BUSSNO,bussNo).checkValue(Check.ACCTNO,acctNo).checkValue(Check.PHONENO,phoneNo).checkValue(Check.TRANSCD,transCd);
+		check.checkValue(Check.BUSS_NO_ID,bussNo).checkValue(Check.ACCT_NO_ID,acctNo).checkValue(Check.PHONE_NO_ID,phoneNo).checkValue(Check.TRANS_CD_ID,transCd);
 		if(!check.getRes()){
 			FRContext.getLogger().info(String.format(" param wrong!!!!!!!!"));
 			return;
 		}
 		if(acctNo.equals("")&&!phoneNo.equals("")){
 			acctNo=MgmUtil.fromPhoneNoGetAcctNo(phoneNo);
+		}
+
+		if(acctNo.length()+bussNo.length()==0){
+			return;
 		}
 		//get db conn  and talbe Name
 		String dateStr=startDateStr;

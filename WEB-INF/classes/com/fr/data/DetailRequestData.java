@@ -77,7 +77,7 @@ public class DetailRequestData extends AbstractTableData {
 
 		valueList = new ArrayList();
 		Check check=new Check();
-		check.checkValue(Check.BUSSNO,bussNo).checkValue(Check.ACCTNO,acctNo).checkValue(Check.PHONENO,phoneNo).checkValue(Check.TRANSCD,transCd);
+		check.checkValue(Check.BUSS_NO_ID,bussNo).checkValue(Check.ACCT_NO_ID,acctNo).checkValue(Check.PHONE_NO_ID,phoneNo).checkValue(Check.TRANS_CD_ID,transCd);
 		if(!check.getRes()){
 			FRContext.getLogger().info(String.format(" param wrong!!!!!!!!"));
 			return;

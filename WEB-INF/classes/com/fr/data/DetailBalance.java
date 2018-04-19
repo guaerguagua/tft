@@ -66,17 +66,24 @@ public class DetailBalance extends AbstractTableData {
 			return;
 		}
 
-		String userId =parameters[0].getValue().toString();
-		String acctNo=parameters[1].getValue().toString();
+		String userId	=parameters[0].getValue().toString();
+		String acctNo	=parameters[1].getValue().toString();
+		String phoneNo	=parameters[2].getValue().toString();
 
 		FRContext.getLogger().info("\nuserId: " + userId+
-					"\nacctNo:"+acctNo+"\n");
-		valueList = new ArrayList();
+					"\nacctNo:"+acctNo+"\nphoneNo"+phoneNo);
 		valueList = new ArrayList();
 		Check check=new Check();
-		check.checkValue(Check.ACCTNO,acctNo).checkValue(Check.USERID,userId);
+		check.checkValue(Check.ACCT_NO_ID,acctNo).checkValue(Check.USER_ID_ID,userId).checkValue(Check.PHONE_NO_ID,phoneNo);
 		if(!check.getRes()){
 			FRContext.getLogger().info(String.format(" param wrong!!!!!!!!"));
+			return;
+		}
+
+		if(acctNo.equals("")&&!phoneNo.equals("")){
+			acctNo=MgmUtil.fromPhoneNoGetAcctNo(phoneNo);
+		}
+		if(acctNo.length()+userId.length()==0){
 			return;
 		}
 		//get db conn  and talbe Name
@@ -127,7 +134,7 @@ public class DetailBalance extends AbstractTableData {
 			condition=condition+String.format(" and user_id='%s' ",userId);
 		}
 		if(!acctNo.equals("")){
-			condition=condition+String.format(" and acct_no='%s' ",acctNo);
+			condition=condition+String.format(" and acct_no in %s ",MgmUtil.addQuot(acctNo));
 		}
 
 		String sql = String.format("select %s from %s where 1=1 %s limit 100000;",

@@ -5,12 +5,21 @@ import java.util.regex.Pattern;
 
 public class Check {
 
-    public final static int BUSSNO   =1;
-    public final static int TRANSCD  =2;
-    public final static int PHONENO  =3;
-    public final static int ACCTNO   =4;
-    public final static int USERID   =5;
-    public final static int INSMCHNTID    =6;
+    public final static int BUSS_NO_ID   =1;
+    public final static int TRANS_CD_ID  =2;
+    public final static int PHONE_NO_ID  =3;
+    public final static int ACCT_NO_ID   =4;
+    public final static int USER_ID_ID   =5;
+    public final static int INS_MCHNT_ID   =6;
+    public final static int INS_ACCT_NO_ID    =7;
+
+    private final static int LEN_BUSS_NO =20;
+    private final static int LEN_TRANS_CD =4;
+    private final static int LEN_PHONE_NO =11;
+    private final static int LEN_ACCT_NO =19;
+    private final static int LEN_USER_ID =16;
+    private final static int LEN_INS_MCHNT =15;
+    private final static int LEN_INS_ACCT_NO =6;
 
 
     private boolean res=true;
@@ -59,23 +68,26 @@ public class Check {
     private boolean checkInput(int param,String value){
         boolean res=false;
         switch (param){
-            case BUSSNO:
-                res=checkNumStr(value,20);
+            case BUSS_NO_ID:
+                res=checkNumStr(value,LEN_BUSS_NO);
                 break;
-            case TRANSCD:
-                res=checkLists(value,4);
+            case TRANS_CD_ID:
+                res=checkLists(value,LEN_TRANS_CD);
                 break;
-            case ACCTNO:
-                res=checkNumStr(value,19);
+            case ACCT_NO_ID:
+                res=checkNumStr(value,LEN_ACCT_NO);
                 break;
-            case USERID:
-                res=checkNumStr(value,16);
+            case USER_ID_ID:
+                res=checkNumStr(value,LEN_USER_ID);
                 break;
-            case PHONENO:
-                res=checkNumStr(value,11);
+            case PHONE_NO_ID:
+                res=checkNumStr(value,LEN_PHONE_NO);
                 break;
-            case INSMCHNTID:
-                res=checkLists(value,15);
+            case INS_MCHNT_ID:
+                res=checkLists(value,LEN_INS_MCHNT);
+                break;
+            case INS_ACCT_NO_ID:
+                res=checkLists(value,LEN_INS_ACCT_NO);
                 break;
 
             default:

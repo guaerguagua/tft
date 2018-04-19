@@ -64,19 +64,24 @@ public class DetailInsTransData extends AbstractTableData {
 			return;
 		}
 		// get parame
-		String transCd	= parameters[0].getValue().toString();
-		String dateStr	= parameters[1].getValue().toString();
-		String acctNo	= parameters[2].getValue().toString();
-		String bussNo	= parameters[3].getValue().toString();
+		String transCd		= parameters[0].getValue().toString();
+		String dateStr		= parameters[1].getValue().toString();
+		String insAcctNo	= parameters[2].getValue().toString();
+		String bussNo		= parameters[3].getValue().toString();
 		FRContext.getLogger().info("\ntrans_cd: " + transCd+
-				"\ndateStr:"+dateStr+"\nacctNo"+acctNo+"\nbussNo"+bussNo+"\n");
+				"\ndateStr:"+dateStr+"\nacctNo"+insAcctNo+"\nbussNo"+bussNo+"\n");
 		valueList = new ArrayList();
 		Check check=new Check();
-		check.checkValue(Check.BUSSNO,bussNo).checkValue(Check.ACCTNO,acctNo).checkValue(Check.TRANSCD,transCd);
+		check.checkValue(Check.BUSS_NO_ID,bussNo).checkValue(Check.INS_ACCT_NO_ID,insAcctNo).checkValue(Check.TRANS_CD_ID,transCd);
 		if(!check.getRes()){
 			FRContext.getLogger().info(String.format(" param wrong!!!!!!!!"));
 			return;
 		}
+
+		if(bussNo.equals("")){
+			return;
+		}
+
 		//get db conn  and talbe Name
 		String tablePostfix=MgmUtil.getPostfix(dateStr,tablePrefix);
 
@@ -88,7 +93,7 @@ public class DetailInsTransData extends AbstractTableData {
 		}
 		// create sql
 		String tableName=tablePrefix+tablePostfix;
-		String sql = getSql(transCd,acctNo,bussNo,tableName);
+		String sql = getSql(transCd,insAcctNo,bussNo,tableName);
 		FRContext.getLogger().info("Query SQL of DetailInsTransData: \n" + sql+"\n");
 
 		try {
@@ -121,12 +126,12 @@ public class DetailInsTransData extends AbstractTableData {
 	}
 
 
-	public String getSql(String transCd,String acctNo,String bussNo,String tableName){
+	public String getSql(String transCd,String insAcctNo,String bussNo,String tableName){
 
 		String condition="";
 
-		if(!acctNo.equals("")){
-			condition=condition+String.format(" and acct_no in (%s) ",MgmUtil.addQuot(acctNo));
+		if(!insAcctNo.equals("")){
+			condition=condition+String.format(" and acct_no in (%s) ",MgmUtil.addQuot(insAcctNo));
 		}
 		if(!bussNo.equals("")){
 			condition=condition+String.format(" and buss_no='%s' ",bussNo);

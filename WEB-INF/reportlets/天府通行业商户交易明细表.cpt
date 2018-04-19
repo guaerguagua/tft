@@ -14,7 +14,7 @@
 <![CDATA[1521993600000]]></O>
 </Parameter>
 <Parameter>
-<Attributes name="acct_no"/>
+<Attributes name="ins_acct_no"/>
 <O>
 <![CDATA[]]></O>
 </Parameter>
@@ -265,7 +265,7 @@
 <LCAttr vgap="0" hgap="0" compInterval="0"/>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.parameter.FormSubmitButton">
-<WidgetName name="Search_c"/>
+<WidgetName name="Search"/>
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
@@ -317,7 +317,7 @@
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.ComboCheckBox">
-<WidgetName name="acct_no"/>
+<WidgetName name="ins_acct_no"/>
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
@@ -434,7 +434,7 @@
 <MobileWidgetList>
 <Widget widgetName="trans_cd"/>
 <Widget widgetName="day"/>
-<Widget widgetName="acct_no"/>
+<Widget widgetName="ins_acct_no"/>
 <Widget widgetName="buss_no"/>
 </MobileWidgetList>
 <Display display="true"/>
@@ -444,7 +444,7 @@
 <NameTagModified/>
 <WidgetNameTagMap>
 <NameTag name="trans_cd" tag="交易类型"/>
-<NameTag name="acct_no" tag="机构"/>
+<NameTag name="ins_acct_no" tag="机构"/>
 <NameTag name="day" tag="日期"/>
 <NameTag name="buss_no" tag="交易流水号"/>
 </WidgetNameTagMap>
