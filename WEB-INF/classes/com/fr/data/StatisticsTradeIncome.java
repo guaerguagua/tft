@@ -1,6 +1,7 @@
 package com.fr.data;
 
 import com.fr.base.FRContext;
+import com.fr.data.utils.Check;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
 
@@ -75,6 +76,8 @@ public class StatisticsTradeIncome extends AbstractTableData {
         return ((Object[]) valueList.get(rowIndex))[columnIndex];
     }
 
+
+
     /**
      *
      */
@@ -88,6 +91,16 @@ public class StatisticsTradeIncome extends AbstractTableData {
         String transCd = parameters[1].getValue().toString();
         FRContext.getLogger().info("settleDt:"+settleDt);
         valueList = new ArrayList();
+
+        Check c = new Check();
+        c.checkValue(Check.TRANS_CD_ID,transCd)
+                .checkValue(Check.SETTLE_DT_ID,settleDt);
+
+        if(!c.getRes()) {
+            FRContext.getLogger().info("输入不合法，没有通过检验");
+            return ;
+        }
+
         String tablePrefix = "tbl_fcl_ck_acct_dtl";
         String suffix = MgmUtil.getPostfix(settleDt,tablePrefix);
         String tableName = tablePrefix+suffix;

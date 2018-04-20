@@ -1,6 +1,7 @@
 package com.fr.data;
 
 import com.fr.base.FRContext;
+import com.fr.data.utils.Check;
 import com.fr.data.utils.DbUtil;
 import com.fr.data.utils.MgmUtil;
 
@@ -80,17 +81,7 @@ public class StatisticsTradeExpend extends AbstractTableData {
 
 
 
-    private boolean checkInput(String settle,String transCd){
-        if(!MgmUtil.checkNumStr(settle,8)){
-            return false;
-        }
-        if(!transCd.equals("")){
-            if(!MgmUtil.checkNumStr(transCd,4)){
-                return false;
-            }
-        }
-        return true;
-    }
+
 
     /**
      *
@@ -107,10 +98,15 @@ public class StatisticsTradeExpend extends AbstractTableData {
         FRContext.getLogger().info("transCd:"+transCd);
         valueList = new ArrayList();
 
-        if(!checkInput(settleDt,transCd)) {
+        Check c = new Check();
+        c.checkValue(Check.SETTLE_DT_ID,transCd)
+                .checkValue(Check.SETTLE_DT_ID,settleDt);
+
+        if(!c.getRes()) {
             FRContext.getLogger().info("输入不合法，没有通过检验");
             return ;
         }
+
         String tablePrefix = "tbl_fcl_ck_acct_dtl";
         String suffix = MgmUtil.getPostfix(settleDt,tablePrefix);
         String tableName = tablePrefix+suffix;
