@@ -137,7 +137,11 @@ public class DetailBalance extends AbstractTableData {
 			condition=condition+String.format(" and acct_no in %s ",MgmUtil.addQuot(acctNo));
 		}
 
-		String sql = String.format("select %s from %s where 1=1 %s limit 100000;",
+		if(userId.length()+acctNo.length()==0){
+			condition=" limit 0 ";
+		}
+
+		String sql = String.format("select %s from %s where 1=1 %s ;",
 							checkList,tableName,condition);
 
 		return  sql;
