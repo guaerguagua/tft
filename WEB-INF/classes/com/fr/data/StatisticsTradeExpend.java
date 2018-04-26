@@ -99,7 +99,7 @@ public class StatisticsTradeExpend extends AbstractTableData {
         valueList = new ArrayList();
 
         Check c = new Check();
-        c.checkValue(Check.SETTLE_DT_ID,transCd)
+        c.checkValue(Check.TRANS_CD_ID,transCd)
                 .checkValue(Check.SETTLE_DT_ID,settleDt);
 
         if(!c.getRes()) {
@@ -113,13 +113,13 @@ public class StatisticsTradeExpend extends AbstractTableData {
         FRContext.getLogger().info("suffix:"+suffix);
         String sql = null;
         if(transCd.equals("")) {
-            sql = String.format("select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd = '1403'\n" +
+            sql = String.format("select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd = '1403' group by ins_mchnt_cd\n" +
                     "union ALL\n" +
-                    "select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd = '1407'\n" +
+                    "select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd = '1407' group by ins_mchnt_cd\n" +
                     "union ALL\n" +
-                    "select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd = '1409';", tableName, tableName,tableName);
+                    "select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd = '1409' group by ins_mchnt_cd;", tableName, tableName,tableName);
         }else{
-            sql = String.format("select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='%s';", tableName, transCd);
+            sql = String.format("select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='%s' group by ins_mchnt_cd;", tableName, transCd);
         }
         //
         FRContext.getLogger().info("Query SQL of Param\n"  + sql);
