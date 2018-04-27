@@ -17,13 +17,14 @@ public class MgmUtil {
     //ri qie biao
     public static String getCurrNo(){
         String sql = "select curr_log_no from tbl_mgm_settle_dt;";
-
+        String currLogNo="";
         Connection conn = DbUtil.getMgmConnection();
         try {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            rs.next();
-            String currLogNo=rs.getObject(1).toString();
+            if(rs.next()) {
+                currLogNo = rs.getObject(1).toString();
+            }
             //release resouce
             rs.close();
             stmt.close();
@@ -103,13 +104,14 @@ public class MgmUtil {
         String tableName=tableNamePrefix+yesLogNo;
 
         String sql= "select count(*) from "+tableName+";";
-
+        String countNumStr="";
         Connection conn = DbUtil.getActConnection();
         try {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            rs.next();
-            String countNumStr=rs.getObject(1).toString();
+            if(rs.next()) {
+                countNumStr = rs.getObject(1).toString();
+            }
             //release resouce
             rs.close();
             stmt.close();
@@ -164,11 +166,13 @@ public class MgmUtil {
         String sql= String.format("select user_id from user_base where mobile_phone='%s' ;",phoneNo);
         FRContext.getLogger().info("Query SQL  of ["+phoneNo+"] : \n" + sql+"\n");
         Connection conn = DbUtil.getUserConnection();
+        String userId="";
         try {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            rs.next();
-            String userId=rs.getObject(1).toString();
+            if(rs.next()) {
+                userId = rs.getObject(1).toString();
+            }
             //release resouce
             rs.close();
             stmt.close();
@@ -201,7 +205,9 @@ public class MgmUtil {
             stmt.close();
             conn.close();
             FRContext.getLogger().info(sql);
-            return acct.substring(1,acct.length());
+            if(!acct.equals("")) {
+                return acct.substring(1, acct.length());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
