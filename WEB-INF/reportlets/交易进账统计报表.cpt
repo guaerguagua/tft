@@ -29,7 +29,7 @@
 <RowHeight defaultValue="723900">
 <![CDATA[1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[5105400,4152900,4229100,4013200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<![CDATA[5105400,4152900,4229100,4013200,2895600,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
@@ -105,7 +105,7 @@
 </C>
 <C c="1" r="1" s="1">
 <O t="DSColumn">
-<Attributes dsName="交易进账统计表" columnName="trade_chanel"/>
+<Attributes dsName="交易进账统计表" columnName="charChan"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
@@ -116,7 +116,13 @@
 <Present class="com.fr.base.present.DictPresent">
 <Dictionary class="com.fr.data.impl.CustomDictionary">
 <CustomDictAttr>
-<Dict key="unionpay" value="银联"/>
+<Dict key="1" value="支付宝"/>
+<Dict key="2" value="微信"/>
+<Dict key="3" value="本地账户"/>
+<Dict key="4" value="未知渠道"/>
+<Dict key="5" value="银联SDK控件"/>
+<Dict key="6" value="银联快捷支付"/>
+<Dict key="7" value="天府通内部赠送"/>
 </CustomDictAttr>
 </Dictionary>
 </Present>
@@ -161,7 +167,9 @@
 </CellElementList>
 <ReportAttrSet>
 <ReportSettings headerHeight="0" footerHeight="0">
-<PaperSetting/>
+<PaperSetting orientation="1">
+<Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
+</PaperSetting>
 </ReportSettings>
 <Header reportPageType="0">
 <Background name="NullBackground"/>

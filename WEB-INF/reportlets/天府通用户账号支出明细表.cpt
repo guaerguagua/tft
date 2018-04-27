@@ -49,7 +49,7 @@
 <RowHeight defaultValue="723900">
 <![CDATA[1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[2933700,3733800,2743200,2400300,3810000,3556000,3390900,3771900,2743200,5524500,2743200]]></ColumnWidth>
+<![CDATA[2933700,3733800,2743200,2400300,3810000,3556000,3390900,3771900,2743200,2743200,5524500,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
@@ -120,6 +120,23 @@
 <Expand/>
 </C>
 <C c="9" r="0" s="0">
+<O>
+<![CDATA[出入口]]></O>
+<PrivilegeControl/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="1" value="天府通APP"/>
+<Dict key="2" value="天府通微信小程序"/>
+<Dict key="3" value="其他"/>
+<Dict key="4" value="天府通支付宝小程序"/>
+<Dict key="5" value="天府通内部赠送"/>
+</CustomDictAttr>
+</Dictionary>
+</Present>
+<Expand dir="0"/>
+</C>
+<C c="10" r="0" s="0">
 <O>
 <![CDATA[交易时间]]></O>
 <PrivilegeControl/>
@@ -248,6 +265,16 @@
 <Expand dir="0"/>
 </C>
 <C c="9" r="1" s="2">
+<O t="DSColumn">
+<Attributes dsName="DetailOut" columnName="passageWay"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="10" r="1" s="2">
 <O t="DSColumn">
 <Attributes dsName="DetailOut" columnName="rec_crt_ts"/>
 <Complex/>
@@ -575,10 +602,10 @@ if(length==0){
 <FRFont name="SimSun" style="0" size="72"/>
 <Background name="ColorBackground" color="-6697729"/>
 <Border>
-<Top style="1" color="-16777216"/>
-<Bottom style="1" color="-16777216"/>
-<Left style="1" color="-16777216"/>
-<Right style="1" color="-16777216"/>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
 </Border>
 </Style>
 <Style imageLayout="1">

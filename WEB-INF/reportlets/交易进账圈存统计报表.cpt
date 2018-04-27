@@ -29,7 +29,7 @@
 <RowHeight defaultValue="723900">
 <![CDATA[1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[4800600,4229100,4229100,4076700,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<![CDATA[4800600,4229100,4229100,4076700,2933700,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
@@ -105,7 +105,7 @@
 </C>
 <C c="1" r="1" s="1">
 <O t="DSColumn">
-<Attributes dsName="交易进账圈存统计表" columnName="trade_chanel"/>
+<Attributes dsName="交易进账圈存统计表" columnName="passageWay"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
@@ -116,9 +116,11 @@
 <Present class="com.fr.base.present.DictPresent">
 <Dictionary class="com.fr.data.impl.CustomDictionary">
 <CustomDictAttr>
-<Dict key="1" value="中广APP"/>
-<Dict key="2" value="微信小程序"/>
+<Dict key="1" value="天府通APP"/>
+<Dict key="2" value="天府通微信小程序"/>
 <Dict key="3" value="其他"/>
+<Dict key="4" value="天府通支付宝小程序"/>
+<Dict key="5" value="天府通内部赠送"/>
 </CustomDictAttr>
 </Dictionary>
 </Present>

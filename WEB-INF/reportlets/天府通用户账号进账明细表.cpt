@@ -49,7 +49,7 @@
 <RowHeight defaultValue="723900">
 <![CDATA[1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[3505200,3886200,2590800,4305300,4114800,3556000,3505200,2743200,6019800,2743200,2743200]]></ColumnWidth>
+<![CDATA[3505200,3886200,2590800,4305300,4114800,3556000,3505200,2743200,2743200,6019800,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
@@ -112,6 +112,11 @@
 <Expand/>
 </C>
 <C c="8" r="0" s="0">
+<O>
+<![CDATA[出入口]]></O>
+<PrivilegeControl/>
+</C>
+<C c="9" r="0" s="0">
 <O>
 <![CDATA[交易时间]]></O>
 <PrivilegeControl/>
@@ -211,7 +216,7 @@
 </C>
 <C c="7" r="1" s="1">
 <O t="DSColumn">
-<Attributes dsName="DetailINAcct" columnName="1"/>
+<Attributes dsName="DetailINAcct" columnName="charChan"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
@@ -222,7 +227,13 @@
 <Present class="com.fr.base.present.DictPresent">
 <Dictionary class="com.fr.data.impl.CustomDictionary">
 <CustomDictAttr>
-<Dict key="1" value="银联支付"/>
+<Dict key="1" value="支付宝"/>
+<Dict key="2" value="微信"/>
+<Dict key="3" value="本地账户"/>
+<Dict key="4" value="未知渠道"/>
+<Dict key="5" value="银联SDK控件"/>
+<Dict key="6" value="银联快捷支付"/>
+<Dict key="7" value="天府通内部赠送"/>
 </CustomDictAttr>
 </Dictionary>
 </Present>
@@ -235,6 +246,27 @@
 <Expand dir="0"/>
 </C>
 <C c="8" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="DetailINAcct" columnName="passageWay"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="1" value="天府通APP"/>
+<Dict key="2" value="天府通微信小程序"/>
+<Dict key="3" value="其它"/>
+<Dict key="4" value="天府通支付宝小程序"/>
+<Dict key="5" value=""/>
+</CustomDictAttr>
+</Dictionary>
+</Present>
+<Expand dir="0"/>
+</C>
+<C c="9" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="DetailINAcct" columnName="rec_crt_ts"/>
 <Complex/>
@@ -282,7 +314,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="2">
+<C c="9" r="2">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -324,7 +356,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="3">
+<C c="9" r="3">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -366,7 +398,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="4">
+<C c="9" r="4">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -408,7 +440,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="5">
+<C c="9" r="5">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -450,7 +482,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="6">
+<C c="9" r="6">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -492,7 +524,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="7">
+<C c="9" r="7">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -534,7 +566,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="8">
+<C c="9" r="8">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -576,7 +608,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="9">
+<C c="9" r="9">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -618,7 +650,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="10">
+<C c="9" r="10">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -660,7 +692,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="11">
+<C c="9" r="11">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -702,7 +734,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="12">
+<C c="9" r="12">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -744,7 +776,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="13">
+<C c="9" r="13">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -786,7 +818,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="14">
+<C c="9" r="14">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -828,7 +860,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="15">
+<C c="9" r="15">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -870,7 +902,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="16">
+<C c="9" r="16">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -912,7 +944,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="17">
+<C c="9" r="17">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -954,7 +986,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="18">
+<C c="9" r="18">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -996,7 +1028,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="19">
+<C c="9" r="19">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -1038,7 +1070,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="20">
+<C c="9" r="20">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -1080,7 +1112,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="21">
+<C c="9" r="21">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -1122,7 +1154,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="22">
+<C c="9" r="22">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -1164,7 +1196,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="23">
+<C c="9" r="23">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -1206,7 +1238,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="24">
+<C c="9" r="24">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -1248,7 +1280,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="25">
+<C c="9" r="25">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -1290,7 +1322,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="26">
+<C c="9" r="26">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -1332,7 +1364,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="27">
+<C c="9" r="27">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -1374,7 +1406,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="28">
+<C c="9" r="28">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -1416,7 +1448,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="29">
+<C c="9" r="29">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -1458,7 +1490,7 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="30">
+<C c="9" r="30">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -1500,13 +1532,13 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="8" r="31">
+<C c="9" r="31">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="14" r="31">
+<C c="15" r="31">
 <PrivilegeControl/>
 <CellPageAttr/>
 <CellInsertPolicy>

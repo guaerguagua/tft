@@ -29,7 +29,7 @@
 <RowHeight defaultValue="723900">
 <![CDATA[1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[4800600,5295900,3162300,2743200,4114800,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<![CDATA[4800600,5295900,3162300,2819400,3771900,3390900,4610100,2743200,2743200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
@@ -79,10 +79,18 @@
 <CellPageAttr/>
 <Expand/>
 </C>
+<C c="6" r="0" s="0">
+<O>
+<![CDATA[出入口]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
 <C c="0" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="交易支出统计表" columnName="tradeType"/>
 <Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
 <CNAME>
 <![CDATA[tradeType]]></CNAME>
 <Compare op="6">
@@ -124,7 +132,7 @@
 </C>
 <C c="2" r="1" s="1">
 <O t="DSColumn">
-<Attributes dsName="交易支出统计表" columnName="ins_merchant_name"/>
+<Attributes dsName="交易支出统计表" columnName="ins_merchant_no"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
@@ -132,6 +140,14 @@
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="null:null" value="null:null"/>
+<Dict key="null:null" value="null:null"/>
+</CustomDictAttr>
+</Dictionary>
+</Present>
 <Expand dir="0"/>
 </C>
 <C c="3" r="1" s="1">
@@ -172,41 +188,75 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="0" r="2">
+<C c="6" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="交易支出统计表" columnName="passageWay"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="1" value="天府通APP"/>
+<Dict key="2" value="天府通微信小程序"/>
+<Dict key="3" value="其他"/>
+<Dict key="4" value="天府通支付宝小程序"/>
+<Dict key="5" value="天府通内部赠送"/>
+</CustomDictAttr>
+</Dictionary>
+</Present>
+<Expand dir="0"/>
+</C>
+<C c="0" r="2" s="1">
+<O>
+<![CDATA[合计]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="1" r="2">
+<C c="1" r="2" s="1">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="2" r="2">
+<C c="2" r="2" s="1">
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="3" r="2">
+<C c="3" r="2" s="2">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=sum(D2)]]></Attributes>
+</O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="4" r="2">
+<C c="4" r="2" s="2">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=sum(E2)]]></Attributes>
+</O>
 <PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
 <Expand/>
 </C>
-<C c="5" r="2">
+<C c="5" r="2" s="2">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=sum(F2)]]></Attributes>
+</O>
 <PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
 <Expand/>
+</C>
+<C c="6" r="2" s="1">
+<PrivilegeControl/>
 </C>
 </CellElementList>
 <ReportAttrSet>
@@ -373,6 +423,16 @@
 </Border>
 </Style>
 <Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="4" imageLayout="1">
 <FRFont name="SimSun" style="0" size="72"/>
 <Background name="NullBackground"/>
 <Border>

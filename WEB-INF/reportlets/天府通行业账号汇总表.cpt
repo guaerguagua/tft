@@ -386,7 +386,7 @@
 </Style>
 <Style horizontal_alignment="0" imageLayout="1">
 <FRFont name="SimSun" style="0" size="72"/>
-<Background name="NullBackground"/>
+<Background name="ColorBackground" color="-4144960"/>
 <Border>
 <Top style="1"/>
 <Bottom style="1"/>

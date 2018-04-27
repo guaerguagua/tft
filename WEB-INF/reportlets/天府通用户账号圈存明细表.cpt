@@ -105,7 +105,7 @@
 </C>
 <C c="7" r="0" s="0">
 <O>
-<![CDATA[支付渠道]]></O>
+<![CDATA[出入口]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -210,7 +210,7 @@
 </C>
 <C c="7" r="1" s="2">
 <O t="DSColumn">
-<Attributes dsName="DetailLoad" columnName="1"/>
+<Attributes dsName="DetailLoad" columnName="passageWay"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
@@ -221,7 +221,11 @@
 <Present class="com.fr.base.present.DictPresent">
 <Dictionary class="com.fr.data.impl.CustomDictionary">
 <CustomDictAttr>
-<Dict key="1" value="银联支付"/>
+<Dict key="1" value="天府通APP"/>
+<Dict key="2" value="天府通微信小程序"/>
+<Dict key="3" value="其他"/>
+<Dict key="4" value="天府通支付宝小程序"/>
+<Dict key="5" value="天府通内部赠送"/>
 </CustomDictAttr>
 </Dictionary>
 </Present>
@@ -556,10 +560,10 @@ if(length==0){
 <FRFont name="SimSun" style="0" size="72"/>
 <Background name="ColorBackground" color="-6697729"/>
 <Border>
-<Top style="1" color="-16777216"/>
-<Bottom style="1" color="-16777216"/>
-<Left style="1" color="-16777216"/>
-<Right style="1" color="-16777216"/>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
 </Border>
 </Style>
 <Style imageLayout="1">
