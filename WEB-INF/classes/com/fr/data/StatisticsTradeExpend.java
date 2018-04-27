@@ -118,6 +118,7 @@ public class StatisticsTradeExpend extends AbstractTableData {
                     "select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd = '1407' group by ins_mchnt_cd\n" +
                     "union ALL\n" +
                     "select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd = '1409' group by ins_mchnt_cd;", tableName, tableName,tableName);
+
         }else{
             sql = String.format("select trans_cd ,ins_mchnt_cd, ins_mchnt_cd,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='%s' group by ins_mchnt_cd;", tableName, transCd);
         }

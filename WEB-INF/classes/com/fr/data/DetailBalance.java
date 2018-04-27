@@ -83,9 +83,9 @@ public class DetailBalance extends AbstractTableData {
 		if(acctNo.equals("")&&!phoneNo.equals("")){
 			acctNo=MgmUtil.fromPhoneNoGetAcctNo(phoneNo);
 		}
-		if(acctNo.length()+userId.length()==0){
+	/*	if(acctNo.length()+userId.length()==0){
 			return;
-		}
+		}*/
 		//get db conn  and talbe Name
 
         Connection conn=DbUtil.getActConnection();
@@ -134,7 +134,7 @@ public class DetailBalance extends AbstractTableData {
 			condition=condition+String.format(" and user_id='%s' ",userId);
 		}
 		if(!acctNo.equals("")){
-			condition=condition+String.format(" and acct_no in %s ",MgmUtil.addQuot(acctNo));
+			condition=condition+String.format(" and acct_no in (%s) ",MgmUtil.addQuot(acctNo));
 		}
 
 		if(userId.length()+acctNo.length()==0){

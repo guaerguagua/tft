@@ -13,6 +13,11 @@
 <O>
 <![CDATA[]]></O>
 </Parameter>
+<Parameter>
+<Attributes name="phone_no"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
 </Parameters>
 <ClassTableDataAttr className="com.fr.data.DetailBalance"/>
 </TableData>
@@ -27,13 +32,13 @@
 <ColumnPrivilegeControl/>
 <RowPrivilegeControl/>
 <RowHeight defaultValue="723900">
-<![CDATA[723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<![CDATA[1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[7543800,7810500,7391400,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<![CDATA[4114800,7810500,7391400,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
-<![CDATA[用户号]]></O>
+<![CDATA[交易日期]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -151,6 +156,39 @@
 <LCAttr vgap="0" hgap="0" compInterval="0"/>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.TextEditor">
+<WidgetName name="phone_no"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<regMsg>
+<![CDATA[手机号格式错误]]></regMsg>
+<TextAttr/>
+<Reg class="com.fr.form.ui.reg.MobileReg"/>
+<widgetValue>
+<O>
+<![CDATA[]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="646" y="11" width="154" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="Labelphone_no_c"/>
+<WidgetAttr description="">
+<PrivilegeControl/>
+</WidgetAttr>
+<widgetValue>
+<O>
+<![CDATA[手机号]]></O>
+</widgetValue>
+<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+<border style="0" color="-723724"/>
+</InnerWidget>
+<BoundsAttr x="568" y="11" width="67" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.TextEditor">
 <WidgetName name="acct_no"/>
 <WidgetAttr description="">
 <PrivilegeControl/>
@@ -168,7 +206,7 @@
 <![CDATA[]]></O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="385" y="11" width="175" height="21"/>
+<BoundsAttr x="370" y="11" width="175" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.FreeButton">
@@ -179,10 +217,10 @@
 <![CDATA[
 var lengthAcctNo=this.options.form.getWidgetByName("acct_no").getValue().length
 var lengthUserId=this.options.form.getWidgetByName("user_id").getValue().length
-
-var length=lengthAcctNo+lengthUserId
+var lenPhone=this.options.form.getWidgetByName("phone_no").getValue().length
+var length=lengthAcctNo+lengthUserId+lenPhone
 if(length==0){
-        alert(" 用户账号 与 用户号 不能同时为空!!!")
+        alert(" 用户账号 与 用户号 手机号 不能同时为空!!!")
 }else
 {
 		_g().parameterCommit(); 
@@ -196,7 +234,7 @@ if(length==0){
 <Text>
 <![CDATA[查询]]></Text>
 </InnerWidget>
-<BoundsAttr x="579" y="11" width="80" height="21"/>
+<BoundsAttr x="824" y="11" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -212,7 +250,7 @@ if(length==0){
 <FRFont name="SimSun" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="296" y="11" width="80" height="21"/>
+<BoundsAttr x="281" y="11" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.TextEditor">
@@ -224,7 +262,7 @@ if(length==0){
 <![CDATA[用户号格式错误]]></regMsg>
 <TextAttr/>
 <Reg class="com.fr.form.ui.reg.CustomReg">
-<CusReg ct="^\d{18,20}$"/>
+<CusReg ct="^\d{15,20}$"/>
 </Reg>
 <widgetValue>
 <O>
@@ -253,6 +291,7 @@ if(length==0){
 <MobileWidgetList>
 <Widget widgetName="user_id"/>
 <Widget widgetName="acct_no"/>
+<Widget widgetName="phone_no"/>
 <Widget widgetName="button0"/>
 </MobileWidgetList>
 <Display display="true"/>
@@ -261,12 +300,13 @@ if(length==0){
 <Design_Width design_width="960"/>
 <NameTagModified/>
 <WidgetNameTagMap>
+<NameTag name="phone_no" tag="手机号"/>
 <NameTag name="user_id" tag="用户号"/>
 <NameTag name="acct_no" tag="账户号:"/>
-<NameTag name="button0" tag="账户号:"/>
+<NameTag name="button0" tag="手机号"/>
 </WidgetNameTagMap>
 </Layout>
-<DesignAttr width="960" height="37"/>
+<DesignAttr width="960" height="45"/>
 </ParameterUI>
 </ReportParameterAttr>
 <StyleList>
@@ -274,10 +314,10 @@ if(length==0){
 <FRFont name="SimSun" style="0" size="72"/>
 <Background name="ColorBackground" color="-6697729"/>
 <Border>
-<Top style="1"/>
-<Bottom style="1"/>
-<Left style="1"/>
-<Right style="1"/>
+<Top style="1" color="-16777216"/>
+<Bottom style="1" color="-16777216"/>
+<Left style="1" color="-16777216"/>
+<Right style="1" color="-16777216"/>
 </Border>
 </Style>
 <Style horizontal_alignment="0" imageLayout="1">

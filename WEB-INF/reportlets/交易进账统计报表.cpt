@@ -29,7 +29,7 @@
 <RowHeight defaultValue="723900">
 <![CDATA[1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[5105400,4152900,4876800,4229100,4013200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<![CDATA[5105400,4152900,4229100,4013200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
@@ -41,7 +41,7 @@
 </C>
 <C c="1" r="0" s="0">
 <O>
-<![CDATA[支付渠道【中广出】]]></O>
+<![CDATA[充值渠道]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -49,7 +49,7 @@
 </C>
 <C c="2" r="0" s="0">
 <O>
-<![CDATA[收单商户号【中广出】]]></O>
+<![CDATA[总交易笔数]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -57,21 +57,13 @@
 </C>
 <C c="3" r="0" s="0">
 <O>
-<![CDATA[总交易笔数]]></O>
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
-<Expand/>
-</C>
-<C c="4" r="0" s="0">
-<O>
 <![CDATA[总交易金额（元）]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="5" r="0" s="0">
+<C c="4" r="0" s="0">
 <O>
 <![CDATA[总用户数]]></O>
 <PrivilegeControl/>
@@ -83,6 +75,8 @@
 <O t="DSColumn">
 <Attributes dsName="交易进账统计表" columnName="tradeType"/>
 <Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
 <CNAME>
 <![CDATA[tradeType]]></CNAME>
 <Compare op="6">
@@ -130,7 +124,7 @@
 </C>
 <C c="2" r="1" s="1">
 <O t="DSColumn">
-<Attributes dsName="交易进账统计表" columnName="merchant_no"/>
+<Attributes dsName="交易进账统计表" columnName="sum_trade_count"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
 <Parameters/>
@@ -142,18 +136,6 @@
 </C>
 <C c="3" r="1" s="1">
 <O t="DSColumn">
-<Attributes dsName="交易进账统计表" columnName="sum_trade_count"/>
-<Complex/>
-<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
-<Parameters/>
-</O>
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
-<Expand dir="0"/>
-</C>
-<C c="4" r="1" s="1">
-<O t="DSColumn">
 <Attributes dsName="交易进账统计表" columnName="sum_trade_amount"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
@@ -164,7 +146,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="5" r="1" s="1">
+<C c="4" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="交易进账统计表" columnName="sum_user_count"/>
 <Complex/>

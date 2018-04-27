@@ -39,7 +39,7 @@ public class StatisticsTradeIncomeLoad extends AbstractTableData {
     public StatisticsTradeIncomeLoad() {
         columnNames = new String[columnNum];
         columnNames[0]="tradeType";
-        columnNames[1]="trade_chanel";
+        columnNames[1]="passageWay";
         columnNames[2]="merchant_no";
         columnNames[3]="sum_trade_count";
         columnNames[4]="sum_trade_amount";
@@ -107,13 +107,13 @@ public class StatisticsTradeIncomeLoad extends AbstractTableData {
         FRContext.getLogger().info("suffix:"+suffix);
         String sql;
         if(transCd.equals("")) {
-            sql = String.format("select trans_cd ,'unionpay' as trade_chanel, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='1410'\n" +
+            sql = String.format("select trans_cd ,passageWay, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='1410' group by passageWay\n" +
                     "union all\n" +
-                    "select trans_cd ,'unionpay' as trade_chanel, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='1411'\n" +
+                    "select trans_cd ,passageWay, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='1411' group by passageWay\n" +
                     "union all\n" +
-                    "select trans_cd ,'unionpay' as trade_chanel, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='1412';", tableName, tableName,tableName);
+                    "select trans_cd ,passageWay, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='1412' group by passageWay;", tableName, tableName,tableName);
         }else{
-            sql = String.format("select trans_cd ,'unionpay' as trade_chanel, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='%s';", tableName, transCd);
+            sql = String.format("select trans_cd ,passageWay, '' as merchant_no,count(*),cast(sum(trans_at)/100 as decimal(20,2)),count(distinct(acct_no)) from %s where trans_cd='%s' group by passageWay;", tableName, transCd);
         }
         FRContext.getLogger().info("Query SQL of Param\n"  + sql);
 

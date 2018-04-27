@@ -32,7 +32,7 @@ public class DetailActLoadData extends AbstractTableData {
 //		setDefaultParameters(new Parameter[] { new Parameter("trans_cd"),new Parameter("day") });
 
 		tablePrefix="tbl_fcl_ck_acct_dtl";
-		checkList="settle_dt, buss_no,acct_no,trans_cd,trans_at/100 ,rec_crt_ts,1,current_balance/100,trans_at/100+current_balance/100";
+		checkList="settle_dt, buss_no,acct_no,trans_cd,trans_at/100 ,rec_crt_ts,passageWay,current_balance/100,trans_at/100+current_balance/100";
 		transCdTotal="1410,1411,1412";
 
 		columnNames = checkList.replaceAll(" ","").split(",");

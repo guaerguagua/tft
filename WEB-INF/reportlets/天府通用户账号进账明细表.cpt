@@ -105,7 +105,7 @@
 </C>
 <C c="7" r="0" s="0">
 <O>
-<![CDATA[支付渠道]]></O>
+<![CDATA[充值渠道]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -1521,6 +1521,7 @@
 <ReportAttrSet>
 <ReportSettings headerHeight="0" footerHeight="0">
 <PaperSetting orientation="1">
+<PaperSize width="30240000" height="50400000"/>
 <Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
 </PaperSetting>
 </ReportSettings>
@@ -1809,7 +1810,6 @@ if(length==0){
 <Widget widgetName="startday"/>
 <Widget widgetName="endday"/>
 <Widget widgetName="search"/>
-<Widget widgetName="acct_no_c"/>
 <Widget widgetName="buss_no"/>
 <Widget widgetName="phone_no"/>
 </MobileWidgetList>

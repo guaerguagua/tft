@@ -29,7 +29,7 @@
 <RowHeight defaultValue="723900">
 <![CDATA[1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[4800600,4229100,4876800,4229100,4076700,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<![CDATA[4800600,4229100,4229100,4076700,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
@@ -41,7 +41,7 @@
 </C>
 <C c="1" r="0" s="0">
 <O>
-<![CDATA[支付渠道【中广出】]]></O>
+<![CDATA[出入口]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -49,7 +49,7 @@
 </C>
 <C c="2" r="0" s="0">
 <O>
-<![CDATA[收单商户号【中广出】]]></O>
+<![CDATA[总交易笔数]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -57,21 +57,13 @@
 </C>
 <C c="3" r="0" s="0">
 <O>
-<![CDATA[总交易笔数]]></O>
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
-<Expand/>
-</C>
-<C c="4" r="0" s="0">
-<O>
 <![CDATA[总交易金额（元）]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="5" r="0" s="0">
+<C c="4" r="0" s="0">
 <O>
 <![CDATA[总用户数]]></O>
 <PrivilegeControl/>
@@ -83,6 +75,8 @@
 <O t="DSColumn">
 <Attributes dsName="交易进账圈存统计表" columnName="tradeType"/>
 <Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
 <CNAME>
 <![CDATA[tradeType]]></CNAME>
 <Compare op="6">
@@ -122,25 +116,15 @@
 <Present class="com.fr.base.present.DictPresent">
 <Dictionary class="com.fr.data.impl.CustomDictionary">
 <CustomDictAttr>
-<Dict key="unionpay" value="银联"/>
+<Dict key="1" value="中广APP"/>
+<Dict key="2" value="微信小程序"/>
+<Dict key="3" value="其他"/>
 </CustomDictAttr>
 </Dictionary>
 </Present>
 <Expand dir="0"/>
 </C>
 <C c="2" r="1" s="1">
-<O t="DSColumn">
-<Attributes dsName="交易进账圈存统计表" columnName="merchant_no"/>
-<Complex/>
-<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
-<Parameters/>
-</O>
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
-<Expand dir="0"/>
-</C>
-<C c="3" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="交易进账圈存统计表" columnName="sum_trade_count"/>
 <Complex/>
@@ -152,7 +136,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="4" r="1" s="1">
+<C c="3" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="交易进账圈存统计表" columnName="sum_trade_amount"/>
 <Complex/>
@@ -164,7 +148,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="5" r="1" s="1">
+<C c="4" r="1" s="1">
 <O t="DSColumn">
 <Attributes dsName="交易进账圈存统计表" columnName="sum_user_count"/>
 <Complex/>
