@@ -49,7 +49,7 @@
 <RowHeight defaultValue="723900">
 <![CDATA[1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[3505200,3886200,2590800,4305300,4114800,3556000,3505200,2743200,2743200,6019800,2743200,2743200]]></ColumnWidth>
+<![CDATA[3505200,3886200,2590800,4305300,4114800,3556000,3505200,2743200,2743200,6019800,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
@@ -260,7 +260,7 @@
 <Dict key="2" value="天府通微信小程序"/>
 <Dict key="3" value="其它"/>
 <Dict key="4" value="天府通支付宝小程序"/>
-<Dict key="5" value=""/>
+<Dict key="5" value="天府通内部赠送"/>
 </CustomDictAttr>
 </Dictionary>
 </Present>
