@@ -329,7 +329,7 @@
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
-<DateAttr startdatefm="=IF(&apos;2018-03-27&apos;&gt;today()-30,&apos;2018-03-27&apos;,today()-30)" enddatefm="=today()"/>
+<DateAttr start="03/27/2018" enddatefm="=today()"/>
 <widgetValue>
 <O t="Formula" class="Formula">
 <Attributes>

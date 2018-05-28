@@ -49,7 +49,7 @@
 <RowHeight defaultValue="723900">
 <![CDATA[1143000,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[2933700,3733800,2743200,2400300,3810000,3556000,3390900,3771900,2743200,2743200,5524500,2743200]]></ColumnWidth>
+<![CDATA[2933700,3733800,2743200,3048000,2400300,3810000,3556000,3390900,3771900,2743200,5524500,2743200]]></ColumnWidth>
 <CellElementList>
 <C c="0" r="0" s="0">
 <O>
@@ -77,19 +77,27 @@
 </C>
 <C c="3" r="0" s="0">
 <O>
+<![CDATA[行业商户名]]></O>
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="4" r="0" s="0">
+<O>
 <![CDATA[交易类型]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="4" r="0" s="1">
+<C c="5" r="0" s="1">
 <O>
 <![CDATA[交易前余额（元）]]></O>
 <PrivilegeControl/>
 <Expand/>
 </C>
-<C c="5" r="0" s="0">
+<C c="6" r="0" s="0">
 <O>
 <![CDATA[交易金额（元）]]></O>
 <PrivilegeControl/>
@@ -97,23 +105,15 @@
 <CellPageAttr/>
 <Expand/>
 </C>
-<C c="6" r="0" s="1">
+<C c="7" r="0" s="1">
 <O>
 <![CDATA[交易余额（元）]]></O>
 <PrivilegeControl/>
 <Expand/>
 </C>
-<C c="7" r="0" s="0">
-<O>
-<![CDATA[行业商户号]]></O>
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
-<Expand/>
-</C>
 <C c="8" r="0" s="0">
 <O>
-<![CDATA[行业商户名]]></O>
+<![CDATA[行业商户号]]></O>
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
@@ -181,6 +181,26 @@
 </C>
 <C c="3" r="1" s="2">
 <O t="DSColumn">
+<Attributes dsName="DetailOut" columnName="ins_mchnt_cd"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<CellGUIAttr adjustmode="2"/>
+<CellPageAttr/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="100002800010001" value="地铁"/>
+<Dict key="100002800020001" value="公交"/>
+</CustomDictAttr>
+</Dictionary>
+</Present>
+<Expand dir="0"/>
+</C>
+<C c="4" r="1" s="2">
+<O t="DSColumn">
 <Attributes dsName="DetailOut" columnName="trans_cd"/>
 <Complex/>
 <RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
@@ -200,7 +220,7 @@
 </Present>
 <Expand dir="0"/>
 </C>
-<C c="4" r="1" s="3">
+<C c="5" r="1" s="3">
 <O t="DSColumn">
 <Attributes dsName="DetailOut" columnName="current_balance/100+trans_at/100"/>
 <Complex/>
@@ -210,7 +230,7 @@
 <PrivilegeControl/>
 <Expand dir="0"/>
 </C>
-<C c="5" r="1" s="4">
+<C c="6" r="1" s="4">
 <O t="DSColumn">
 <Attributes dsName="DetailOut" columnName="trans_at/100"/>
 <Complex/>
@@ -222,7 +242,7 @@
 <CellPageAttr/>
 <Expand dir="0"/>
 </C>
-<C c="6" r="1" s="3">
+<C c="7" r="1" s="3">
 <O t="DSColumn">
 <Attributes dsName="DetailOut" columnName="current_balance/100"/>
 <Complex/>
@@ -230,18 +250,6 @@
 <Parameters/>
 </O>
 <PrivilegeControl/>
-<Expand dir="0"/>
-</C>
-<C c="7" r="1" s="2">
-<O t="DSColumn">
-<Attributes dsName="DetailOut" columnName="ins_mchnt_cd"/>
-<Complex/>
-<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
-<Parameters/>
-</O>
-<PrivilegeControl/>
-<CellGUIAttr adjustmode="2"/>
-<CellPageAttr/>
 <Expand dir="0"/>
 </C>
 <C c="8" r="1" s="2">
@@ -254,14 +262,6 @@
 <PrivilegeControl/>
 <CellGUIAttr adjustmode="2"/>
 <CellPageAttr/>
-<Present class="com.fr.base.present.DictPresent">
-<Dictionary class="com.fr.data.impl.CustomDictionary">
-<CustomDictAttr>
-<Dict key="100002800010001" value="地铁"/>
-<Dict key="100002800020001" value="公交"/>
-</CustomDictAttr>
-</Dictionary>
-</Present>
 <Expand dir="0"/>
 </C>
 <C c="9" r="1" s="2">
@@ -444,7 +444,7 @@
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
-<DateAttr startdatefm="=IF(&apos;2018-03-27&apos;&gt;today()-30,&apos;2018-03-27&apos;,today()-30)" enddatefm="=today()"/>
+<DateAttr start="03/27/2018" enddatefm="=today()"/>
 <widgetValue>
 <O t="Formula" class="Formula">
 <Attributes>

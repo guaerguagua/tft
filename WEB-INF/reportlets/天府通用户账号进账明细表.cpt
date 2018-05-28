@@ -227,11 +227,11 @@
 <Present class="com.fr.base.present.DictPresent">
 <Dictionary class="com.fr.data.impl.CustomDictionary">
 <CustomDictAttr>
-<Dict key="1" value="支付宝"/>
-<Dict key="2" value="微信"/>
+<Dict key="1" value="成都金控数据服务有限公司_Z"/>
+<Dict key="2" value="成都金控数据服务有限公司_Z"/>
 <Dict key="3" value="本地账户"/>
 <Dict key="4" value="未知渠道"/>
-<Dict key="5" value="银联SDK控件"/>
+<Dict key="5" value="中国银联_N"/>
 <Dict key="6" value="银联快捷支付"/>
 <Dict key="7" value="天府通内部赠送"/>
 </CustomDictAttr>
