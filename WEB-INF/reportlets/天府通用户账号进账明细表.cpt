@@ -1707,7 +1707,7 @@
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
-<DateAttr startdatefm="=IF(&apos;2018-03-27&apos;&gt;today()-30,&apos;2018-03-27&apos;,today()-30)" enddatefm="=today()"/>
+<DateAttr start="03/27/2018" enddatefm="=today()"/>
 <widgetValue>
 <O t="Formula" class="Formula">
 <Attributes>
@@ -1842,6 +1842,7 @@ if(length==0){
 <Widget widgetName="startday"/>
 <Widget widgetName="endday"/>
 <Widget widgetName="search"/>
+<Widget widgetName="acct_no"/>
 <Widget widgetName="buss_no"/>
 <Widget widgetName="phone_no"/>
 </MobileWidgetList>
@@ -1855,7 +1856,7 @@ if(length==0){
 <NameTag name="phone_no" tag="手机号"/>
 <NameTag name="startday" tag="日期"/>
 <NameTag name="endday" tag="~"/>
-<NameTag name="acct_no_c" tag="账户号"/>
+<NameTag name="acct_no" tag="账户号"/>
 <NameTag name="buss_no" tag="交易流水号"/>
 </WidgetNameTagMap>
 </Layout>
