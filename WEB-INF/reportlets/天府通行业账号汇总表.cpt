@@ -108,6 +108,7 @@
 <CustomDictAttr>
 <Dict key="100002800010001" value="地铁"/>
 <Dict key="100002800020001" value="公交"/>
+<Dict key="100002800030001" value="手机充值"/>
 </CustomDictAttr>
 </Dictionary>
 </Present>

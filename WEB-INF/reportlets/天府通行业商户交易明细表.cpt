@@ -115,6 +115,7 @@
 <CustomDictAttr>
 <Dict key="010102  " value="100002800010001"/>
 <Dict key="010103  " value="100002800020001"/>
+<Dict key="010104" value="100002800030001"/>
 </CustomDictAttr>
 </Dictionary>
 </Present>
@@ -137,6 +138,7 @@
 <CustomDictAttr>
 <Dict key="010102" value="地铁"/>
 <Dict key="010103" value="公交"/>
+<Dict key="010104" value="手机充值"/>
 </CustomDictAttr>
 </Dictionary>
 </Present>
@@ -330,6 +332,7 @@
 <CustomDictAttr>
 <Dict key="010102" value="地铁"/>
 <Dict key="010103" value="公交"/>
+<Dict key="010104" value="手机充值"/>
 </CustomDictAttr>
 </Dictionary>
 <widgetValue>
@@ -458,10 +461,10 @@
 <FRFont name="SimSun" style="0" size="72"/>
 <Background name="ColorBackground" color="-6697729"/>
 <Border>
-<Top style="1" color="-16777216"/>
-<Bottom style="1" color="-16777216"/>
-<Left style="1" color="-16777216"/>
-<Right style="1" color="-16777216"/>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
 </Border>
 </Style>
 <Style horizontal_alignment="0" imageLayout="1">
