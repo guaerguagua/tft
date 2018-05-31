@@ -140,7 +140,7 @@ public class DetailInsTransData extends AbstractTableData {
 			condition=condition+String.format(" and trans_cd in (%s) ",MgmUtil.addQuot(transCd));
 		}
 
-		String sql = String.format("select %s  from %s where 1=1  %s ;",
+		String sql = String.format("select %s  from %s where 1=1  %s  order by rec_crt_ts ;",
 				checkList,tableName,condition);
 
 		return  sql;

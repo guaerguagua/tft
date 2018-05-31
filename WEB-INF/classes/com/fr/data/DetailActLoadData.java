@@ -157,7 +157,7 @@ public class DetailActLoadData extends AbstractTableData {
 		if(condition.equals("")){
 			patton="select %s from %s where 1=1 %s limit 0;";
 		}else {
-			patton="select %s from %s where 1=1 %s ;";
+			patton="select %s from %s where 1=1 %s  order by rec_crt_ts ;";
 		}
 
 		if(transCd.equals("")){
